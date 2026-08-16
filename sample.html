@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Premium animated B2B growth and technology website." />
+  <title>WictroniX — Animated Growth Systems</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f7f8fa;
+      --surface:#ffffff;
+      --ink:#0a0a0b;
+      --muted:#72757d;
+      --line:rgba(10,10,11,.09);
+      --accent:#0052ff;
+      --accent-2:#5b8cff;
+      --dark:#08090b;
+      --radius:32px;
+      --ease:cubic-bezier(.22,1,.36,1);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:auto}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Manrope,system-ui,sans-serif;
+      overflow-x:hidden;
+    }
+    body.is-loading{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button{font:inherit}
+    .container{width:min(1400px,calc(100% - 48px));margin:auto}
+    .display{font-family:"Space Grotesk",sans-serif}
+    .accent{color:var(--accent)}
+    .eyebrow{
+      font-size:11px;
+      line-height:1;
+      font-weight:800;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--accent);
+    }
+
+    /* Loader */
+    .loader{
+      position:fixed;inset:0;z-index:99999;background:var(--dark);color:white;
+      display:grid;place-items:center;pointer-events:none;
+    }
+    .loader-inner{text-align:center}
+    .loader-brand{font:700 clamp(36px,7vw,90px)/.9 "Space Grotesk";letter-spacing:-.07em}
+    .loader-brand span{color:var(--accent)}
+    .loader-bar{width:180px;height:2px;background:#272a31;margin:28px auto 0;overflow:hidden}
+    .loader-bar i{display:block;width:0;height:100%;background:var(--accent)}
+
+    /* Cursor */
+    .cursor,.cursor-dot{
+      position:fixed;left:0;top:0;z-index:99998;pointer-events:none;
+      transform:translate(-50%,-50%);
+    }
+    .cursor{
+      width:34px;height:34px;border:1px solid rgba(0,0,0,.35);border-radius:50%;
+      mix-blend-mode:multiply;
+    }
+    .cursor-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+    body.cursor-hover .cursor{width:72px;height:72px;border-color:var(--accent);background:rgba(0,82,255,.06)}
+
+    /* Nav */
+    .nav{
+      position:fixed;left:0;right:0;top:0;z-index:1000;
+      padding:18px 0;transform:translateY(-120%);
+      background:rgba(255,255,255,.72);backdrop-filter:blur(24px) saturate(160%);
+      border-bottom:1px solid transparent;transition:background .4s,border .4s;
+    }
+    .nav.visible{transform:translateY(0)}
+    .nav.scrolled{background:rgba(255,255,255,.9);border-color:var(--line)}
+    .nav-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo{font:800 22px/1 "Space Grotesk";letter-spacing:-.06em}
+    .logo span{color:var(--accent)}
+    .nav-links{display:flex;align-items:center;gap:34px}
+    .nav-link{font-size:13px;font-weight:700;position:relative}
+    .nav-link:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;background:var(--accent);transition:width .35s var(--ease)}
+    .nav-link:hover:after{width:100%}
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;
+      background:var(--ink);color:white;font-size:12px;font-weight:800;
+      transition:transform .35s var(--ease),background .35s;
+    }
+    .pill:hover{transform:translateY(-2px);background:var(--accent)}
+    .menu{display:none;border:0;background:var(--ink);color:white;width:42px;height:42px;border-radius:12px}
+
+    /* Hero */
+    .hero{min-height:100svh;padding:130px 0 24px;position:relative;overflow:hidden;background:#fff}
+    .hero-head{text-align:center;position:relative;z-index:4}
+    .hero-head .eyebrow{color:#8a8d94;margin-bottom:18px}
+    .hero-title{
+      font:700 clamp(58px,10vw,150px)/.84 "Space Grotesk";
+      letter-spacing:-.08em;margin:0;
+    }
+    .hero-title .hero-word{display:inline-block}
+    .hero-stage{
+      position:relative;width:min(1280px,94vw);height:min(68vh,720px);min-height:480px;
+      margin:52px auto 0;border-radius:58px 58px 0 0;overflow:hidden;
+      box-shadow:0 -30px 100px rgba(0,0,0,.12);border:1px solid rgba(0,0,0,.08);
+      perspective:1400px;
+    }
+    .hero-bg{
+      position:absolute;inset:-8%;width:116%;height:116%;object-fit:cover;
+      filter:saturate(.8) contrast(1.05);transform:scale(1.05);
+    }
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.7),rgba(0,0,0,.35) 50%,rgba(0,82,255,.24))}
+    .hero-grid{
+      position:absolute;inset:0;opacity:.22;
+      background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);
+      background-size:70px 70px;
+      mask-image:linear-gradient(to bottom,transparent,black 20%,black 80%,transparent);
+    }
+    .hero-glow{
+      position:absolute;width:460px;height:460px;border-radius:50%;filter:blur(100px);
+      background:rgba(0,82,255,.28);right:-120px;bottom:-170px;
+    }
+    .hero-cards{position:absolute;inset:0;display:grid;place-items:center;transform-style:preserve-3d}
+    .hero-card{
+      position:absolute;width:min(350px,78vw);min-height:330px;padding:32px;border-radius:28px;
+      background:rgba(255,255,255,.94);box-shadow:0 30px 90px rgba(0,0,0,.3);
+      display:flex;flex-direction:column;justify-content:center;text-align:center;
+      will-change:transform,opacity;backdrop-filter:blur(14px);
+    }
+    .hero-card h2{font:700 25px/1.02 "Space Grotesk";letter-spacing:-.055em;margin:18px 0 12px}
+    .hero-card p{font-size:12px;line-height:1.6;color:#60636b;margin:0 auto;max-width:270px}
+    .card-tag{align-self:center;border:1px solid var(--line);padding:8px 12px;border-radius:999px;font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .hero-card .pill{align-self:center;margin-top:24px;padding:11px 15px;font-size:10px}
+    .scroll-cue{position:absolute;left:50%;bottom:18px;z-index:5;color:white;transform:translateX(-50%);font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+    .scroll-cue:after{content:"";display:block;width:1px;height:34px;background:linear-gradient(white,transparent);margin:8px auto 0}
+
+    /* Shared sections */
+    section{position:relative}
+    .section-pad{padding:150px 0}
+    .section-heading{font:700 clamp(55px,8vw,112px)/.84 "Space Grotesk";letter-spacing:-.075em;margin:0}
+    .section-heading .line{display:block;overflow:hidden}
+    .section-heading .line > span{display:inline-block}
+
+    /* Philosophy */
+    .philosophy{background:#fff;overflow:hidden;min-height:155vh;transition:background 1s ease}
+    .philosophy-sticky{min-height:100svh;display:flex;align-items:center}
+    .philosophy-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center;width:100%}
+    .philosophy-copy{position:relative;z-index:3}
+    .philosophy-copy:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(0,82,255,.08);border-radius:50%;left:-180px;top:-100px}
+    .orbit{height:620px;position:relative;display:grid;place-items:center;overflow:visible}
+    .orbit-ring{position:absolute;border:1px dashed rgba(0,82,255,.12);border-radius:50%;width:500px;height:500px;opacity:.35}
+    .orbit-core{width:1px;height:1px;opacity:0;position:absolute}
+    .orbit-node{
+      position:absolute;width:190px;height:190px;border-radius:50%;background:var(--accent);color:white;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;
+      box-shadow:0 25px 80px rgba(0,82,255,.30),0 0 90px rgba(0,82,255,.10);z-index:4;
+      will-change:transform,opacity
+    }
+    /* Final composition matches the reference: one top bubble + two lower bubbles. */
+    .orbit-node:nth-of-type(2){top:45px;left:50%;transform:translateX(-50%)}
+    .orbit-node:nth-of-type(3){bottom:55px;left:8%}
+    .orbit-node:nth-of-type(4){bottom:55px;right:8%}
+    .orbit-node b{font:700 24px "Space Grotesk";margin-bottom:3px;color:rgba(255,255,255,.28)}
+    .orbit-node strong{font:700 18px "Space Grotesk";margin-bottom:5px}
+    .orbit-node small{font-size:10px;line-height:1.45;color:rgba(255,255,255,.78)}
+    .quote-band{margin-top:130px;background:var(--dark);color:#fff;border-radius:54px;padding:100px 50px;text-align:center;overflow:hidden;position:relative}
+    .quote-band:before{content:"";position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(0,82,255,.22);filter:blur(100px);left:50%;top:50%;transform:translate(-50%,-50%)}
+    .quote-band p{position:relative;z-index:1;font:700 clamp(28px,4.4vw,64px)/1 "Space Grotesk";letter-spacing:-.06em;max-width:950px;margin:0 auto}
+
+    /* Work */
+    .work{background:#fff;overflow:hidden}
+    .work-intro{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:95px}
+    .work-intro p{max-width:370px;color:var(--muted);font-size:14px;line-height:1.7}
+    .work-track-wrap{overflow:visible}
+    .work-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:120px;row-gap:110px;width:min(1200px,92vw);margin:0 auto}
+    .work-card{width:100%;flex:0 0 auto;will-change:transform,opacity}
+    .work-card:nth-child(2){margin-top:145px}
+    .work-card:nth-child(3){margin-top:-15px}
+    .work-card:nth-child(4){margin-top:120px}
+    .work-image{height:470px;border-radius:34px;overflow:hidden;background:#ddd;position:relative}
+    .work-image img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+    .work-card:hover .work-image img{transform:scale(1.06)}
+    .work-image:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.45))}
+    .work-number{position:absolute;left:22px;top:20px;z-index:2;color:#fff;font:700 12px "Space Grotesk";letter-spacing:.15em}
+    .work-meta{display:flex;justify-content:space-between;gap:24px;padding:20px 4px}
+    .work-meta h3{font:700 24px/1 "Space Grotesk";letter-spacing:-.05em;margin:0}
+    .work-meta p{font-size:11px;color:var(--muted);margin:5px 0 0}
+
+    /* Services — staged scroll choreography */
+    .services{
+      position:relative;
+      min-height:320vh;
+      background:#fff;
+      overflow:clip;
+      transition:background .8s cubic-bezier(.22,1,.36,1);
+    }
+    .services:before{
+      content:"";
+      position:absolute;
+      left:-10%; right:-10%; bottom:0; height:55%;
+      background:radial-gradient(ellipse at 50% 100%,rgba(0,82,255,.13),transparent 68%);
+      opacity:.65; pointer-events:none;
+    }
+    .services-sticky{
+      position:sticky; top:0; height:100svh; min-height:720px;
+      display:flex; align-items:center; overflow:hidden;
+    }
+    .services-grid{
+      display:grid; grid-template-columns:minmax(330px,.62fr) minmax(760px,1.38fr);
+      gap:52px; align-items:center; width:100%; position:relative; z-index:2;
+    }
+    .services-copy{position:relative; z-index:5}
+    .services-copy .eyebrow{margin-bottom:28px}
+    .services-copy p{max-width:390px;color:var(--muted);font-size:14px;line-height:1.7;margin-top:34px}
+    .services-rule{display:flex;align-items:center;gap:28px;margin-top:78px;color:#777;font:600 10px/1 "Space Grotesk";letter-spacing:.12em}
+    .services-rule:before{content:"";height:1px;background:linear-gradient(90deg,var(--accent),rgba(0,82,255,.05));flex:1}
+    .services-cards-wrap{position:relative;min-width:0;overflow:visible;padding:40px 0}
+    .service-list{display:flex;gap:26px;overflow:visible;position:relative;padding:0 0 35px;will-change:transform}
+    .service-item{
+      width:315px; min-width:315px; height:520px; padding:34px; border-radius:34px;
+      background:#09090b; color:#fff; position:relative; cursor:pointer;
+      display:flex; flex-direction:column; box-shadow:0 28px 70px rgba(0,0,0,.14);
+      will-change:transform,opacity;
+      transition:background .65s cubic-bezier(.22,1,.36,1),color .5s,box-shadow .6s,filter .5s;
+    }
+    .service-item small{display:block;color:var(--accent);font-size:9px;letter-spacing:.18em;font-weight:800;margin-bottom:24px}
+    .service-item h3{font:700 36px/1 "Space Grotesk";letter-spacing:-.06em;margin:0}
+    .service-item p{max-width:240px;color:rgba(255,255,255,.62);font-size:12px;line-height:1.6;margin:22px 0 0}
+    .service-item:after{content:"→";position:absolute;right:26px;bottom:25px;width:34px;height:34px;border:1px solid rgba(255,255,255,.25);border-radius:50%;display:grid;place-items:center}
+    .service-item.is-current{box-shadow:0 35px 90px rgba(0,82,255,.16)}
+    .service-item.is-muted{background:#a9a9a9;box-shadow:none}
+    .service-item:hover{box-shadow:0 40px 100px rgba(0,82,255,.20);filter:brightness(1.04)}
+    .services-progress{position:absolute;right:0;top:50%;transform:translateY(-50%);width:2px;height:180px;background:rgba(0,0,0,.07);z-index:6}
+    .services-progress span{display:block;width:100%;height:34%;background:var(--accent);transform-origin:top;will-change:transform}
+    .services-stage-transition{position:absolute;left:0;right:0;bottom:-1px;height:34%;background:linear-gradient(to bottom,transparent 0%,rgba(255,255,255,.72) 45%,#fff 100%);pointer-events:none;z-index:4}
+    .service-visual{display:none}
+
+    /* Process */
+    .process{background:#fff;margin-top:-70px;border-radius:70px 70px 0 0;z-index:5}
+    .process-header{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:90px}
+    .process-header p{max-width:360px;color:var(--muted);line-height:1.7;font-size:13px}
+    .process-stack{display:grid;gap:20px}
+    .process-card{
+      min-height:260px;border-radius:34px;background:#f3f5f8;border:1px solid var(--line);
+      padding:36px;display:grid;grid-template-columns:90px 1fr 1fr;gap:30px;align-items:start;
+      transform-origin:center top;will-change:transform
+    }
+    .process-card:nth-child(even){background:#0c0d10;color:#fff;border-color:transparent}
+    .phase{font:700 13px "Space Grotesk";letter-spacing:.12em;color:var(--accent)}
+    .process-card h3{font:700 clamp(28px,3vw,46px)/.9 "Space Grotesk";letter-spacing:-.06em;margin:0}
+    .process-card p{color:var(--muted);font-size:12px;line-height:1.7;margin:0}
+    .process-card:nth-child(even) p{color:rgba(255,255,255,.55)}
+    .focus-list{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+    .focus-list span{font-size:9px;font-weight:800;padding:8px 10px;border-radius:999px;background:rgba(0,82,255,.08);color:var(--accent)}
+
+    /* Proof */
+    .proof{background:#fff;border-top:1px solid var(--line)}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:70px}
+    .metric{background:#fff;padding:45px 30px}
+    .metric small{font-size:9px;letter-spacing:.16em;color:#aaa;font-weight:800}
+    .metric strong{display:block;font:700 clamp(50px,6vw,85px)/.9 "Space Grotesk";letter-spacing:-.08em;margin:14px 0}
+    .metric p{margin:0;color:var(--muted);font-size:11px}
+    .testimonials{margin-top:110px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .testimonial{padding:38px;border:1px solid var(--line);border-radius:30px}
+    .testimonial p{font:600 20px/1.35 "Space Grotesk";letter-spacing:-.035em;margin:0 0 30px}
+    .testimonial b{font-size:11px}
+    .testimonial span{display:block;font-size:10px;color:var(--muted);margin-top:4px}
+
+    /* CTA / Footer */
+    .cta{padding:150px 0 40px;background:#fff}
+    .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .cta-card{border-radius:38px;padding:60px;min-height:430px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
+    .cta-card.dark{background:var(--dark);color:#fff}
+    .cta-card.blue{background:var(--accent);color:#fff}
+    .cta-card:after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;right:-110px;bottom:-150px;border:1px solid rgba(255,255,255,.2);box-shadow:0 0 0 60px rgba(255,255,255,.03),0 0 0 120px rgba(255,255,255,.025)}
+    .cta-card h2{font:700 clamp(34px,4vw,58px)/.9 "Space Grotesk";letter-spacing:-.07em;max-width:550px;margin:0;position:relative;z-index:1}
+    .cta-card p{max-width:430px;font-size:13px;line-height:1.7;opacity:.72;position:relative;z-index:1}
+    .cta-card .pill{align-self:flex-start;background:#fff;color:#111;position:relative;z-index:2}
+    .footer{background:var(--dark);color:#fff;padding:70px 0 40px}
+    .footer-grid{display:grid;grid-template-columns:1.3fr .7fr .7fr .9fr;gap:40px}
+    .footer-brand{font:800 38px "Space Grotesk";letter-spacing:-.07em}
+    .footer-brand span{color:var(--accent)}
+    .footer p,.footer a{font-size:11px;color:rgba(255,255,255,.55);line-height:1.7}
+    .footer h4{font-size:9px;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin:0 0 20px}
+    .footer-links{display:flex;flex-direction:column;gap:7px}
+    .footer-links a:hover{color:white}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:55px;padding-top:18px;display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,.4)}
+
+    @media (max-width:900px){
+      .container{width:min(100% - 32px,700px)}
+      .nav-links{display:none}.menu{display:block}
+      .hero{padding-top:110px}.hero-stage{height:620px;min-height:0;border-radius:30px 30px 0 0}
+      .philosophy-grid,.services-grid,.cta-grid,.testimonials{grid-template-columns:1fr;gap:45px}
+      .philosophy{min-height:180vh}.philosophy-sticky{min-height:100svh}
+      .orbit{height:500px}.orbit-ring{width:360px;height:360px}
+      .orbit-node{width:150px;height:150px}.orbit-node:nth-of-type(3){left:2%}.orbit-node:nth-of-type(4){right:2%}
+      .work-intro,.process-header{display:block}.work-intro p,.process-header p{margin-top:25px}
+      .work-track{width:100%;grid-template-columns:1fr;gap:70px}.work-card:nth-child(2),.work-card:nth-child(3),.work-card:nth-child(4){margin-top:0}
+      .work-image{height:330px}
+      .services{min-height:auto;padding:100px 0}
+      .services-sticky{position:relative;height:auto;min-height:0}
+      .service-list{overflow-x:auto;padding-bottom:25px;grid-column:auto}
+      .service-item{min-width:280px;height:390px}
+      .process{margin-top:0;border-radius:40px 40px 0 0}
+      .process-card{grid-template-columns:65px 1fr;padding:28px;min-height:0}
+      .process-card p{grid-column:2}.metrics{grid-template-columns:1fr 1fr}
+      .cta{padding-top:100px}.cta-card{min-height:360px;padding:38px}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:600px){
+      .cursor,.cursor-dot{display:none}
+      .hero-title{font-size:18vw}
+      .hero-stage{width:calc(100% - 20px);height:570px}
+      .hero-card{min-height:290px;padding:24px}
+      .hero-card h2{font-size:22px}
+      .section-pad{padding:100px 0}
+      .orbit{height:410px}.orbit-ring{width:300px;height:300px}
+      .orbit-node{width:128px;height:128px;padding:18px}.orbit-node b{font-size:16px}.orbit-node small{font-size:8px}
+      .quote-band{padding:70px 25px;border-radius:30px}
+      .work-track{gap:16px}.work-card{width:84vw}.work-image{height:280px;border-radius:24px}
+      .service-visual{height:360px;padding:30px}.services-grid > div:first-child{min-width:0}
+    .services-grid > div:first-child > .service-list{grid-column:2}
+    .service-code{left:30px;top:30px}.service-visual h3{font-size:42px}
+      .metrics{grid-template-columns:1fr 1fr}.metric{padding:30px 18px}
+      .metric strong{font-size:52px}
+      .footer-grid{grid-template-columns:1fr}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:8px}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+    }
+  </style>
+</head>
+
+<body class="is-loading">
+  <div class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-brand">WictroniX<span>.</span></div>
+      <div class="loader-bar"><i></i></div>
+    </div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <header class="nav">
+    <div class="container nav-row">
+      <a class="logo" href="#">WictroniX<span>.</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="#philosophy">About</a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#work">Our Work</a>
+        <a class="nav-link" href="#process">Process</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <a class="pill magnetic" href="#contact">Start a Project <span>→</span></a>
+      </nav>
+      <button class="menu" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-head">
+        <div class="eyebrow hero-reveal">we build</div>
+        <h1 class="hero-title display"><span class="hero-word">ecosystems</span><span class="accent">.</span></h1>
+      </div>
+
+      <div class="hero-stage" data-speed="0.12">
+        <img class="hero-bg" src="https://www.wictronix.in/images/premium_tech_bg.png" alt="Premium technology background">
+        <div class="hero-overlay"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+
+        <div class="hero-cards">
+          <article class="hero-card hero-card-left">
+            <span class="card-tag">Proof of work</span>
+            <h2>14,000+ Organic Clicks.<br>60 Days. 80% AI Search Share.</h2>
+            <p>We don't show credentials. We show outcomes. Every project leads with a dominant metric.</p>
+            <a class="pill" href="#work">Explore Our Work →</a>
+          </article>
+
+          <article class="hero-card hero-card-center">
+            <span class="card-tag">For enterprises &amp; MNCs</span>
+            <h2>Your Embedded Business<br>Development Unit.</h2>
+            <p>A cross-functional team — tech, marketing and strategy — operating inside your growth objectives.</p>
+            <a class="pill magnetic" href="#contact">Request a Team Audit →</a>
+          </article>
+
+          <article class="hero-card hero-card-right">
+            <span class="card-tag">For founders, teams &amp; enterprises</span>
+            <h2>The Execution Layer Between<br>Your Ideas and Growth.</h2>
+            <p>The gap isn't capability. It's the ability to integrate, direct and execute across domains.</p>
+            <a class="pill" href="#contact">Start a Project →</a>
+          </article>
+        </div>
+        <div class="scroll-cue">Scroll to explore</div>
+      </div>
+    </section>
+
+    <section class="philosophy section-pad" id="philosophy">
+      <div class="philosophy-sticky">
+        <div class="container">
+          <div class="philosophy-grid">
+            <div class="philosophy-copy">
+              <div class="eyebrow reveal-up">Our Philosophy</div>
+              <h2 class="section-heading reveal-heading">
+                <span class="line"><span>Execution is</span></span>
+                <span class="line"><span class="accent">Everything.</span></span>
+              </h2>
+            </div>
+            <div class="orbit">
+              <div class="orbit-ring"></div>
+              <div class="orbit-core">EXECUTE</div>
+              <div class="orbit-node"><b>01</b><strong>Integrate</strong><small>The gap isn't tools — it's integration.</small></div>
+              <div class="orbit-node"><b>02</b><strong>Direct</strong><small>Strategic direction for outcomes.</small></div>
+              <div class="orbit-node"><b>03</b><strong>Execute</strong><small>We do the work AI can't finish.</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="quote-band reveal-scale">
+          <p>“We don't just plan. We build the <span class="accent">engines of growth</span> and run them for you.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="work section-pad" id="work">
+      <div class="container">
+        <div class="work-intro">
+          <div>
+            <div class="eyebrow reveal-up">Featured Projects</div>
+            <h2 class="section-heading reveal-heading"><span class="line"><span>Built. Shipped.</span></span><span class="line"><span class="accent">Scaled.</span></span></h2>
+          </div>
+          <p>Real outcomes across technology, marketing and business growth. Scroll horizontally to explore the work.</p>
+        </div>
+      </div>
+
+      <div class="work-track-wrap">
+        <div class="work-track">
+          <article class="work-card">
+            <div class="work-image">
+              <span class="work-number">01 / 04</span>
+              <img src="https://www.wictronix.in/images/work/hvac.png" alt="HVAC distributor project">
+            </div>
+            <div class="work-meta"><div><h3>India's Largest HVAC Distributor</h3><p>SEO · Social</p></div><strong class="accent">14K+</strong></div>
+          </article>
+          <article class="work-card">
+            <div class="work-image">
+              <span class="work-number">02 / 04</span>
+              <img src="https://www.wictronix.in/images/work/fintech.png" alt="Trading platform project">
+            </div>
+            <div class="work-meta"><div><h3>B2C/B2B Trading Platform</h3><p>SEO · Social · Influencer Marketing</p></div><strong class="accent">100+</strong></div>
+          </article>
+          <article class="work-card">
+            <div class="work-image">
+              <span class="work-number">03 / 04</span>
+              <img src="https://www.wictronix.in/images/work/hvac.png" alt="Regional bus travel project">
+            </div>
+            <div class="work-meta"><div><h3>Regional Bus Travel Company</h3><p>Website · Local SEO · Social Media</p></div><strong class="accent">250+</strong></div>
+          </article>
+          <article class="work-card">
+            <div class="work-image">
+              <span class="work-number">04 / 04</span>
+              <img src="https://www.wictronix.in/images/work/fintech.png" alt="NDIS services project">
+            </div>
+            <div class="work-meta"><div><h3>NDIS Disability Services Provider</h3><p>Website · SEO · Social Media</p></div><strong class="accent">Top 3</strong></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section-pad" id="services">
+      <div class="container services-sticky">
+        <div class="services-grid">
+          <div class="services-copy">
+            <div class="eyebrow reveal-up">Services</div>
+            <h2 class="section-heading reveal-heading"><span class="line"><span>What We</span></span><span class="line"><span class="accent">Do.</span></span></h2>
+            <p>Three precision-engineered engines working in parallel to ensure your product survives the gap between impact and growth.</p>
+            <div class="services-rule"><span></span><b>L_03</b></div>
+          </div>
+
+          <div class="services-cards-wrap">
+            <div class="service-list">
+              <div class="service-item is-current" data-service="0"><small>// 01</small><h3>Technology</h3><p>Building scalable digital infrastructure and AI-driven products with extreme precision.<br><br>• Full-Stack Web Applications<br>• Mobile Applications (iOS + Android)<br>• ERP/CRM Systems<br>• AI Agents<br>• Custom SaaS Products<br>• UI/UX Design</p></div>
+              <div class="service-item is-muted" data-service="1"><small>// 02</small><h3>Marketing</h3><p>Data-led growth strategies that convert intent into revenue through precision targeting.<br><br>• SEO & Search Optimization<br>• Social Media Marketing<br>• Brand Identity<br>• Performance Marketing</p></div>
+              <div class="service-item is-muted" data-service="2"><small>// 03</small><h3>Consulting</h3><p>Strategic direction for market expansion and business scale backed by real-world data.<br><br>• Tech & Business Consulting<br>• Fundraising Strategy<br>• GTM Strategy<br>• Business Development</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="services-progress"><span></span></div>
+        <div class="services-stage-transition"></div>
+      </div>
+    </section>
+
+    <section class="process section-pad" id="process">
+      <div class="container">
+        <div class="process-header">
+          <div>
+            <div class="eyebrow reveal-up">Execution Lifecycle</div>
+            <h2 class="section-heading reveal-heading"><span class="line"><span>How We</span> <span class="accent">Build.</span></span></h2>
+          </div>
+          <p>From system diagnosis to scale, every engagement follows a measurable execution loop designed to remove friction.</p>
+        </div>
+
+        <div class="process-stack">
+          <article class="process-card">
+            <div class="phase">01<br>PHASE</div>
+            <div><h3>System<br>Audit</h3></div>
+            <div><p><strong>Infrastructure Diagnosis</strong><br><br>We deep-dive into your architecture, marketing funnels and growth bottlenecks.</p><div class="focus-list"><span>100+ Data Points</span><span>System Mapping</span><span>Leak Detection</span></div></div>
+          </article>
+          <article class="process-card">
+            <div class="phase">02<br>PHASE</div>
+            <div><h3>Tactical<br>Squad</h3></div>
+            <div><p><strong>Talent Deployment</strong><br><br>We assemble a custom cross-functional squad specifically for your vertical.</p><div class="focus-list"><span>Custom Vetting</span><span>Zero Friction</span><span>Direct Slack Access</span></div></div>
+          </article>
+          <article class="process-card">
+            <div class="phase">03<br>PHASE</div>
+            <div><h3>High-Velocity<br>Sprint</h3></div>
+            <div><p><strong>Rapid Execution</strong><br><br>Bi-weekly high-output sprints with daily async updates. We ship every 14 days.</p><div class="focus-list"><span>14-Day Cycles</span><span>Daily Updates</span><span>CI/CD Precision</span></div></div>
+          </article>
+          <article class="process-card">
+            <div class="phase">04<br>PHASE</div>
+            <div><h3>System<br>Scale</h3></div>
+            <div><p><strong>Exponential Growth</strong><br><br>We optimize winning variables and scale infrastructure for the next 10x of load and revenue.</p><div class="focus-list"><span>Auto-Scaling</span><span>ROI Indexing</span><span>Full Documentation</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof section-pad">
+      <div class="container">
+        <div class="eyebrow reveal-up">Global Impact</div>
+        <h2 class="section-heading reveal-heading"><span class="line"><span>Proof of</span> <span class="accent">Scale.</span></span></h2>
+
+        <div class="metrics">
+          <div class="metric"><small>M_01</small><strong data-count="50">0</strong><p>Engagements Delivered</p></div>
+          <div class="metric"><small>M_02</small><strong data-count="4">0</strong><p>Markets Served</p></div>
+          <div class="metric"><small>M_03</small><strong data-count="10">0</strong><p>Cr+ Capital Facilitated</p></div>
+          <div class="metric"><small>M_04</small><strong data-count="12">0</strong><p>Industry Verticals</p></div>
+        </div>
+
+        <div class="testimonials">
+          <article class="testimonial reveal-up"><p>“We had a critical gap in our execution timeline. WictroniX integrated with our team and moved our product from development to a stable production release in under a month.”</p><b>Prateek Kataria</b><span>Managing Director</span></article>
+          <article class="testimonial reveal-up"><p>“Precision in execution is what sets WictroniX apart. They transformed our legacy financial systems into a high-performance digital engine.”</p><b>Sanjay Kumar</b><span>Director</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container cta-grid">
+        <article class="cta-card dark reveal-scale">
+          <div>
+            <div class="eyebrow">Ready to move?</div>
+            <h2>Ready to stop planning?</h2>
+            <p>Whether it's a website or a full GTM strategy, we move in weeks, not quarters.</p>
+          </div>
+          <a class="pill magnetic" href="mailto:hello@example.com">Start a Project →</a>
+        </article>
+        <article class="cta-card blue reveal-scale">
+          <div>
+            <div class="eyebrow" style="color:white">Embedded teams</div>
+            <h2>Need an embedded team?</h2>
+            <p>Deploy a cross-functional squad that operates inside your business objectives.</p>
+          </div>
+          <a class="pill magnetic" href="mailto:hello@example.com">Request Audit →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">WictroniX<span>.</span></div>
+          <p>Execution-first technology, marketing and consulting for ambitious organizations.</p>
+        </div>
+        <div><h4>Navigation</h4><div class="footer-links"><a href="#philosophy">About</a><a href="#services">Services</a><a href="#work">Our Work</a><a href="#process">Process</a></div></div>
+        <div><h4>Contact</h4><div class="footer-links"><a href="mailto:hello@example.com">hello@example.com</a><a href="#">India</a></div></div>
+        <div><h4>Social</h4><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">X / Twitter</a></div></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 WictroniX. All rights reserved.</span><span>Built for velocity.</span></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.8/dist/lenis.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Smooth scrolling
+    let lenis;
+    if (!reduceMotion && window.Lenis) {
+      lenis = new Lenis({ duration: 1.1, smoothWheel: true, wheelMultiplier: 0.9 });
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(time => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    // Loader
+    const loader = document.querySelector(".loader");
+    const loaderBar = document.querySelector(".loader-bar i");
+    const nav = document.querySelector(".nav");
+
+    if (reduceMotion) {
+      loader.remove();
+      document.body.classList.remove("is-loading");
+      nav.classList.add("visible");
+    } else {
+      gsap.to(loaderBar, { width: "100%", duration: 1.15, ease: "power2.inOut" });
+      gsap.to(loader, {
+        clipPath: "inset(0 0 100% 0)",
+        duration: 1.05,
+        delay: 1.15,
+        ease: "power4.inOut",
+        onComplete: () => {
+          loader.remove();
+          document.body.classList.remove("is-loading");
+          heroIntro();
+        }
+      });
+    }
+
+    function heroIntro(){
+      nav.classList.add("visible");
+      gsap.from(".hero-reveal", { y: 25, opacity: 0, duration: .7, ease: "power3.out" });
+      gsap.from(".hero-title", { y: 80, opacity: 0, scale: .92, duration: 1.1, ease: "power4.out", delay: .12 });
+      gsap.from(".hero-stage", { y: 120, scale: .92, opacity: 0, duration: 1.25, ease: "power4.out", delay: .25 });
+      gsap.from(".hero-card-center", { y: 50, opacity: 0, rotateX: 15, duration: 1.1, ease: "power4.out", delay: .65 });
+      gsap.from([".hero-card-left",".hero-card-right"], { x: i => i === 0 ? -160 : 160, opacity: 0, duration: 1.1, ease: "power4.out", delay: .8, stagger: .08 });
+    }
+    if (reduceMotion) {
+      document.querySelectorAll(".reveal-up,.reveal-heading,.reveal-scale").forEach(el => el.style.opacity = 1);
+    }
+
+    // Nav reveal / hide
+    ScrollTrigger.create({
+      start: "top -80",
+      onEnter: () => nav.classList.add("scrolled"),
+      onLeaveBack: () => nav.classList.remove("scrolled")
+    });
+
+    // Cursor
+    if (!reduceMotion && window.matchMedia("(pointer:fine)").matches) {
+      const cursor = document.querySelector(".cursor");
+      const dot = document.querySelector(".cursor-dot");
+      let mx=0,my=0,cx=0,cy=0;
+      window.addEventListener("pointermove", e => { mx=e.clientX; my=e.clientY; gsap.to(dot,{x:mx,y:my,duration:.08}); });
+      gsap.ticker.add(() => { cx += (mx-cx)*.14; cy += (my-cy)*.14; gsap.set(cursor,{x:cx,y:cy}); });
+      document.querySelectorAll("a,button,.service-item,.work-card").forEach(el => {
+        el.addEventListener("mouseenter",()=>document.body.classList.add("cursor-hover"));
+        el.addEventListener("mouseleave",()=>document.body.classList.remove("cursor-hover"));
+      });
+    }
+
+    // Magnetic buttons
+    if (!reduceMotion) {
+      document.querySelectorAll(".magnetic").forEach(btn => {
+        btn.addEventListener("mousemove", e => {
+          const r = btn.getBoundingClientRect();
+          gsap.to(btn,{x:(e.clientX-r.left-r.width/2)*.16,y:(e.clientY-r.top-r.height/2)*.16,duration:.35,ease:"power3.out"});
+        });
+        btn.addEventListener("mouseleave",()=>gsap.to(btn,{x:0,y:0,duration:.5,ease:"elastic.out(1,.5)"}));
+      });
+    }
+
+    // Hero cards carousel
+    if (!reduceMotion) {
+      const cards = gsap.utils.toArray(".hero-card");
+      let current = 1;
+      function placeCards(){
+        const states = [
+          {x:-300,scale:.82,rotationY:8,opacity:.48,z:1},
+          {x:0,scale:1,rotationY:0,opacity:1,z:3},
+          {x:300,scale:.82,rotationY:-8,opacity:.48,z:1}
+        ];
+        cards.forEach((card,i)=>{
+          const s=states[(i-current+3)%3];
+          gsap.to(card,{x:s.x,scale:s.scale,rotationY:s.rotationY,opacity:s.opacity,zIndex:s.z,duration:1,ease:"power4.inOut"});
+        });
+      }
+      placeCards();
+      setInterval(()=>{ current=(current+1)%3; placeCards(); },4200);
+    }
+
+    // Hero parallax
+    if (!reduceMotion) {
+      gsap.to(".hero-bg", {
+        yPercent: 12, scale: 1.12, ease: "none",
+        scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}
+      });
+      gsap.to(".hero-title", {
+        y: -110, opacity:.45, scale:.88, ease:"none",
+        scrollTrigger:{trigger:".hero",start:"top top",end:"80% top",scrub:true}
+      });
+    }
+
+    // Generic reveals
+    gsap.utils.toArray(".reveal-up").forEach(el => {
+      gsap.from(el,{y:45,opacity:0,duration:.9,ease:"power3.out",
+        scrollTrigger:{trigger:el,start:"top 86%",once:true}});
+    });
+    gsap.utils.toArray(".reveal-heading").forEach(el => {
+      const spans = el.querySelectorAll(".line > span");
+      gsap.from(spans,{yPercent:110,opacity:0,duration:1,ease:"power4.out",stagger:.08,
+        scrollTrigger:{trigger:el,start:"top 82%",once:true}});
+    });
+    gsap.utils.toArray(".reveal-scale").forEach(el => {
+      gsap.from(el,{scale:.9,opacity:0,duration:1,ease:"power4.out",
+        scrollTrigger:{trigger:el,start:"top 84%",once:true}});
+    });
+
+    // Philosophy: smooth reveal without pinning or jumping.
+    if (!reduceMotion) {
+      const philosophy = document.querySelector(".philosophy");
+      const nodes = gsap.utils.toArray(".orbit-node");
+      const ring = document.querySelector(".orbit-ring");
+
+      // Before the section is reached, keep only one bubble visible as a preview.
+      gsap.set(nodes[0], {x:70, y:-120, scale:0.92, opacity:0.42, rotate:0});
+      gsap.set(nodes[1], {x:-210, y:110, scale:0.82, opacity:0, rotate:-2});
+      gsap.set(nodes[2], {x:210, y:110, scale:0.82, opacity:0, rotate:2});
+      gsap.set(ring, {scale:.82, opacity:0});
+
+      const tl = gsap.timeline({
+        scrollTrigger:{
+          trigger:philosophy,
+          start:"top 72%",
+          end:"top 22%",
+          scrub:0.65,
+          invalidateOnRefresh:true
+        }
+      });
+
+      // Bubble 01 gently arrives first. No teleporting / back.out overshoot.
+      tl.to(nodes[0], {x:0,y:0,scale:1,opacity:1,duration:.55,ease:"power2.out"})
+        .to(ring,{scale:1,opacity:.35,duration:.25,ease:"power2.out"},"-=.22")
+        .to(nodes[1],{x:0,y:0,scale:1,opacity:1,duration:.45,ease:"power2.out"},"+=.06")
+        .to(nodes[2],{x:0,y:0,scale:1,opacity:1,duration:.45,ease:"power2.out"},"-=.25");
+
+      // Once the section is fully reached, the three bubbles simply remain together.
+      ScrollTrigger.create({
+        trigger:philosophy,
+        start:"top 22%",
+        onEnter:()=>{ gsap.to(nodes,{scale:1,duration:.5,stagger:.03,ease:"power2.out"}); },
+        onLeaveBack:()=>{
+          gsap.to(nodes[2],{opacity:0,duration:.2});
+          gsap.to(nodes[1],{opacity:0,duration:.2,delay:.05});
+          gsap.to(nodes[0],{opacity:.42,duration:.25,delay:.1});
+        }
+      });
+    } else {
+      gsap.set(".orbit-node",{opacity:1,scale:1,x:0,y:0});
+    }
+
+    // Featured work: editorial staggered reveal, matching the asymmetric reference layout.
+    if (!reduceMotion) {
+      gsap.utils.toArray(".work-card").forEach((card,i)=>{
+        gsap.fromTo(card,
+          {y: i % 2 === 0 ? 110 : 190, x: i % 2 === 0 ? -35 : 35, opacity:0, scale:.92, rotate:i % 2 === 0 ? -1.5 : 1.5},
+          {y:0,x:0,opacity:1,scale:1,rotate:0,duration:1,ease:"power4.out",
+            scrollTrigger:{trigger:card,start:"top 88%",end:"top 55%",scrub:1}}
+        );
+        const image=card.querySelector(".work-image img");
+        gsap.fromTo(image,{scale:1.18},{scale:1,ease:"none",scrollTrigger:{trigger:card,start:"top 100%",end:"bottom 15%",scrub:true}});
+      });
+    }
+
+    // Services: exact staged scroll choreography from the reference video.
+    // 0–15%  left copy enters
+    // 15–35% Technology enters from the right
+    // 35–52% Marketing enters from the right
+    // 52–68% Consulting enters from the right
+    // 68–78% hold the completed composition
+    // 78–85% atmosphere/glow builds
+    // 85–100% entire composition transitions upward into the next section
+    const serviceItems = gsap.utils.toArray(".service-item");
+    const servicesSection = document.querySelector(".services");
+    const serviceProgress = document.querySelector(".services-progress span");
+    const serviceData = [
+      {bg:"#f8fbff"},
+      {bg:"#f5fbff"},
+      {bg:"#faf8ff"}
+    ];
+
+    function setServiceState(active){
+      serviceItems.forEach((item,i)=>{
+        item.classList.toggle("is-current", i===active);
+        item.classList.toggle("is-muted", i!==active);
+      });
+      if (servicesSection && serviceData[active]) servicesSection.style.background = serviceData[active].bg;
+    }
+
+    serviceItems.forEach((item,i)=>{
+      item.addEventListener("mouseenter",()=>{
+        if (servicesSection) servicesSection.style.background = serviceData[i].bg;
+      });
+      item.addEventListener("mouseleave",()=>{
+        const active = serviceItems.findIndex(el=>el.classList.contains("is-current"));
+        if (servicesSection) servicesSection.style.background = serviceData[Math.max(0,active)].bg;
+      });
+    });
+
+    if (!reduceMotion && window.innerWidth > 900) {
+      const cards = serviceItems;
+      const copy = document.querySelector(".services-copy");
+      const stage = document.querySelector(".services-grid");
+      const transition = document.querySelector(".services-stage-transition");
+
+      // All cards begin outside the right edge. They occupy their final flex positions
+      // from the beginning so their entrances never cause layout jumps.
+      gsap.set(cards,{x:()=>window.innerWidth * .62, opacity:0, scale:.96});
+      gsap.set(copy,{opacity:0,y:28});
+      gsap.set(transition,{opacity:0});
+
+      const tl = gsap.timeline({
+        scrollTrigger:{
+          trigger:".services",
+          start:"top top",
+          end:"bottom bottom",
+          scrub:0.85,
+          invalidateOnRefresh:true,
+          onUpdate:self=>{
+            const p=self.progress;
+            if(serviceProgress) serviceProgress.style.transform=`scaleY(${Math.max(.06,p)})`;
+            if(p < .35) setServiceState(0);
+            else if(p < .52) setServiceState(1);
+            else setServiceState(2);
+          }
+        }
+      });
+
+      // 0–15%: left side appears first.
+      tl.to(copy,{opacity:1,y:0,duration:.15,ease:"power2.out"},0);
+
+      // 15–35%: Technology.
+      tl.to(cards[0],{x:0,opacity:1,scale:1,duration:.20,ease:"power2.out"},.15);
+
+      // 35–52%: Marketing. Technology remains untouched.
+      tl.to(cards[1],{x:0,opacity:1,scale:1,duration:.17,ease:"power2.out"},.35);
+
+      // 52–68%: Consulting.
+      tl.to(cards[2],{x:0,opacity:1,scale:1,duration:.16,ease:"power2.out"},.52);
+
+      // 68–78%: intentional hold.
+      tl.to({}, {duration:.10}, .68);
+
+      // 78–85%: background atmosphere becomes visible.
+      tl.to(transition,{opacity:1,duration:.07,ease:"none"},.78);
+
+      // 85–100%: move the complete composition upward, revealing the next section.
+      tl.to(stage,{yPercent:-24,duration:.15,ease:"none"},.85);
+    } else {
+      gsap.set(serviceItems,{x:0,opacity:1,scale:1});
+      gsap.set(document.querySelector(".services-copy"),{opacity:1,y:0});
+    }
+
+    // Process card stacking
+    if (!reduceMotion) {
+      gsap.utils.toArray(".process-card").forEach((card,i)=>{
+        gsap.fromTo(card,{y:70,scale:.93,opacity:.4},{y:0,scale:1,opacity:1,ease:"none",
+          scrollTrigger:{trigger:card,start:"top 88%",end:"top 58%",scrub:true}});
+      });
+    }
+
+    // Counters
+    document.querySelectorAll("[data-count]").forEach(el=>{
+      const target=Number(el.dataset.count);
+      ScrollTrigger.create({
+        trigger:el,start:"top 85%",once:true,
+        onEnter:()=>{
+          const obj={value:0};
+          gsap.to(obj,{value:target,duration:1.8,ease:"power2.out",onUpdate:()=>el.textContent=Math.round(obj.value)+(target===50||target===12?"+":"")});
+        }
+      });
+    });
+
+    // Mobile menu
+    const menu=document.querySelector(".menu");
+    menu?.addEventListener("click",()=>{
+      const links=document.querySelector(".nav-links");
+      const open=links.dataset.open==="true";
+      links.dataset.open=String(!open);
+      links.style.cssText=!open
+        ?"display:flex;position:absolute;left:16px;right:16px;top:70px;flex-direction:column;align-items:stretch;padding:20px;background:white;border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.12);gap:18px)"
+        :"";
+    });
+
+    // Refresh after fonts/images settle
+    window.addEventListener("load",()=>setTimeout(()=>ScrollTrigger.refresh(),300));
+  </script>
+</body>
+</html>
