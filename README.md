@@ -1,87 +1,93 @@
-# MField Labs — Website (Wictronix motion/structure, Zenviora content)
+# mfieldlabs
 
-Same Next.js 14 project as before, restructured to follow wictronix.in's
-section flow and interaction language, with MField Labs' brand system
-(logo, colors, Manrope/Inter) unchanged, and the nav + content sourced from
-the Zenviora brand document.
 
-## Setup
 
-```bash
-npm install
-npm run dev
+## Getting started
+
+To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+
+Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+
+## Add your files
+
+* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
+* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+
+```
+cd existing_repo
+git remote add origin https://gitlab.com/bishar/mfieldlabs.git
+git branch -M main
+git push -uf origin main
 ```
 
-Not built/run locally yet (no network access on my end) — run `npm run
-build` first and check the items in "Known gaps."
+## Integrate with your tools
 
-## Important honesty note on the Wictronix reference
+* [Set up project integrations](https://gitlab.com/bishar/mfieldlabs/-/settings/integrations)
 
-I read wictronix.in's rendered HTML/content structure, but couldn't execute
-its JS or inspect its actual CSS/animation timing from this environment — so
-this isn't a pixel-for-pixel scrape. What's implemented here is a genuine
-equivalent of its interaction *language*: word-by-word hero reveal, a
-numbered "01/02" systems vocabulary throughout, a sticky-heading list with a
-pull-quote, tabbed service "engines," a numbered phase timeline with tag
-chips, count-up stat headlines, and paired dual-CTA footer cards. If a
-specific animation looks meaningfully different once you compare the two
-side by side, point it out and I'll tune the easing/timing/stagger to match
-more closely.
+## Collaborate with your team
 
-Two things from Wictronix I deliberately did **not** copy as-is, because
-doing so would have meant fabricating content:
-- **Client logos** — Wictronix shows real client logos; MField/Zenviora's
-  source content has no real client list, so `FocusMarquee.tsx` shows a
-  marquee of real capability/impact-area terms instead of invented company
-  names.
-- **Named testimonials** — Wictronix shows real quotes attributed to named
-  people; there's no real testimonial data for MField Labs, so
-  `OutcomeQuotes.tsx` uses MField's own actual "Business Outcomes" copy as
-  pull-quotes, labeled by capability area rather than attributed to
-  invented people. If you have real client testimonials, send them and I'll
-  swap this section to match Wictronix's pattern exactly (named person,
-  role, photo).
+* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
+* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
+* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
+* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
+* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
 
-## Section map (Wictronix pattern → MField/Zenviora content)
+## Test and Deploy
 
-| Section | Wictronix pattern | MField content used |
-|---|---|---|
-| `Nav.tsx` | transparent-over-hero → white-on-scroll, logo swaps light/dark | Zenviora's real nav: About / Mission & Vision / Services / Why Choose Us / Contact Us |
-| `Hero.tsx` | full-bleed bg, word-by-word headline reveal, 2 underline links | Zenviora hero copy: "Trust your data. Envision what's next. Amplify your impact." |
-| `StatsHeadline.tsx` | "Proof of work" — big number-in-sentence, count-up | MField's real stats: 50+ projects, 30+ clients, 99% satisfaction |
-| `About.tsx` | plain intro section | Zenviora's "What We Actually Do" |
-| `Philosophy.tsx` | sticky-heading numbered list + pull-quote | Zenviora's 6 Mission bullets + "Technology Should Create Momentum" |
-| `EnterpriseBanner.tsx` | single-statement dark CTA banner | Zenviora's Vision statement |
-| `CapabilityEngines.tsx` | tabbed "engines" (Technology/Marketing/Consulting) | The 4 real Capabilities (Data & Intelligence, Automation & Operations, Digital Experiences, AI & Microsoft Innovation), each with real Impact Areas |
-| `FeaturedPrograms.tsx` | featured-project cards, tag pills, hover glow | The 4 real Engagement Models, tagged with real Delivery Models |
-| `ExecutionLifecycle.tsx` | 4-phase numbered timeline, focus tags | The 5 real Differentiators, restructured as phases with extracted focus tags |
-| `FocusMarquee.tsx` | client logo strip | Real capability/impact-area terms (see honesty note above) |
-| `OutcomeQuotes.tsx` | named testimonials | Real Business Outcomes copy, unattributed (see honesty note above) |
-| `CTA.tsx` | dual-card footer banner | Two real MField CTAs: start a project / embedded partnership |
+Use the built-in continuous integration in GitLab.
 
-## Removed from the previous version
+* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
+* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
+* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
+* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
+* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
 
-`components/ui/card.tsx`, `badge.tsx`, `accordion.tsx`,
-`components/PhoneMock.tsx`, and the `gsap`, `@react-three/drei`,
-`@radix-ui/react-accordion` dependencies were all removed — none of them
-are used by the rebuilt sections (Wictronix's actual patterns turned out to
-need Framer Motion + plain CSS, not GSAP ScrollTrigger or Radix Accordion).
-Keeping unused code/deps in a production repo is worse than not having
-written it — delete-on-sight if a future edit makes something else here
-unused too.
+***
 
-## Known gaps / next steps
+# Editing this README
 
-- Not built or visually verified locally — run `npm run build` first.
-- `HeroScene.tsx`'s skyline is randomized per page load
-  (`Math.random()`) — seed it or hardcode the array for a stable hero.
-- `CapabilityEngines.tsx`'s tab list has no keyboard arrow-key navigation
-  yet (just click/focus+enter via native `<button>`) — add roving
-  `tabindex` + arrow-key handling if you want full ARIA tablist behavior.
-- Reduced-motion: CSS-level animation is gated in `globals.css`, but the
-  Framer Motion `WordReveal` in `Hero.tsx` and the R3F mouse-parallax in
-  `HeroScene.tsx` aren't gated yet — wrap both in a `useReducedMotion()`
-  check from `framer-motion`.
-- `ExecutionLifecycle.tsx`'s focus tags are my own extraction/paraphrase of
-  each differentiator's body text into 3 short tags — reasonable, but worth
-  your review since they're not verbatim from the source document.
+When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+
+## Suggestions for a good README
+
+Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+
+## Name
+Choose a self-explaining name for your project.
+
+## Description
+Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+
+## Badges
+On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+
+## Visuals
+Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+
+## Installation
+Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+
+## Usage
+Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+
+## Support
+Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+
+## Roadmap
+If you have ideas for releases in the future, it is a good idea to list them in the README.
+
+## Contributing
+State if you are open to contributions and what your requirements are for accepting them.
+
+For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+
+You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+
+## Authors and acknowledgment
+Show your appreciation to those who have contributed to the project.
+
+## License
+For open source projects, say how it is licensed.
+
+## Project status
+If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
