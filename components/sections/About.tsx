@@ -29,7 +29,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="flex flex-col gap-5 rounded-2xl border border-deepblue/15 bg-white p-8 md:p-10"
           >
-            <p className="text-lg text-ink/70 leading-relaxed">{about.problem}</p>
+            <p className="whitespace-pre-line text-lg text-ink/70 leading-relaxed">{about.problem}</p>
             <p className="text-lg text-ink/70 leading-relaxed">{about.solution}</p>
           </motion.div>
         </div>

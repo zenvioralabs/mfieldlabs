@@ -73,7 +73,7 @@ export default function ContactSection() {
               New project inquiry
             </p>
             <p className="text-white/60 leading-relaxed mb-8">
-              Email us directly and a consultant will reply within 1–2 business days.
+              Email directly. When reaching out, please include industry, team size, the problem to solve, and a rough timeline.
             </p>
 
             <Magnetic>

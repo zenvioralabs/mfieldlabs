@@ -59,8 +59,8 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="eyebrow mb-6 flex flex-wrap items-center gap-3"
         >
-          For founders, teams &amp; enterprises
-          <span className="hidden text-ink/20 sm:inline">/</span>
+          
+          <span className="hidden text-ink/20 sm:inline"></span>
           <TaglineSwap />
         </motion.p>
 
@@ -107,13 +107,13 @@ export default function Hero() {
         >
           <Button asChild size="lg">
             <a href="#contact" className="group">
-              Start Your Transformation
+              Talk to Us
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
           <Button asChild variant="outline" size="lg">
             <a href="#services" className="group">
-              Explore Our Capabilities
+              See How We Help
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>

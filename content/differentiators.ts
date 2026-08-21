@@ -16,26 +16,26 @@ export const differentiatorsSection = {
 export const differentiators: Differentiator[] = [
   {
     n: "01",
-    title: "Delivering Capability",
-    body: "We move beyond isolated projects to build sustainable, long-term business capabilities your teams own and grow.",
+    title: "Experienced Leadership",
+    body: "The idea behind MField Labs is simple:",
     narrative:
-      "Your teams inherit systems they can run, extend, and improve. The outcome: momentum that compounds long after the engagement ends.",
+      "Growing businesses deserve the caliber of consulting that large enterprises get, without the overhead or the price tag that usually comes with it. That perspective comes from years spent inside spreadsheets that didn't add up, processes held together by workarounds, and hours lost to manual work that technology should have handled long ago. That experience shapes how we work: practical recommendations over hype, technology that actually gets used, and time freed up for the creative and meaningful work that only people can do best.",
     image: "/logo/professional-tech-team-collaborating-on-software-d-2026-07-08-22-09-10-utc.JPG",
   },
   {
     n: "02",
-    title: "Creating Visibility",
-    body: "We do more than build reports — we create true operational clarity across the enterprise.",
+    title: "Outcome-Based Solutions",
+    body: "Instead of focusing only on systems and deployment",
     narrative:
-      "We turn fragmented information into a single, trusted view of performance. The outcome: leaders who see clearly, decide faster, and act with confidence.",
+      "We focus on outcomes, adoption, and measurable business value. We guide organizations to invest in lasting capabilities rather than temporary technology fixes, so their digital tools keep driving value well after launch.",
     image: "/logo/business-analytics-presentation-with-graph-analysi-2026-01-08-23-52-45-utc.JPG",
   },
   {
     n: "03",
-    title: "Engineering Flow",
-    body: "We go beyond task automation to architect seamless business momentum.",
+    title: "Efficient Delivery",
+    body: "MField Labs operates on a hybrid delivery model.",
     narrative:
-      "We connect data, people, and processes into workflows that keep operations moving without friction. The outcome: faster execution at lower operational cost.",
+      "Clients work directly with US-based (East Coast) leadership on strategy, scope, and every decision along the way, while an experienced team outside the US handles the day-to-day build. This keeps costs lower without cutting corners on quality.",
     image: "/logo/business-engineer-hand-works-industry-diagram-on-v-2026-04-14-00-23-25-utc.jpg",
   },
   {
