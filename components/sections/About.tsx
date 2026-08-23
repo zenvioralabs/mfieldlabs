@@ -33,7 +33,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="flex max-w-3xl flex-col items-start gap-6 border-y border-ink/10 py-7 md:py-8"
+            className="flex max-w-4xl flex-col items-start gap-6 border-y border-ink/10 py-7 md:py-8"
           >
             <motion.p
               initial={{ opacity: 0, y: 14 }}

@@ -34,7 +34,7 @@ export default function Nav() {
               : "border-transparent bg-white/70 shadow-none"
           )}
         >
-          <a href="#top" className="relative h-12 w-72 shrink-0">
+          <a href="#top" className="relative h-10 w-32 shrink-0 md:h-12 md:w-45">
             <Image
               src="/logo/mfield-logo-dark-text.png"
               alt="Mfield"
@@ -50,7 +50,7 @@ export default function Nav() {
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <Magnetic>
               <Button
                 size="sm"
