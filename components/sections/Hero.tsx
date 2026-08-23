@@ -74,7 +74,7 @@ export default function Hero() {
           <br />
           <span className="relative text-deepblue">
             <WordReveal text={hero.headlineLines[2]} mode="mount" active={ready} delay={0.7} />
-            <span className="relative ml-2 inline-flex h-3 w-3 align-middle md:h-4 md:w-4">
+            <span className="relative ml-2 inline-flex h-4 w-4 align-middle md:h-5 md:w-5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-deepblue/60" />
               <span className="relative inline-flex h-full w-full rounded-full bg-deepblue" />
             </span>
@@ -105,13 +105,21 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 1.35 }}
           className="mt-10 flex flex-wrap gap-4"
         >
-          <Button asChild size="lg">
+          <Button
+            asChild
+            size="lg"
+            className="border border-deepblue bg-white text-deepblue hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white"
+          >
             <a href="#contact" className="group">
               Talk to Us
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
-          <Button asChild variant="outline" size="lg">
+          <Button
+            asChild
+            size="lg"
+            className="border border-deepblue bg-white text-deepblue hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white"
+          >
             <a href="#services" className="group">
               See How We Help
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

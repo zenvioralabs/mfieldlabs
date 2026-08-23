@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
 import SmoothScrollProvider from "@/components/motion/SmoothScrollProvider";
 import Loader from "@/components/motion/Loader";
-import CustomCursor from "@/components/motion/CustomCursor";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -28,7 +27,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <body className="font-body antialiased">
         <Loader />
-        <CustomCursor />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>

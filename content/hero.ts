@@ -5,13 +5,11 @@ export interface HeroContent {
   supportingStatement: string;
 }
 
-
-
 export const hero: HeroContent = {
   taglineOptions: ["Where Ideas Gain Momentum"],
   headlineLines: ["A Partner for", "Technology and", "Business Intelligence"],
   subheading:
     "MField Labs helps growing businesses use technology and data better, enabling more efficient operations and confident, informed decisions.",
   supportingStatement:
-    "",
+   "",
 };

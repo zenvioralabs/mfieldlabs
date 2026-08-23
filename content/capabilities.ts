@@ -115,4 +115,3 @@ export const capabilities: Capability[] = [
     image: "/logo/typing-on-laptop-with-artificial-intelligence-conc-2026-03-18-11-53-22-utc.jpg",
   },
 ];
-
