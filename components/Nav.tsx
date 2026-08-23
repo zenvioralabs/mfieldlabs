@@ -39,12 +39,12 @@ export default function Nav() {
       initial={{ y: -120, opacity: 0 }}
       animate={ready ? { y: 0, opacity: 1 } : { y: -120, opacity: 0 }}
       transition={reduceMotion ? { duration: 0 } : { duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 z-50 w-full px-4 pt-4 md:px-8"
+      className="fixed top-0 z-50 w-full px-2 pt-4 md:px-8"
     >
-      <div className="container px-2 md:px-6">
+      <div className="container mx-auto w-[calc(100%-1rem)] max-w-full px-0 md:w-full md:px-6">
         <div
           className={cn(
-            "flex items-center justify-between rounded-full border px-4 py-2.5 backdrop-blur transition-all duration-500 md:px-6",
+            "flex min-w-0 items-center justify-between rounded-full border px-2 py-2.5 backdrop-blur transition-all duration-500 md:px-6",
             scrolled
               ? "border-ink/8 bg-white/95 shadow-[0_4px_24px_rgba(17,24,39,0.08)]"
               : "border-transparent bg-white/70 shadow-none"
@@ -53,7 +53,7 @@ export default function Nav() {
           <a
             href="#top"
             onClick={(event) => handleAnchorClick(event, "#top")}
-            className="relative h-10 w-32 shrink-0 md:h-12 md:w-45"
+            className="relative h-7 w-20 shrink-0 md:h-12 md:w-45"
           >
             <Image
               src="/logo/mfield-logo-dark-text.png"
@@ -76,18 +76,20 @@ export default function Nav() {
               </a>
             ))}
           </nav>
-          <div className="flex shrink-0 items-center gap-2">
-            <Magnetic>
-              <Button
-                size="sm"
-                asChild
-                className="border border-deepblue bg-white text-deepblue hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white"
-              >
-                <a href="#contact" onClick={(event) => handleAnchorClick(event, "#contact")}>
-                  Contact Us
-                </a>
-              </Button>
-            </Magnetic>
+          <div className="flex shrink-0 items-center gap-1 md:gap-2">
+            <div className="hidden sm:block">
+              <Magnetic>
+                <Button
+                  size="sm"
+                  asChild
+                  className="border border-deepblue bg-white text-deepblue hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white"
+                >
+                  <a href="#contact" onClick={(event) => handleAnchorClick(event, "#contact")}>
+                    Contact Us
+                  </a>
+                </Button>
+              </Magnetic>
+            </div>
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
