@@ -52,12 +52,12 @@ export default function Differentiators() {
           {differentiatorsSection.description}
         </p>
 
-        <div ref={listRef} className="divide-y divide-ink/10 border-t border-ink/10">
+        <div ref={listRef} className="divide-y divide-ink/10 border-t border-ink/10 bg-white">
           {differentiators.map((d) => (
             <a
               key={d.n}
               href="#contact"
-              className="differentiator-row group flex flex-col gap-4 py-5 transition-colors hover:bg-lightgray/60 sm:flex-row sm:items-center sm:gap-6 xl:gap-4 xl:py-3"
+              className="differentiator-row group flex flex-col gap-4 bg-white py-5 transition-colors hover:bg-lightgray/60 sm:flex-row sm:items-center sm:gap-6 xl:gap-4 xl:py-3"
             >
               <span className="font-mono text-xl text-deepblue/70 md:text-2xl">{d.n}</span>
               <div className="min-w-0 flex-1">

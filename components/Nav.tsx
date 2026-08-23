@@ -25,7 +25,7 @@ export default function Nav() {
       transition={reduceMotion ? { duration: 0 } : { duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 z-50 w-full px-4 pt-4 md:px-8"
     >
-      <div className="container">
+      <div className="container px-2 md:px-6">
         <div
           className={cn(
             "flex items-center justify-between rounded-full border px-4 py-2.5 backdrop-blur transition-all duration-500 md:px-6",
@@ -37,6 +37,7 @@ export default function Nav() {
           <a href="#top" className="relative h-10 w-32 shrink-0 md:h-12 md:w-45">
             <Image
               src="/logo/mfield-logo-dark-text.png"
+
               alt="Mfield"
               fill
               className="object-contain object-left"

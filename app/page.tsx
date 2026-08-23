@@ -1,7 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
-import MissionVision from "@/components/sections/MissionVision";
 import CorePhilosophy from "@/components/sections/CorePhilosophy";
 import EngagementModels from "@/components/sections/EngagementModels";
 import Capabilities from "@/components/sections/Capabilities";
@@ -18,7 +17,6 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <MissionVision />
         <CorePhilosophy />
         <Capabilities />
         <EngagementModels />
