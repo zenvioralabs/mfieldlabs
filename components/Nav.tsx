@@ -18,6 +18,22 @@ export default function Nav() {
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 80));
 
+  function handleAnchorClick(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    if (!href.startsWith("#")) return;
+
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+
+    event.preventDefault();
+    setMenuOpen(false);
+
+    const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 0;
+    const targetTop = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - 16);
+
+    window.history.pushState({}, "", href);
+    window.scrollTo({ top: targetTop, behavior: "auto" });
+  }
+
   return (
     <motion.header
       initial={{ y: -120, opacity: 0 }}
@@ -34,7 +50,11 @@ export default function Nav() {
               : "border-transparent bg-white/70 shadow-none"
           )}
         >
-          <a href="#top" className="relative h-10 w-32 shrink-0 md:h-12 md:w-45">
+          <a
+            href="#top"
+            onClick={(event) => handleAnchorClick(event, "#top")}
+            className="relative h-10 w-32 shrink-0 md:h-12 md:w-45"
+          >
             <Image
               src="/logo/mfield-logo-dark-text.png"
 
@@ -46,7 +66,12 @@ export default function Nav() {
           </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-ink/70 md:flex">
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="transition-colors hover:text-deepblue">
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(event) => handleAnchorClick(event, l.href)}
+                className="transition-colors hover:text-deepblue"
+              >
                 {l.label}
               </a>
             ))}
@@ -58,7 +83,9 @@ export default function Nav() {
                 asChild
                 className="border border-deepblue bg-white text-deepblue hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white"
               >
-                <a href="#contact">Contact Us</a>
+                <a href="#contact" onClick={(event) => handleAnchorClick(event, "#contact")}>
+                  Contact Us
+                </a>
               </Button>
             </Magnetic>
             <button
@@ -86,7 +113,7 @@ export default function Nav() {
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(event) => handleAnchorClick(event, l.href)}
                   className="rounded-xl px-4 py-3 text-sm font-medium text-ink/80 transition-colors hover:bg-lightgray hover:text-deepblue"
                 >
                   {l.label}
@@ -94,7 +121,7 @@ export default function Nav() {
               ))}
               <a
                 href="#contact"
-                onClick={() => setMenuOpen(false)}
+                onClick={(event) => handleAnchorClick(event, "#contact")}
                 className="rounded-xl px-4 py-3 text-sm font-semibold text-deepblue transition-colors hover:bg-lightgray"
               >
                 Contact Us

@@ -11,6 +11,12 @@ body {
   color: #111827;
 }
 
+@media (min-width: 768px) {
+  html {
+    font-size: 90%;
+  }
+}
+
 body.is-loading {
   overflow: hidden;
 }

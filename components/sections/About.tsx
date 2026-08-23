@@ -64,7 +64,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-[0_18px_50px_rgba(17,24,39,0.10)] lg:mt-2"
+            className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-[0_18px_50px_rgba(17,24,39,0.10)] lg:mt-2 lg:aspect-[4/3]"
           >
             <Image
               src="/logo/professional-tech-team-collaborating-on-software-d-2026-07-08-22-09-10-utc.JPG"
