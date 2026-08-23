@@ -2,8 +2,9 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Copy, Mail } from "lucide-react";
+import { ArrowRight, Check, Copy } from "lucide-react";
 import { contact } from "@/content/contact";
+import { positioning } from "@/content/positioning";
 import Magnetic from "@/components/motion/Magnetic";
 import WordReveal from "@/components/motion/WordReveal";
 
@@ -37,29 +38,14 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col justify-center gap-4 rounded-2xl border border-ink/8 bg-white p-6 md:p-8 xl:p-6"
+            className="flex flex-col justify-center py-2 lg:pr-8"
           >
-            <a
-              href={`mailto:${contact.email}`}
-              className="group flex items-center gap-4 rounded-xl border border-ink/8 p-4 transition-colors hover:border-deepblue/30"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-deepblue text-white">
-                <Mail className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <div className="flex flex-col">
-                <span className="text-sm font-medium text-ink">General inquiries</span>
-                <span className="text-sm text-ink/60">{contact.email}</span>
-              </div>
-            </a>
-
-              <div className="rounded-xl bg-lightgray/70 p-4">
-              <p className="mb-2 text-sm font-medium text-ink">Help us route it faster — mention:</p>
-              <ul className="list-disc space-y-1 pl-5 text-sm text-ink/60">
-                <li>Your industry and team size</li>
-                <li>What you&apos;re hoping to solve</li>
-                <li>Rough timeline</li>
-              </ul>
-            </div>
+            <h3 className="mb-4 font-display text-3xl font-bold leading-tight text-ink md:text-4xl">
+              {positioning.eyebrow}
+            </h3>
+            <p className="max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg">
+              {positioning.statement}
+            </p>
           </motion.div>
 
           <motion.div

@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { hero } from "@/content/hero";
+import { philosophy } from "@/content/philosophy";
 import { useAppReady } from "@/lib/appReady";
 import WordReveal from "@/components/motion/WordReveal";
 import { Button } from "@/components/ui/button";
@@ -52,7 +53,8 @@ export default function Hero() {
       ref={heroRef}
       className="relative flex flex-col justify-center overflow-hidden bg-white px-6 pb-20 pt-40 md:px-16 md:pb-28"
     >
-      <div className="container relative">
+      <div className="container relative grid gap-12 md:grid-cols-[1.15fr_0.85fr] md:items-start md:gap-16">
+        <div>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
@@ -126,6 +128,20 @@ export default function Hero() {
             </a>
           </Button>
         </motion.div>
+        </div>
+
+        <motion.aside
+          initial={{ opacity: 0, x: 24 }}
+          animate={ready ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="rounded-2xl bg-navy p-7 text-white shadow-[0_18px_50px_rgba(17,24,39,0.14)] md:min-h-[420px] md:p-8"
+        >
+          <p className="eyebrow mb-5 text-sky">{philosophy.eyebrow}</p>
+          <h2 className="mb-5 font-display text-2xl font-bold leading-tight md:text-3xl">
+            {philosophy.heading}
+          </h2>
+          <p className="text-base leading-relaxed text-white/70">{philosophy.body}</p>
+        </motion.aside>
       </div>
     </section>
   );

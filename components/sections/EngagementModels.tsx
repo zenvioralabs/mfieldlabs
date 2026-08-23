@@ -33,10 +33,6 @@ export default function EngagementModels() {
           },
         });
 
-        if (progressFillRef.current) {
-          tl.fromTo(progressFillRef.current, { scaleX: 0 }, { scaleX: 1, ease: "none" }, 0);
-        }
-
         cards.forEach((card, i) => {
           tl.fromTo(
             card,
@@ -75,7 +71,9 @@ export default function EngagementModels() {
           <p className="text-lg text-ink/60 leading-relaxed">{engagementModelsSection.description}</p>
         </div>
 
-        <ProgressBar fillRef={progressFillRef} className="mb-14" />
+        <div id="engagement-models-progress" className="scroll-mt-28">
+          <ProgressBar fillRef={progressFillRef} className="mb-14" />
+        </div>
 
         <div ref={cardsRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {engagementModels.map((m) => (

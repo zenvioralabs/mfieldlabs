@@ -24,7 +24,7 @@ export default function Footer() {
     <footer className="bg-navy px-6 py-16 text-white md:px-16">
       <div className="container grid gap-10 md:grid-cols-4">
         <div>
-          <div className="relative mb-4 h-8 w-40">
+          <div className="relative mb-4 h-20 w-96 max-w-full">
             <Image
               src="/logo/mfield-logo-white-text.png"
               alt="Mfield"
@@ -33,7 +33,7 @@ export default function Footer() {
               className="object-contain object-left"
             />
           </div>
-          <p className="max-w-xs text-sm leading-relaxed text-white/55">
+          <p className="max-w-xs text-sm leading-relaxed text-white">
             Trusted Intelligence and Digital Evolution Partner. Turning Complexity into Clarity.
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function Footer() {
           <p className="eyebrow mb-4" style={{ color: "#38bdf8" }}>
             Company
           </p>
-          <ul className="space-y-2 text-sm text-white/60">
+          <ul className="space-y-2 text-sm text-white">
             {footerCompanyLinks.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="transition-colors hover:text-white">
@@ -55,7 +55,7 @@ export default function Footer() {
           <p className="eyebrow mb-4" style={{ color: "#38bdf8" }}>
             Capabilities
           </p>
-          <ul className="space-y-2 text-sm text-white/60">
+          <ul className="space-y-2 text-sm text-white">
             {capabilities.map((c, i) => (
               <li key={c.n}>
                 <button
@@ -73,7 +73,7 @@ export default function Footer() {
           <p className="eyebrow mb-4" style={{ color: "#38bdf8" }}>
             Contact
           </p>
-          <ul className="space-y-2 text-sm text-white/60">
+          <ul className="space-y-2 text-sm text-white">
             <li>
               <a href={`mailto:${contact.email}`} className="transition-colors hover:text-white">
                 {contact.email}
@@ -82,7 +82,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="container mt-14 border-t border-white/10 pt-6 text-xs text-white/35">
+      <div className="container mt-14 border-t border-white/10 pt-6 text-xs text-white">
         © {new Date().getFullYear()} Mfield. All rights reserved.
       </div>
 
