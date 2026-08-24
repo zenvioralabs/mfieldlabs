@@ -21,8 +21,8 @@ export default function Footer() {
   const ActiveIcon = active ? ICONS[active.icon] : null;
 
   return (
-    <footer className="bg-navy px-6 py-16 text-white md:px-16">
-      <div className="container grid gap-10 md:grid-cols-4">
+    <footer className="bg-navy px-6 py-10 text-white md:px-16">
+      <div className="container grid gap-6 md:grid-cols-4">
         <div>
           <div className="relative mb-4 h-20 w-96 max-w-full">
             <Image
@@ -82,7 +82,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="container mt-14 border-t border-white/10 pt-6 text-xs text-white">
+      <div className="container mt-8 border-t border-white/10 pt-4 text-xs text-white">
         © {new Date().getFullYear()} Mfield. All rights reserved.
       </div>
 

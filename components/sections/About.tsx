@@ -51,8 +51,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ x: 5 }}
-              className="whitespace-pre-line border-l-2 border-teal pl-5 text-base font-medium leading-relaxed text-ink/80 md:text-lg"
+              className="whitespace-pre-line text-base leading-[1.75] text-ink/70 md:text-lg"
             >
               {about.solution}
             </motion.p>
@@ -74,10 +73,6 @@ export default function About() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-deepblue/10" />
-            <div className="absolute bottom-5 left-5 rounded-lg bg-white/90 px-4 py-3 backdrop-blur">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-deepblue">Mfield Labs</p>
-              <p className="mt-1 text-sm font-medium text-ink">Clarity that moves business forward.</p>
-            </div>
           </motion.div>
         </div>
       </div>

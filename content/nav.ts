@@ -6,7 +6,7 @@ export interface NavLink {
 export const navLinks: NavLink[] = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
-  { href: "#engagement-models-progress", label: "Engagement Models" },
+  { href: "#engagement-models", label: "Engagement Models" },
   { href: "#why-choose-us", label: "Why MField Labs " },
 ];
 

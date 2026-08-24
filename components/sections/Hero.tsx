@@ -74,12 +74,12 @@ export default function Hero() {
           <br />
           <WordReveal text={hero.headlineLines[1]} mode="mount" active={ready} delay={0.4} />
           <br />
-          <span className="relative text-deepblue">
+          <span className="relative mt-2 inline-block max-w-full whitespace-nowrap text-4xl text-deepblue sm:text-5xl md:text-7xl">
             <WordReveal text={hero.headlineLines[2]} mode="mount" active={ready} delay={0.7} />
-            <span className="relative ml-2 inline-flex h-4 w-4 align-middle md:h-5 md:w-5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-deepblue/60" />
-              <span className="relative inline-flex h-full w-full rounded-full bg-deepblue" />
-            </span>
+            <span
+              aria-hidden="true"
+              className="ml-2 inline-block h-[0.22em] w-[0.22em] translate-y-[-0.04em] animate-pulse rounded-full bg-deepblue align-baseline"
+            />
           </span>
         </motion.h1>
 
@@ -134,13 +134,13 @@ export default function Hero() {
           initial={{ opacity: 0, x: 24 }}
           animate={ready ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="rounded-2xl bg-navy p-7 text-white shadow-[0_18px_50px_rgba(17,24,39,0.14)] md:min-h-[420px] md:p-8"
+          className="rounded-2xl border border-ink/10 bg-lightgray p-7 text-ink shadow-[0_18px_50px_rgba(17,24,39,0.08)] md:min-h-[420px] md:p-8"
         >
-          <p className="eyebrow mb-5 text-sky">{philosophy.eyebrow}</p>
+          <p className="eyebrow mb-5 text-deepblue">{philosophy.eyebrow}</p>
           <h2 className="mb-5 font-display text-2xl font-bold leading-tight md:text-3xl">
             {philosophy.heading}
           </h2>
-          <p className="text-base leading-relaxed text-white/70">{philosophy.body}</p>
+          <p className="text-base leading-relaxed text-ink/70">{philosophy.body}</p>
         </motion.aside>
       </div>
     </section>

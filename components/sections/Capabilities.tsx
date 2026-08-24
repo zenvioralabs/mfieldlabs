@@ -67,13 +67,11 @@ export default function Capabilities() {
             <WordReveal text={capabilitiesSection.title} />
           </h2>
           <p className="text-lg leading-relaxed text-ink/60 xl:text-sm">{capabilitiesSection.description}</p>
-          <div className="mt-10 flex items-center gap-6 xl:mt-5">
-            <span className="h-px flex-1 bg-gradient-to-r from-deepblue to-deepblue/5" />
-            <span className="hidden font-mono text-[10px] font-semibold tracking-[0.18em] text-ink/40">
-              C_{String(capabilities.length).padStart(2, "0")}
-            </span>
-          </div>
         </div>
+      </div>
+
+      <div className="container mb-6 px-6 md:px-16 xl:mb-3 xl:px-4">
+        <div className="h-px w-full bg-sky" />
       </div>
 
       <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 pt-2 md:px-16 xl:justify-center xl:gap-4 xl:overflow-visible xl:px-4 xl:pb-2 xl:pt-0 xl:snap-none">

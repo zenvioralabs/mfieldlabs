@@ -8,7 +8,7 @@ export default function Differentiators() {
   return (
     <section id="why-choose-us" className="scroll-mt-28 bg-white px-6 py-20 text-ink md:px-16 xl:min-h-screen xl:py-4">
       <div className="container">
-        <p className="eyebrow mb-5" style={{ color: "#38bdf8" }}>
+        <p className="eyebrow mb-5 text-deepblue">
           {differentiatorsSection.eyebrow}
         </p>
         <h2 className="mb-3 max-w-2xl font-display text-4xl font-bold leading-[1.1] xl:text-3xl">
@@ -36,7 +36,7 @@ export default function Differentiators() {
                   </div>
                 </div>
               </div>
-              <div className="relative right-3 hidden h-14 w-24 shrink-0 origin-right overflow-hidden rounded-xl transition-transform duration-500 ease-out group-hover:z-10 group-hover:scale-125 sm:block">
+              <div className="relative right-3 hidden h-14 w-24 shrink-0 origin-right overflow-hidden rounded-xl transition-transform duration-500 ease-out group-hover:z-10 group-hover:scale-[1.75] sm:block">
                 <Image
                   src={d.image}
                   alt=""
