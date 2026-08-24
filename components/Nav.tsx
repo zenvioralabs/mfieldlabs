@@ -15,6 +15,7 @@ export default function Nav() {
   const reduceMotion = useReducedMotion();
   const [scrolled, setScrolled] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const navBarRef = React.useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 80));
 
@@ -27,11 +28,13 @@ export default function Nav() {
     event.preventDefault();
     setMenuOpen(false);
 
-    const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 0;
-    const targetTop = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - 16);
-
     window.history.pushState({}, "", href);
-    window.scrollTo({ top: targetTop, behavior: "auto" });
+    requestAnimationFrame(() => {
+      const headerHeight = navBarRef.current?.getBoundingClientRect().height ?? 0;
+      const targetTop = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - 16);
+
+      window.scrollTo({ top: targetTop, behavior: "auto" });
+    });
   }
 
   return (
@@ -43,6 +46,7 @@ export default function Nav() {
     >
       <div className="container mx-auto w-[calc(100%-1rem)] max-w-full px-0 md:w-full md:px-6">
         <div
+          ref={navBarRef}
           className={cn(
             "flex min-w-0 items-center justify-between rounded-full border px-2 py-2.5 backdrop-blur transition-all duration-500 md:px-6",
             scrolled
@@ -77,7 +81,7 @@ export default function Nav() {
             ))}
           </nav>
           <div className="flex shrink-0 items-center gap-1 md:gap-2">
-            <div className="hidden sm:block">
+            <div className="block">
               <Magnetic>
                 <Button
                   size="sm"

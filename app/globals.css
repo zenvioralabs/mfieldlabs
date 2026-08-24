@@ -4,11 +4,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color: #ffffff;
   color: #111827;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {

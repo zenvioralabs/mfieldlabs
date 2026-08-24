@@ -68,14 +68,32 @@ export default function Hero() {
 
         <motion.h1
           style={{ y: titleY, opacity: titleOpacity, scale: titleScale }}
-          className="font-display font-extrabold text-5xl md:text-7xl leading-[1.05] max-w-4xl text-ink"
+          className="max-w-4xl font-display text-5xl font-extrabold leading-[1.05] text-ink"
         >
-          <WordReveal text={hero.headlineLines[0]} mode="mount" active={ready} delay={0.1} />
+          <WordReveal
+            text={hero.headlineLines[0]}
+            className="inline max-w-full"
+            mode="mount"
+            active={ready}
+            delay={0.1}
+          />
           <br />
-          <WordReveal text={hero.headlineLines[1]} mode="mount" active={ready} delay={0.4} />
+          <WordReveal
+            text={hero.headlineLines[1]}
+            className="inline max-w-full"
+            mode="mount"
+            active={ready}
+            delay={0.4}
+          />
           <br />
-          <span className="relative mt-2 inline-block max-w-full whitespace-nowrap text-4xl text-deepblue sm:text-5xl md:text-7xl">
-            <WordReveal text={hero.headlineLines[2]} mode="mount" active={ready} delay={0.7} />
+          <span className="relative mt-2 inline-block max-w-full text-4xl text-deepblue sm:text-5xl md:whitespace-nowrap md:text-7xl">
+            <WordReveal
+              text={hero.headlineLines[2]}
+              className="inline max-w-full"
+              mode="mount"
+              active={ready}
+              delay={0.7}
+            />
             <span
               aria-hidden="true"
               className="ml-2 inline-block h-[0.22em] w-[0.22em] translate-y-[-0.04em] animate-pulse rounded-full bg-deepblue align-baseline"

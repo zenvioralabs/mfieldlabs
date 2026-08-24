@@ -60,7 +60,7 @@ export default function Capabilities() {
       ref={sectionRef}
       className="scroll-mt-28 overflow-hidden bg-white py-20 xl:py-8"
     >
-      <div className="container">
+      <div className="container px-6 md:px-16">
         <div className="mb-10 max-w-2xl xl:mb-6">
           <p className="eyebrow mb-5">{capabilitiesSection.eyebrow}</p>
           <h2 className="mb-4 font-display text-4xl font-bold leading-[1.1] text-ink xl:mb-2 xl:text-3xl">
