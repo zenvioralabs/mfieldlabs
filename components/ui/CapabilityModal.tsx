@@ -122,7 +122,7 @@ export default function CapabilityModal({
                   <h3 id={titleId} className="font-display text-3xl font-bold tracking-normal text-ink sm:text-4xl">
                     {title}
                   </h3>
-                  <p className="text-base font-medium leading-relaxed text-sky">{tagline}</p>
+                  <p className="text-base font-medium leading-relaxed text-deepblue">{tagline}</p>
                 </div>
 
                 <p className="text-sm leading-relaxed text-ink/65 sm:text-base">{body}</p>
