@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="relative mb-4 h-20 w-96 max-w-full">
             <Image
               src="/logo/mfield-logo-white-text.png"
-              alt="Mfield"
+              alt="Mfieldlabs"
               fill
               sizes="10rem"
               className="object-contain object-left"
@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="container mt-8 border-t border-white/10 pt-4 text-xs text-white">
-        © {new Date().getFullYear()} Mfield. All rights reserved.
+        © {new Date().getFullYear()} Mfieldlabs. All rights reserved.
       </div>
 
       {active && ActiveIcon ? (

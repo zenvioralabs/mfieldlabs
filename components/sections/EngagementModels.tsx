@@ -24,7 +24,7 @@ export default function EngagementModels() {
               key={m.title}
               className="flex h-[264px] flex-col rounded-2xl border border-ink/8 border-l-4 border-r-4 border-l-lightgray border-r-lightgray bg-white p-7 shadow-[0_1px_2px_rgba(17,24,39,0.04)]"
             >
-              <h3 className="font-display font-semibold text-lg text-ink mb-3">{m.title}</h3>
+              <h3 className="font-display font-semibold text-lg text-deepblue mb-3">{m.title}</h3>
               <p className="overflow-y-auto text-sm text-ink/60 leading-relaxed">{m.body}</p>
             </div>
           ))}

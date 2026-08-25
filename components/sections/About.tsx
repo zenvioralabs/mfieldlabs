@@ -7,7 +7,7 @@ import WordReveal from "@/components/motion/WordReveal";
 
 export default function About() {
   return (
-    <section id="about" className="scroll-mt-20 border-t border-ink/10 bg-lightgray px-6 pb-28 pt-16 md:px-16 md:pt-20">
+    <section id="about" className="scroll-mt-20 border-t border-ink/10 bg-white px-6 pb-28 pt-16 md:px-16 md:pt-20">
       <div className="container">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -63,11 +63,11 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="relative w-full max-w-full aspect-[4/5] overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-[0_18px_50px_rgba(17,24,39,0.10)] lg:mt-2 lg:aspect-[4/3]"
+            className="relative w-full max-w-full aspect-[4/5] overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-[0_18px_50px_rgba(17,24,39,0.10)] lg:mt-16 lg:aspect-[4/3]"
           >
             <Image
-              src="/logo/professional-tech-team-collaborating-on-software-d-2026-07-08-22-09-10-utc.JPG"
-              alt="Mfield Labs team collaborating on a technology project"
+              src="/logo/woman-contemplates-global-commerce-in-modern-world-2026-04-13-23-53-03-utc.jpg"
+              alt="Woman considering global commerce in a modern world"
               fill
               sizes="(min-width: 1024px) 35vw, 100vw"
               className="object-cover"

@@ -1,10 +1,15 @@
 "use client";
 
-import Image from "next/image";
+import * as React from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { differentiators, differentiatorsSection } from "@/content/differentiators";
+import CapabilityModal from "@/components/ui/CapabilityModal";
 import WordReveal from "@/components/motion/WordReveal";
 
 export default function Differentiators() {
+  const [openIndex, setOpenIndex] = React.useState<number | null>(null);
+  const active = openIndex !== null ? differentiators[openIndex] : null;
+
   return (
     <section id="why-choose-us" className="scroll-mt-28 bg-white px-6 py-20 text-ink md:px-16 xl:min-h-screen xl:py-4">
       <div className="container">
@@ -18,37 +23,45 @@ export default function Differentiators() {
           {differentiatorsSection.description}
         </p>
 
-        <div className="divide-y divide-ink/10 border-t border-ink/10 bg-white">
-          {differentiators.map((d) => (
-            <div
+        <div className="mb-6 h-px w-full bg-sky" />
+
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          {differentiators.map((d, i) => (
+            <button
               key={d.n}
-              className="differentiator-row group flex flex-col gap-4 bg-white py-5 transition-colors hover:bg-lightgray/60 sm:flex-row sm:items-center sm:gap-6 xl:gap-3 xl:py-1.5"
+              type="button"
+              onClick={() => setOpenIndex(i)}
+              className="group flex min-h-[480px] flex-col rounded-[20px] border border-ink/10 bg-white p-6 text-left text-ink shadow-[0_18px_50px_rgba(17,24,39,0.08)] transition-shadow duration-300 hover:shadow-[0_28px_70px_rgba(10,102,255,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky md:min-h-[480px] xl:min-h-[420px]"
             >
-              <span className="font-mono text-xl text-deepblue md:text-2xl">{d.n}</span>
-              <div className="min-w-0 flex-1">
-                <h3 className="mb-1 font-display text-lg font-semibold text-ink md:text-xl">
-                  {d.title}
-                </h3>
-                <p className="max-w-2xl text-sm leading-relaxed text-ink/55 md:text-base">{d.body}</p>
-                <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]">
-                  <div className="overflow-hidden">
-                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink/70">{d.narrative}</p>
-                  </div>
-                </div>
+              <h3 className="font-display text-xl font-bold leading-tight text-deepblue">{d.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink/60">{d.body}</p>
+              <div className="mt-5 border-t border-ink/10 pt-5">
+                <p className="line-clamp-6 text-xs leading-relaxed text-ink/70">{d.narrative}</p>
               </div>
-              <div className="relative right-3 hidden h-14 w-24 shrink-0 origin-right overflow-hidden rounded-xl transition-transform duration-500 ease-out group-hover:z-10 group-hover:scale-[1.75] sm:block">
-                <Image
-                  src={d.image}
-                  alt=""
-                  fill
-                  sizes="8rem"
-                  className="object-cover"
-                />
+              <div className="mt-auto flex items-center justify-between border-t border-ink/10 pt-5">
+                <span className="text-xs font-semibold text-ink/70">Explore</span>
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink/20 transition-colors group-hover:border-deepblue group-hover:bg-deepblue group-hover:text-white">
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>
+
+      {active ? (
+        <CapabilityModal
+          open={openIndex !== null}
+          onClose={() => setOpenIndex(null)}
+          icon={Sparkles}
+          title={active.title}
+          tagline={active.body}
+          body={active.narrative}
+          impactAreas={[]}
+          outcomes={[]}
+          image={active.image}
+        />
+      ) : null}
     </section>
   );
 }

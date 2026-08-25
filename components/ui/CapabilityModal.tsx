@@ -127,23 +127,26 @@ export default function CapabilityModal({
 
                 <p className="text-sm leading-relaxed text-ink/65 sm:text-base">{body}</p>
 
-                <div className="flex flex-col gap-3">
-                  <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/45">
-                    Impact Areas
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {impactAreas.map((area) => (
-                      <span
-                        key={area}
-                        className="rounded-full border border-ink/15 bg-lightgray px-3 py-1.5 text-xs font-medium text-ink/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-sky/60 hover:text-ink"
-                      >
-                        {area}
-                      </span>
-                    ))}
+                {impactAreas.length > 0 ? (
+                  <div className="flex flex-col gap-3">
+                    <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/45">
+                      Impact Areas
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {impactAreas.map((area) => (
+                        <span
+                          key={area}
+                          className="rounded-full border border-ink/15 bg-lightgray px-3 py-1.5 text-xs font-medium text-ink/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-sky/60 hover:text-ink"
+                        >
+                          {area}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ) : null}
 
-                <div className="flex flex-col gap-3">
+                {outcomes.length > 0 ? (
+                  <div className="flex flex-col gap-3">
                   <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/45">
                     Business Outcomes
                   </h4>
@@ -155,7 +158,8 @@ export default function CapabilityModal({
                       </li>
                     ))}
                   </ul>
-                </div>
+                  </div>
+                ) : null}
 
                 <Button asChild size="lg" className="mt-2 w-fit">
                   <a href="#contact" onClick={onClose}>

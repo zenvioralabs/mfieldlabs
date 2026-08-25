@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { hero } from "@/content/hero";
@@ -148,18 +149,28 @@ export default function Hero() {
         </motion.div>
         </div>
 
-        <motion.aside
-          initial={{ opacity: 0, x: 24 }}
-          animate={ready ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="rounded-2xl border border-ink/10 bg-lightgray p-7 text-ink shadow-[0_18px_50px_rgba(17,24,39,0.08)] md:min-h-[420px] md:p-8"
-        >
-          <p className="eyebrow mb-5 text-deepblue">{philosophy.eyebrow}</p>
-          <h2 className="mb-5 font-display text-2xl font-bold leading-tight md:text-3xl">
-            {philosophy.heading}
-          </h2>
-          <p className="text-base leading-relaxed text-ink/70">{philosophy.body}</p>
-        </motion.aside>
+        <div className="w-full">
+          <div className="relative mb-5 h-32 w-full">
+            <Image
+              src="/logo/mfield-logo-dark-text.png"
+              alt="Mfieldlabs"
+              fill
+              className="object-contain"
+            />
+          </div>
+          <motion.aside
+            initial={{ opacity: 0, x: 24 }}
+            animate={ready ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="rounded-2xl border border-ink/10 bg-white p-7 text-ink shadow-[0_18px_50px_rgba(17,24,39,0.08)] md:min-h-[360px] md:p-8"
+          >
+            <p className="eyebrow mb-5 text-deepblue">{philosophy.eyebrow}</p>
+            <h2 className="mb-5 font-display text-2xl font-bold leading-tight md:text-3xl">
+              {philosophy.heading}
+            </h2>
+            <p className="text-base leading-relaxed text-ink/70">{philosophy.body}</p>
+          </motion.aside>
+        </div>
       </div>
     </section>
   );

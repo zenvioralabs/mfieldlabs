@@ -58,9 +58,9 @@ export default function Capabilities() {
     <section
       id="services"
       ref={sectionRef}
-      className="scroll-mt-28 overflow-hidden bg-white py-20 xl:py-8"
+      className="scroll-mt-28 overflow-hidden bg-white px-6 py-20 md:px-16 xl:py-8"
     >
-      <div className="container px-6 md:px-16">
+      <div className="container">
         <div className="mb-10 max-w-2xl xl:mb-6">
           <p className="eyebrow mb-5">{capabilitiesSection.eyebrow}</p>
           <h2 className="mb-4 font-display text-4xl font-bold leading-[1.1] text-ink xl:mb-2 xl:text-3xl">
@@ -70,11 +70,11 @@ export default function Capabilities() {
         </div>
       </div>
 
-      <div className="container mb-6 px-6 md:px-16 xl:mb-3 xl:px-4">
+      <div className="container mb-6 xl:mb-3">
         <div className="h-px w-full bg-sky" />
       </div>
 
-      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 pt-2 md:px-16 xl:justify-center xl:gap-4 xl:overflow-visible xl:px-4 xl:pb-2 xl:pt-0 xl:snap-none">
+      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-6 pt-2 xl:justify-center xl:gap-4 xl:overflow-visible xl:pb-2 xl:pt-0 xl:snap-none">
         {capabilities.map((c, i) => {
           const Icon = ICONS[c.icon];
           return (
@@ -84,7 +84,7 @@ export default function Capabilities() {
                 onClick={() => setOpenIndex(i)}
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="group flex min-h-[480px] w-[280px] flex-col rounded-[20px] border border-ink/10 bg-white p-6 text-left text-ink shadow-[0_18px_50px_rgba(17,24,39,0.08)] transition-shadow duration-300 hover:shadow-[0_28px_70px_rgba(10,102,255,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky md:w-[300px] xl:min-h-[420px] xl:w-[300px] xl:p-5"
+                className="group flex min-h-[480px] w-[280px] flex-col rounded-[20px] border border-ink/10 bg-white p-6 text-left text-ink shadow-[0_18px_50px_rgba(17,24,39,0.08)] transition-shadow duration-300 hover:shadow-[0_28px_70px_rgba(10,102,255,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky md:w-[300px] xl:min-h-[420px] xl:w-[320px] xl:p-5"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>

@@ -22,7 +22,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="scroll-mt-28 bg-lightgray px-6 pb-28 pt-16 md:px-16 md:pt-20">
+    <section id="contact" className="scroll-mt-28 bg-white px-6 pb-28 pt-16 md:px-16 md:pt-20">
       <div className="container">
         <div className="mb-10 max-w-2xl xl:mb-7">
           <p className="eyebrow mb-5">Contact Us</p>
@@ -40,9 +40,7 @@ export default function ContactSection() {
             transition={{ duration: 0.5 }}
             className="flex flex-col justify-center py-2 lg:pr-8"
           >
-            <h3 className="mb-4 font-display text-3xl font-bold leading-tight text-ink md:text-4xl">
-              {positioning.eyebrow}
-            </h3>
+            <div className="mb-6 h-px w-full bg-sky" />
             <p className="max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg">
               {positioning.statement}
             </p>
@@ -53,12 +51,12 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-2xl bg-navy p-6 text-white md:p-8 xl:p-6"
+            className="rounded-2xl border border-ink/10 bg-lightgray p-6 text-ink shadow-[0_18px_50px_rgba(17,24,39,0.06)] md:p-8 xl:p-6"
           >
-            <p className="eyebrow mb-4" style={{ color: "#38bdf8" }}>
+            <p className="eyebrow mb-4 text-deepblue">
               New project inquiry
             </p>
-            <p className="mb-6 text-white/60 leading-relaxed">
+            <p className="mb-6 leading-relaxed text-ink/60">
               Email directly. When reaching out, please include industry, team size, the problem to solve, and a rough timeline.
             </p>
 
@@ -67,7 +65,7 @@ export default function ContactSection() {
                 href={PROJECT_INQUIRY_MAILTO}
                 className="group mb-3 flex items-center justify-between gap-4 rounded-xl bg-gradient-to-r from-deepblue to-electric px-5 py-3.5 font-semibold text-white transition-transform hover:scale-[1.02]"
               >
-                Email Mfield
+                Email Mfieldlabs
                 <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
               </a>
             </Magnetic>
@@ -75,7 +73,7 @@ export default function ContactSection() {
             <button
               type="button"
               onClick={handleCopy}
-              className="flex w-full items-center justify-between gap-4 rounded-xl border border-white/15 px-5 py-3.5 text-sm text-white/70 transition-colors hover:border-white/30 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
+                className="flex w-full items-center justify-between gap-4 rounded-xl border border-ink/15 px-5 py-3.5 text-sm text-ink/70 transition-colors hover:border-ink/30 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
             >
               <span>{contact.email}</span>
               {copied ? (

@@ -57,14 +57,14 @@ export default function Nav() {
           <a
             href="#top"
             onClick={(event) => handleAnchorClick(event, "#top")}
-            className="relative h-14 w-36 shrink-0 md:h-14 md:w-48"
+            className="relative ml-12 h-14 w-36 shrink-0 md:ml-5 md:h-14 md:w-48"
           >
             <Image
-              src="/logo/mfield-logo-dark-text.png"
+              src="/logo/mfield-logo-png.png"
 
               alt="Mfield"
               fill
-              className="object-contain object-left"
+              className="origin-left scale-110 object-contain object-left"
               priority
             />
           </a>

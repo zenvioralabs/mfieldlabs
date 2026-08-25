@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MField Labs — Where ideas gain momentum",
+  title: "Mfieldlabs — Where ideas gain momentum",
   description:
-    "MField Labs helps growing businesses modernize reporting, automate operations, build modern software, and adopt AI responsibly, so they can run more efficiently, make confident decisions and augment their impact.",
+    "Mfieldlabs helps growing businesses modernize reporting, automate operations, build modern software, and adopt AI responsibly, so they can run more efficiently, make confident decisions and augment their impact.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
