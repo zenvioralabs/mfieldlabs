@@ -1,12 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Database, Workflow, LayoutPanelLeft, Sparkles } from "lucide-react";
-import { capabilities, capabilitiesSection, type CapabilityIcon } from "@/content/capabilities";
+import Image from "next/image";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowLeft, ArrowRight, Database, Workflow, LayoutPanelLeft, Sparkles } from "lucide-react";
+import { capabilities, type CapabilityIcon } from "@/content/capabilities";
 import CapabilityModal from "@/components/ui/CapabilityModal";
-import WordReveal from "@/components/motion/WordReveal";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
 const ICONS: Record<CapabilityIcon, typeof Database> = {
   database: Database,
@@ -15,124 +14,136 @@ const ICONS: Record<CapabilityIcon, typeof Database> = {
   sparkles: Sparkles,
 };
 
+const CARD_POINTS: Record<string, string[]> = {
+  "Data & Intelligence": [
+    "Dashboards that show you what's happening, in real time",
+    "One set of numbers your whole team trusts",
+    "Reports that used to take you days, done automatically",
+  ],
+  "Automation & Operations": [
+    "Automate repetitive work without rebuilding your operation",
+    "Move information between systems without manual handoffs",
+    "Create processes that keep moving when people are busy",
+  ],
+  "Digital Experiences & Software Engineering": [
+    "Connected experiences for employees, customers, and partners",
+    "Business applications built around how your teams actually work",
+    "Modern integrations that remove workarounds and friction",
+  ],
+  "AI & Microsoft Innovation": [
+    "Practical AI opportunities tied to measurable business value",
+    "Microsoft Copilot adoption with the right guardrails",
+    "AI assistants and intelligent workflows your teams can actually use",
+  ],
+};
+
 export default function Capabilities() {
-  const [openIndex, setOpenIndex] = React.useState<number | null>(null);
-  const active = openIndex !== null ? capabilities[openIndex] : null;
-  const ActiveIcon = active ? ICONS[active.icon] : null;
+  const [active, setActive] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
+  const reduced = useReducedMotion();
+  const current = capabilities[active];
+  const ActiveIcon = ICONS[current.icon];
+  const points = CARD_POINTS[current.title] ?? current.impactAreas.slice(0, 3);
 
-  const sectionRef = React.useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add("(min-width: 1280px) and (prefers-reduced-motion: no-preference)", () => {
-        const cards = gsap.utils.toArray<HTMLElement>(".capability-card");
-        if (!cards.length) return;
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=130%",
-            scrub: 0.6,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        cards.forEach((card, i) => {
-          tl.to(card, { x: 0, opacity: 1, ease: "power2.out", duration: 0.6 }, i * 0.32);
-        });
-
-        return () => {
-          gsap.set(cards, { clearProps: "transform,opacity" });
-        };
-      });
-      return () => mm.revert();
-    },
-    { scope: sectionRef }
-  );
+  const go = (direction: 1 | -1) => {
+    setActive((index) => (index + direction + capabilities.length) % capabilities.length);
+  };
 
   return (
-    <section
-      id="services"
-      ref={sectionRef}
-      className="scroll-mt-28 overflow-hidden bg-white px-6 py-20 md:px-16 xl:py-8"
-    >
-      <div className="container">
-        <div className="mb-10 max-w-2xl xl:mb-6">
-          <p className="eyebrow mb-5">{capabilitiesSection.eyebrow}</p>
-          <h2 className="mb-4 font-display text-4xl font-bold leading-[1.1] text-ink xl:mb-2 xl:text-3xl">
-            <WordReveal text={capabilitiesSection.title} />
-          </h2>
-          <p className="text-lg leading-relaxed text-ink/60 xl:text-sm">{capabilitiesSection.description}</p>
+    <section id="services" className="bg-white px-5 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">
+      <div className="mx-auto max-w-[1160px]">
+        <div className="mb-9">
+          <p className="eyebrow mb-4">OUR CAPABILITIES</p>
+          <h2 className="section-heading-with-rule">Areas We Help With</h2>
+        </div>
+
+        <div className="capability-stage">
+          <div className="capability-card-column">
+            <button className="cap-arrow cap-arrow-left" onClick={() => go(-1)} aria-label="Previous capability">
+              <ArrowLeft className="h-5 w-5" />
+            </button>
+
+            <div className="capability-carousel-card">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={current.n}
+                  initial={{ opacity: 0, x: reduced ? 0 : 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: reduced ? 0 : -18 }}
+                  transition={{ duration: reduced ? 0 : 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="h-full"
+                >
+                  <div className="flex h-full flex-col">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h3>{current.title === "Data & Intelligence" ? "Data Intelligence:" : current.title}</h3>
+                      </div>
+                      <span className="capability-icon"><ActiveIcon className="h-6 w-6" /></span>
+                    </div>
+                    <ul className="capability-points">
+                      {points.map((point) => <li key={point}>{point}</li>)}
+                    </ul>
+                    <button onClick={() => setOpen(true)} className="capability-explore">
+                      Explore <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <button className="cap-arrow cap-arrow-right" onClick={() => go(1)} aria-label="Next capability">
+              <ArrowRight className="h-5 w-5" />
+            </button>
+
+            <div className="capability-dots" aria-label="Capability selector">
+              {capabilities.map((capability, index) => (
+                <button
+                  key={capability.n}
+                  onClick={() => setActive(index)}
+                  aria-label={`Show ${capability.title}`}
+                  aria-current={index === active}
+                  className={index === active ? "is-active" : ""}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="capability-image-wrap">
+            <Image
+              src="/images/SERVICE-SEC-IMAGE.png"
+              alt="Mfield Labs consultant using technology"
+              fill
+              sizes="(min-width: 1024px) 38vw, 100vw"
+              className="object-contain object-bottom"
+            />
+          </div>
+
+          <div className="capability-outcomes">
+            <h3>What Would It Mean If...</h3>
+            <ul>
+              <li>Reporting went from days to real time?</li>
+              <li>Hundreds of hours of manual work a month simply went away?</li>
+              <li>A six-week project uncovered real, ongoing savings?</li>
+              <li>You could add capability without adding headcount?</li>
+            </ul>
+            <div className="capability-quote">
+              That's the conversation worth having before "what does this cost." The real question is what the problem is already costing you.
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="container mb-6 xl:mb-3">
-        <div className="h-px w-full bg-sky" />
-      </div>
-
-      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-6 pt-2 xl:justify-center xl:gap-4 xl:overflow-visible xl:pb-2 xl:pt-0 xl:snap-none">
-        {capabilities.map((c, i) => {
-          const Icon = ICONS[c.icon];
-          return (
-            <div key={c.n} className="capability-card flex shrink-0 snap-start">
-              <motion.button
-                type="button"
-                onClick={() => setOpenIndex(i)}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="group flex min-h-[480px] w-[280px] flex-col rounded-[20px] border border-ink/10 bg-white p-6 text-left text-ink shadow-[0_18px_50px_rgba(17,24,39,0.08)] transition-shadow duration-300 hover:shadow-[0_28px_70px_rgba(10,102,255,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky md:w-[300px] xl:min-h-[420px] xl:w-[320px] xl:p-5"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="font-display text-xl font-bold leading-tight xl:text-lg">{c.title}</h3>
-                    <p className="mt-2 text-xs font-semibold leading-relaxed text-deepblue">{c.tagline}</p>
-                  </div>
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-deepblue/15 bg-deepblue/5 text-deepblue">
-                    <Icon className="h-4 w-4" aria-hidden="true" />
-                  </span>
-                </div>
-
-                <div className="mt-5 border-t border-ink/10 pt-5">
-                  <p className="text-xs leading-relaxed text-ink/60">{c.businessOutcomes}</p>
-                  <ul className="mt-4 space-y-2">
-                    {c.impactAreas.map((area) => (
-                      <li key={area} className="flex items-start gap-2 text-[11px] leading-snug text-ink/70">
-                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-sky" aria-hidden="true" />
-                        {area}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-auto flex items-center justify-between border-t border-ink/10 pt-5">
-                  <span className="text-xs font-semibold text-ink/70">Explore</span>
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink/20 transition-colors group-hover:border-deepblue group-hover:bg-deepblue group-hover:text-white">
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </span>
-                </div>
-              </motion.button>
-            </div>
-          );
-        })}
-      </div>
-
-      {active && ActiveIcon ? (
-        <CapabilityModal
-          open={openIndex !== null}
-          onClose={() => setOpenIndex(null)}
-          icon={ActiveIcon}
-          title={active.title}
-          tagline={active.tagline}
-          body={active.body}
-          impactAreas={active.impactAreas}
-          outcomes={active.outcomes}
-          image={active.image}
-        />
-      ) : null}
+      <CapabilityModal
+        open={open}
+        onClose={() => setOpen(false)}
+        icon={ActiveIcon}
+        title={current.title}
+        tagline={current.tagline}
+        body={current.body}
+        impactAreas={current.impactAreas}
+        outcomes={current.outcomes}
+        image={current.image}
+      />
     </section>
   );
 }

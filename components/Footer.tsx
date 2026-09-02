@@ -1,104 +1,23 @@
-"use client";
-
-import * as React from "react";
 import Image from "next/image";
-import { Database, Workflow, LayoutPanelLeft, Sparkles } from "lucide-react";
 import { footerCompanyLinks } from "@/content/nav";
-import { capabilities, type CapabilityIcon } from "@/content/capabilities";
+import { capabilities } from "@/content/capabilities";
 import { contact } from "@/content/contact";
-import CapabilityModal from "@/components/ui/CapabilityModal";
-
-const ICONS: Record<CapabilityIcon, typeof Database> = {
-  database: Database,
-  workflow: Workflow,
-  layout: LayoutPanelLeft,
-  sparkles: Sparkles,
-};
 
 export default function Footer() {
-  const [openIndex, setOpenIndex] = React.useState<number | null>(null);
-  const active = openIndex !== null ? capabilities[openIndex] : null;
-  const ActiveIcon = active ? ICONS[active.icon] : null;
-
   return (
-    <footer className="bg-navy px-6 py-10 text-white md:px-16">
-      <div className="container grid gap-6 md:grid-cols-4">
+    <footer className="bg-navy px-5 py-12 text-white sm:px-8 md:px-12 lg:px-16">
+      <div className="mx-auto grid max-w-[1160px] gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div>
-          <div className="relative mb-4 h-20 w-96 max-w-full">
-            <Image
-              src="/logo/mfield-logo-white-text.png"
-              alt="Mfieldlabs"
-              fill
-              sizes="10rem"
-              className="object-contain object-left"
-            />
+          <div className="relative mb-5 h-12 w-44">
+            <Image src="/logo/mfield-logo-white-text.png" alt="Mfield Labs" fill className="object-contain object-left" />
           </div>
-          <p className="max-w-xs text-sm leading-relaxed text-white">
-            Trusted Intelligence and Digital Evolution Partner. Turning Complexity into Clarity.
-          </p>
+          <p className="max-w-sm text-xs leading-6 text-white/55">Trusted Intelligence and Digital Evolution Partner. Turning Complexity into Clarity.</p>
         </div>
-        <div>
-          <p className="eyebrow mb-4" style={{ color: "#38bdf8" }}>
-            Company
-          </p>
-          <ul className="space-y-2 text-sm text-white">
-            {footerCompanyLinks.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="transition-colors hover:text-white">
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="eyebrow mb-4" style={{ color: "#38bdf8" }}>
-            Capabilities
-          </p>
-          <ul className="space-y-2 text-sm text-white">
-            {capabilities.map((c, i) => (
-              <li key={c.n}>
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(i)}
-                  className="text-left transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
-                >
-                  {c.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="eyebrow mb-4" style={{ color: "#38bdf8" }}>
-            Contact
-          </p>
-          <ul className="space-y-2 text-sm text-white">
-            <li>
-              <a href={`mailto:${contact.email}`} className="transition-colors hover:text-white">
-                {contact.email}
-              </a>
-            </li>
-          </ul>
-        </div>
+        <div><p className="eyebrow mb-4 !text-sky">Company</p>{footerCompanyLinks.map(l=><a key={l.href} href={l.href} className="block py-1 text-xs text-white/60 hover:text-white">{l.label.trim()}</a>)}</div>
+        <div><p className="eyebrow mb-4 !text-sky">Capabilities</p>{capabilities.map(c=><a key={c.n} href="#services" className="block py-1 text-xs text-white/60 hover:text-white">{c.title}</a>)}</div>
+        <div><p className="eyebrow mb-4 !text-sky">Contact</p><a href={`mailto:${contact.email}`} className="text-xs text-white/60 hover:text-white">{contact.email}</a></div>
       </div>
-      <div className="container mt-8 border-t border-white/10 pt-4 text-xs text-white">
-        © {new Date().getFullYear()} Mfieldlabs. All rights reserved.
-      </div>
-
-      {active && ActiveIcon ? (
-        <CapabilityModal
-          open={openIndex !== null}
-          onClose={() => setOpenIndex(null)}
-          icon={ActiveIcon}
-          title={active.title}
-          tagline={active.tagline}
-          body={active.body}
-          impactAreas={active.impactAreas}
-          outcomes={active.outcomes}
-          image={active.image}
-        />
-      ) : null}
+      <div className="mx-auto mt-10 max-w-[1160px] border-t border-white/10 pt-5 text-[10px] text-white/35">© {new Date().getFullYear()} Mfieldlabs. All rights reserved.</div>
     </footer>
   );
 }
