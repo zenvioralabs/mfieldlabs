@@ -7,9 +7,8 @@ export interface HeroContent {
 
 export const hero: HeroContent = {
   taglineOptions: ["Where Ideas Gain Momentum"],
-  headlineLines: ["A Partner for", "Technology and", "Business Intelligence"],
+  headlineLines: ["Enterprise Capability.", "Built for Growing", "Businesses."],
   subheading:
-    "Mfieldlabs helps growing businesses use technology and data better, enabling more efficient operations and confident, informed decisions.",
-  supportingStatement:
-   "",
+    "The data, people, and systems your business needs are probably already there, just not talking to each other. MField Labs connects them, bringing the technology and data expertise historically reserved for large enterprises to businesses like yours.",
+  supportingStatement: "",
 };

@@ -1,79 +1,74 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { about } from "@/content/about";
-import WordReveal from "@/components/motion/WordReveal";
+import * as React from "react";
+import { ArrowRight } from "lucide-react";
+
+const bullets = [
+  "Our data is everywhere, and nobody fully trusts the numbers.",
+  "Our finance team spends days assembling reports by hand.",
+  "Our people spend hundreds of hours a month on work that should be automated.",
+  "Our systems don't talk to each other.",
+  "Everyone's talking about AI, but we don't know where it would actually make or save us money.",
+  "We've grown fast, and our technology hasn't kept up.",
+  "We know we need to modernize, but a massive consulting engagement doesn't make sense for us.",
+];
 
 export default function About() {
   return (
-    <section id="about" className="scroll-mt-20 border-t border-ink/10 bg-white px-6 pb-28 pt-16 md:px-16 md:pt-20">
-      <div className="container">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="eyebrow mb-8"
-        >
-          {about.eyebrow}
-        </motion.p>
-
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-16">
+    <section id="about" className="bg-white px-5 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">
+      <div className="mx-auto max-w-[1160px]">
+        <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <div>
-            <motion.h2
-              initial={{ opacity: 0, x: -18 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-7 max-w-md border-l-2 border-deepblue pl-5 font-display text-3xl font-bold leading-[1.2] text-ink md:text-4xl"
-            >
-              <WordReveal text={about.title} />
-            </motion.h2>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="flex max-w-4xl flex-col items-start gap-6 border-y border-ink/10 py-7 md:py-8"
-            >
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="whitespace-pre-line text-base leading-[1.75] text-ink/70 md:text-lg"
-            >
-              {about.problem}
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="whitespace-pre-line text-base leading-[1.75] text-ink/70 md:text-lg"
-            >
-              {about.solution}
-            </motion.p>
-            </motion.div>
+            <p className="eyebrow mb-4">WHY MFIELDLABS</p>
+            <h2 className="section-heading-with-rule mb-7">Why MField Labs Exists</h2>
+            <div className="prose-mfield text-ink/80">
+              <p>Growing businesses face many of the same challenges as large enterprises. You need reliable data. You need less manual work. You need a team that actually helps instead of just sounding good in a meeting. You need systems that talk to each other.</p>
+              <p>But the traditional consulting model was built around large enterprise budgets and large enterprise timelines, not yours. So most growing businesses either go without, or cobble together freelancers and hope it works.</p>
+              <p>MField Labs was built differently. The intelligence your business needs, in your data, your people, your systems, your institutional knowledge, is probably already there. Our job is to connect it into something coherent, using senior judgment and an efficient delivery model, so you get enterprise-caliber thinking without enterprise-level cost or commitment.</p>
+            </div>
+            <div className="blue-callout mt-9 min-h-[80px] text-base italic leading-5">
+              <span>If you're a growing business,<br />our model was actually built<br />with you in mind.</span>
+              <span className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></span>
+            </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="relative w-full max-w-full aspect-[4/5] overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-[0_18px_50px_rgba(17,24,39,0.10)] lg:mt-16 lg:aspect-[4/3]"
-          >
-            <Image
-              src="/logo/woman-contemplates-global-commerce-in-modern-world-2026-04-13-23-53-03-utc.jpg"
-              alt="Woman considering global commerce in a modern world"
-              fill
-              sizes="(min-width: 1024px) 35vw, 100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-deepblue/10" />
-          </motion.div>
+          <div className="pt-2 lg:pt-8">
+            <h3 className="blue-subheading text-right">A Different Model, By Design</h3>
+            <p className="mt-2 text-right text-[13px] leading-5 text-ink/70">We're not a smaller version of a big consulting firm, and we're not a cheaper alternative to one either. We were built for a different customer, with a different model.</p>
+
+            <div className="comparison mt-7">
+              <div className="comparison-head">
+                <span>Traditional big-firm consulting</span>
+                <b>VS</b>
+                <span>MField Labs</span>
+              </div>
+              <div className="comparison-body">
+                <div>
+                  <p>Large teams</p><p>High overhead</p><p>Long, broad engagements</p><p>Transformation programs that touch everything</p>
+                </div>
+                <div>
+                  <p>Focused team, senior-led</p><p>Efficient global delivery</p><p>Start with a sprint, prove value fast</p><p>Solve the highest-value problem first</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="blue-callout mt-7">
+              <span><strong className="text-lg">Sounds Familiar?</strong><br /><small className="text-sm">If any of these sound familiar, that's exactly what we work on.</small></span>
+              <span className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></span>
+            </div>
+            <div className="familiar-box">
+              <ul>{bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-24 max-w-[650px]">
+          <h2 className="blue-subheading mb-7">More Than Access To Talent</h2>
+          <div className="prose-mfield text-ink/80">
+            <p>You can already hire an AI developer, a Power BI analyst, or an automation specialist online. Good talent isn't hard to find anymore.</p>
+            <p>What's harder to find is judgment: knowing which problem to solve first, how the pieces fit together, and who's accountable when they don't. Hire five independent specialists and you become the project manager, the quality reviewer, and the person who owns the outcome if something doesn't work.</p>
+            <p>MField Labs is one accountable team. We diagnose the problem, decide what to tackle first, bring together the right expertise, make sure the pieces fit together, and stand behind the result. You don't have to assemble and manage the team. We do that.</p>
+          </div>
         </div>
       </div>
     </section>
