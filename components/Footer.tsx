@@ -8,8 +8,8 @@ export default function Footer() {
     <footer className="bg-navy px-5 py-12 text-white sm:px-8 md:px-12 lg:px-16">
       <div className="mx-auto grid max-w-[1160px] gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div>
-          <div className="relative mb-5 h-12 w-44">
-            <Image src="/logo/mfield-logo-white-text.png" alt="Mfield Labs" fill className="object-contain object-left" />
+          <div className="relative mb-5 h-16 w-44">
+            <Image src="/logo/field-logo-png.png" alt="Mfield Labs" fill className="object-contain object-left" />
           </div>
           <p className="max-w-sm text-xs leading-6 text-white/55">Trusted Intelligence and Digital Evolution Partner. Turning Complexity into Clarity.</p>
         </div>

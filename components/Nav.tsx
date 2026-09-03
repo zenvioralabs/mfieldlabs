@@ -18,7 +18,7 @@ export default function Nav() {
           {navLinks.map((l) => <a key={l.href} href={l.href} className="text-xs font-semibold text-ink/60 transition hover:text-deepblue">{l.label.trim()}</a>)}
         </nav>
         <div className="flex items-center gap-2">
-          <a href="#contact" className="blue-pill !px-4 !py-2">Contact Us</a>
+          <a href="#contact" className="outline-pill !px-4 !py-2">Contact Us</a>
           <button onClick={() => setOpen(!open)} className="flex h-9 w-9 items-center justify-center rounded-full md:hidden" aria-label="Toggle menu">
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>

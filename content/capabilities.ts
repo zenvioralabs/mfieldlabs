@@ -43,7 +43,7 @@ export const capabilities: Capability[] = [
     ],
     businessOutcomes:
       "Reports that take days to prepare, different departments working from different numbers, heavy reliance on spreadsheets, leadership without real-time visibility.",
-    image: "/logo/business-analytics-presentation-with-graph-analysi-2026-01-08-23-52-45-utc.JPG",
+    image: "/images/Data-&-intelligence.jpg",
   },
   {
     n: "02",
@@ -66,7 +66,7 @@ export const capabilities: Capability[] = [
     ],
     businessOutcomes:
       "Someone spending all day moving data between systems, heavy reliance on email approvals, a process that breaks when one person is out, the same information entered more than once.",
-    image: "/logo/business-engineer-hand-works-industry-diagram-on-v-2026-04-14-00-23-25-utc.jpg",
+    image: "/images/Automation-&-Operations.jpg",
   },
   {
     n: "03",
@@ -89,7 +89,7 @@ export const capabilities: Capability[] = [
     ],
     businessOutcomes:
       "Systems that don't talk to each other, workarounds instead of real fixes, software the business has outgrown, customers calling in for things that could be self-service.",
-    image: "/logo/professional-tech-team-collaborating-on-software-d-2026-07-08-22-09-10-utc.JPG",
+    image: "/images/Digital-Experiences-&-Software-Engineering.jpg",
   },
   {
     n: "04",
@@ -112,6 +112,6 @@ export const capabilities: Capability[] = [
     ],
     businessOutcomes:
       "Leadership asking about AI, evaluating Copilot, spending too much time producing reports, concerns about AI governance and security.",
-    image: "/logo/typing-on-laptop-with-artificial-intelligence-conc-2026-03-18-11-53-22-utc.jpg",
+    image: "/images/AI-&-Microsoft-Innovation.jpg",
   },
 ];

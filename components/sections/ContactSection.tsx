@@ -8,11 +8,11 @@ export default function ContactSection() {
   const [copied, setCopied] = React.useState(false);
   const copy = async () => { await navigator.clipboard.writeText(contact.email); setCopied(true); setTimeout(() => setCopied(false), 1800); };
   return (
-    <section id="contact" className="bg-white px-5 py-16 sm:px-8 md:px-12 lg:px-16 lg:py-20">
+    <section id="contact" className="bg-white px-5 pt-24 pb-16 sm:px-8 md:px-12 lg:px-16 lg:pt-28 lg:pb-20">
       <div className="mx-auto max-w-[1160px]">
         <div className="grid gap-12 lg:grid-cols-[1fr_.9fr] lg:items-start">
           <div>
-            <p className="eyebrow mb-4">CONTACT US</p>
+            <p className="eyebrow mb-6">CONTACT US</p>
             <h2 className="section-heading-with-rule mb-7">Let's Build Intelligent Organizations<br />Together</h2>
             <p className="max-w-[610px] text-[13px] leading-5 text-ink/80">Whether you're exploring a first initiative or planning enterprise-wide transformation, our consultants are ready to discuss your goals and the outcomes that matter most.</p>
             <div className="my-8 h-px max-w-[570px] bg-deepblue/60" />

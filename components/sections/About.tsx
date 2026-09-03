@@ -26,15 +26,15 @@ export default function About() {
               <p>But the traditional consulting model was built around large enterprise budgets and large enterprise timelines, not yours. So most growing businesses either go without, or cobble together freelancers and hope it works.</p>
               <p>MField Labs was built differently. The intelligence your business needs, in your data, your people, your systems, your institutional knowledge, is probably already there. Our job is to connect it into something coherent, using senior judgment and an efficient delivery model, so you get enterprise-caliber thinking without enterprise-level cost or commitment.</p>
             </div>
-            <div className="blue-callout mt-9 min-h-[80px] text-base italic leading-5">
-              <span>If you're a growing business,<br />our model was actually built<br />with you in mind.</span>
+            <div className="blue-callout mt-9 min-h-[80px] w-full text-base italic leading-5 lg:-mr-10 lg:w-[calc(100%+2.5rem)]">
+              <span>If you're a growing business,our model was actually built<br />with you in mind.</span>
               <span className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></span>
             </div>
           </div>
 
           <div className="pt-2 lg:pt-8">
-            <h3 className="blue-subheading text-right">A Different Model, By Design</h3>
-            <p className="mt-2 text-right text-[13px] leading-5 text-ink/70">We're not a smaller version of a big consulting firm, and we're not a cheaper alternative to one either. We were built for a different customer, with a different model.</p>
+            <h3 className="blue-subheading text-center">A Different Model, By Design</h3>
+            <p className="mt-2 text-center text-[13px] leading-5 text-ink/70">We're not a smaller version of a big consulting firm, and we're not a cheaper alternative to one either. We were built for a different customer, with a different model.</p>
 
             <div className="comparison mt-7">
               <div className="comparison-head">
@@ -42,32 +42,36 @@ export default function About() {
                 <b>VS</b>
                 <span>MField Labs</span>
               </div>
-              <div className="comparison-body">
-                <div>
-                  <p>Large teams</p><p>High overhead</p><p>Long, broad engagements</p><p>Transformation programs that touch everything</p>
-                </div>
-                <div>
-                  <p>Focused team, senior-led</p><p>Efficient global delivery</p><p>Start with a sprint, prove value fast</p><p>Solve the highest-value problem first</p>
-                </div>
+            </div>
+            <div className="comparison-cards">
+              <div className="comparison-card">
+                <p>Large teams</p><p>High overhead</p><p>Long, broad engagements</p><p>Transformation programs that touch everything</p>
+              </div>
+              <div className="comparison-card">
+                <p>Focused team, senior-led</p><p>Efficient global delivery</p><p>Start with a sprint, prove value fast</p><p>Solve the highest-value problem first</p>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="blue-callout mt-7">
+        <div className="mt-40 grid items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
+          <div className="max-w-[650px]">
+            <h2 className="blue-subheading mb-7">More Than Access To Talent</h2>
+            <div className="prose-mfield text-ink/80">
+              <p>You can already hire an AI developer, a Power BI analyst, or an automation specialist online. Good talent isn't hard to find anymore.</p>
+              <p>What's harder to find is judgment: knowing which problem to solve first, how the pieces fit together, and who's accountable when they don't. Hire five independent specialists and you become the project manager, the quality reviewer, and the person who owns the outcome if something doesn't work.</p>
+              <p>MField Labs is one accountable team. We diagnose the problem, decide what to tackle first, bring together the right expertise, make sure the pieces fit together, and stand behind the result. You don't have to assemble and manage the team. We do that.</p>
+            </div>
+          </div>
+
+          <div>
+            <div className="blue-callout">
               <span><strong className="text-lg">Sounds Familiar?</strong><br /><small className="text-sm">If any of these sound familiar, that's exactly what we work on.</small></span>
               <span className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></span>
             </div>
             <div className="familiar-box">
               <ul>{bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-24 max-w-[650px]">
-          <h2 className="blue-subheading mb-7">More Than Access To Talent</h2>
-          <div className="prose-mfield text-ink/80">
-            <p>You can already hire an AI developer, a Power BI analyst, or an automation specialist online. Good talent isn't hard to find anymore.</p>
-            <p>What's harder to find is judgment: knowing which problem to solve first, how the pieces fit together, and who's accountable when they don't. Hire five independent specialists and you become the project manager, the quality reviewer, and the person who owns the outcome if something doesn't work.</p>
-            <p>MField Labs is one accountable team. We diagnose the problem, decide what to tackle first, bring together the right expertise, make sure the pieces fit together, and stand behind the result. You don't have to assemble and manage the team. We do that.</p>
           </div>
         </div>
       </div>

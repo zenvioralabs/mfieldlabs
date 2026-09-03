@@ -83,7 +83,7 @@ export default function Capabilities() {
                     <ul className="capability-points">
                       {points.map((point) => <li key={point}>{point}</li>)}
                     </ul>
-                    <button onClick={() => setOpen(true)} className="capability-explore">
+                    <button onClick={() => setOpen(true)} className="capability-explore max-w-[350px] justify-between">
                       Explore <ArrowRight className="h-4 w-4" />
                     </button>
                   </div>
@@ -114,7 +114,7 @@ export default function Capabilities() {
               alt="Mfield Labs consultant using technology"
               fill
               sizes="(min-width: 1024px) 38vw, 100vw"
-              className="object-contain object-bottom"
+              className="object-contain object-center"
             />
           </div>
 

@@ -23,7 +23,7 @@ export default function Differentiators() {
             <h2 className="blue-subheading mb-6">Why choose MField Labs</h2>
             <div className="differentiator-grid">
               {boxes.map((box, index) => (
-                <button key={box} onClick={() => setActive(index)} className={`differentiator-box ${active === index ? "active" : ""}`}>
+                <button key={box} onClick={() => setActive(index)} className="differentiator-box">
                   {box}
                 </button>
               ))}
@@ -35,7 +35,7 @@ export default function Differentiators() {
             <h2 className="blue-subheading mb-7">How We Work Together</h2>
             <div className="work-list">
               {engagementModels.map((model, index) => (
-                <button key={model.title} onClick={() => setActive(index)} className={active === index ? "active" : ""}>
+                <button key={model.title} onClick={() => setActive(index)}>
                   <span className="work-number">{index + 1}</span>
                   <span className="work-title">{model.title}</span>
                   <span className="work-body">{model.body.split("Typical outcomes:")[0].trim()}</span>
