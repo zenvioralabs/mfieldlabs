@@ -27,20 +27,20 @@ export default function About() {
               <p>MField Labs was built differently. The intelligence your business needs, in your data, your people, your systems, your institutional knowledge, is probably already there. Our job is to connect it into something coherent, using senior judgment and an efficient delivery model, so you get enterprise-caliber thinking without enterprise-level cost or commitment.</p>
             </div>
             <div className="blue-callout mt-9 min-h-[80px] w-full text-base italic leading-5 lg:-mr-10 lg:w-[calc(100%+2.5rem)]">
-              <span>If you're a growing business,our model was actually built<br />with you in mind.</span>
+              <span className="text-[16px]">If you're a growing business,our model was actually built<br />with you in mind.</span>
               <a href="#contact" aria-label="Go to contact" className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></a>
             </div>
           </div>
 
           <div className="pt-2 lg:pt-8">
-            <h3 className="blue-subheading text-center !text-[20px]">A Different Model, By Design</h3>
-            <p className="mt-2 text-center text-[.92rem] leading-5 text-ink/70">We're not a smaller version of a big consulting firm, and we're not a cheaper alternative to one either. We were built for a different customer, with a different model.</p>
+            <h3 className="blue-subheading text-right !text-[20px]">A Different Model, By Design</h3>
+            <p className="mt-2 text-right text-[.92rem] leading-5 text-ink/70">We're not a smaller version of a big consulting firm, and we're not a cheaper alternative to one either. We were built for a different customer, with a different model.</p>
 
             <div className="comparison mt-7">
               <div className="comparison-head">
-                <span>Traditional big-firm consulting</span>
+                <span className="comparison-label">Traditional big-firm consulting</span>
                 <b>VS</b>
-                <span>MField Labs</span>
+                <span className="comparison-label">MField Labs</span>
               </div>
             </div>
             <div className="comparison-cards">
@@ -66,7 +66,7 @@ export default function About() {
 
           <div>
             <div className="blue-callout relative -top-20">
-              <span><strong className="text-lg">Sounds Familiar?</strong><br /><small className="text-sm">If any of these sound familiar, that's exactly what we work on.</small></span>
+              <span><strong className="text-lg">Sounds Familiar?</strong><br /><small className="text-[14px]">If any of these sound familiar, that's exactly what we work on.</small></span>
               <a href="#contact" aria-label="Go to contact" className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></a>
             </div>
             <div className="familiar-box relative -top-20">

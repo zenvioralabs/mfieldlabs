@@ -24,12 +24,12 @@ export default function Hero() {
           className="relative z-10 max-w-[650px]"
         >
           <p className="eyebrow mb-5 text-sm">WHERE IDEAS GAIN MOMENTUM</p>
-          <h2 className="flex flex-col gap-2 font-display text-[2.25rem] font-extrabold leading-[0.98] tracking-[-0.045em] text-ink sm:text-[3.25rem] lg:text-[3.5rem]">
+          <h2 className="flex flex-col gap-1 font-display text-[2.4rem] font-extrabold leading-[1] tracking-[-0.045em] text-ink sm:text-[3.45rem] lg:text-[3.7rem]">
             <span className="whitespace-nowrap">{hero.headlineLines[0]}</span>
             <span className="whitespace-nowrap">{hero.headlineLines[1]}</span>
             <span className="whitespace-nowrap text-deepblue">{hero.headlineLines[2]}</span>
           </h2>
-          <p className="mt-7 max-w-xl text-[15px] leading-7 text-black md:text-base">
+          <p className="mt-7 max-w-xl text-[14px] leading-7 text-black">
             {hero.subheading}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">

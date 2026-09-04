@@ -60,11 +60,17 @@ body { background: #fff; color: #111827; }
 .capability-carousel-card .capability-explore{margin-top:1.5rem}
 .capability-carousel-card .capability-points li{font-size:14px}
 .comparison-head,.comparison-card p{font-size:14px}
+.comparison-head .comparison-label{font-size:16px}
 .differentiator-box{font-size:14px}
 .work-body{font-size:12px}
 .how-work-box h2{font-size:16px}
 .how-work-box .work-body{font-size:14px}
+.how-work-box .work-title{font-size:16px}
 .differentiator-box.touch-box{width:100%;min-height:80px;padding:1.2rem;justify-self:stretch;align-self:stretch}
+.differentiator-box.touch-box{font-size:18px}
+.case-card h3{font-size:16px}
+.case-card p{font-size:14px}
+.case-card button{font-size:14px}
 
 @media(min-width:1024px){
   .capability-stage{position:sticky;top:7rem;z-index:2}
