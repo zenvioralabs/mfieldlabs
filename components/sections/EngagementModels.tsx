@@ -54,7 +54,7 @@ export default function EngagementModels() {
             />
             <div className="space-y-5">
               {sprints.map((m, i) => (
-                <motion.button key={m.title} onClick={() => setActive(i)} whileHover={{ x: 3 }} className={`relative flex w-full items-center gap-5 rounded-xl border bg-white p-5 text-left shadow-[0_7px_18px_rgba(10,102,255,.12)] ${active === i ? "border-deepblue" : "border-transparent"}`}>
+                <motion.button type="button" key={m.title} onClick={() => setActive(i)} aria-pressed={active === i} whileHover={{ x: 3 }} className={`relative z-10 flex w-full cursor-pointer items-center gap-5 rounded-xl border bg-white p-5 text-left shadow-[0_7px_18px_rgba(10,102,255,.12)] ${active === i ? "border-deepblue" : "border-transparent"}`}>
                   <span ref={i === 0 ? firstDotRef : i === 2 ? lastDotRef : undefined} className="absolute -left-[26px] h-4 w-4 rounded-full border-2 border-white bg-deepblue" />
                   <span><strong className="block text-base font-bold">{m.title}</strong><small className="mt-1.5 block text-[14px] leading-5 text-ink/70">{m.body}</small></span>
                 </motion.button>

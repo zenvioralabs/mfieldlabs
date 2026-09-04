@@ -28,7 +28,7 @@ export default function About() {
             </div>
             <div className="blue-callout mt-9 min-h-[80px] w-full text-base italic leading-5 lg:-mr-10 lg:w-[calc(100%+2.5rem)]">
               <span className="text-[16px]">If you're a growing business,our model was actually built<br />with you in mind.</span>
-              <a href="#contact" aria-label="Go to contact" className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></a>
+              <a href="#services" aria-label="Go to capabilities" className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></a>
             </div>
           </div>
 
@@ -55,7 +55,7 @@ export default function About() {
         </div>
 
         <div id="more-than-access" className="scroll-mt-40 mt-28 grid items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
-          <div className="max-w-[650px]">
+          <div className="relative -top-14 max-w-[650px]">
             <h2 className="blue-subheading mb-7 !text-[20px]">More Than Access To Talent</h2>
             <div className="prose-mfield text-ink/80">
               <p>You can already hire an AI developer, a Power BI analyst, or an automation specialist online. Good talent isn't hard to find anymore.</p>

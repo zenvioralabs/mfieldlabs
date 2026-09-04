@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 
 export interface CaseStudyDetail {
   image: string;
@@ -116,6 +116,9 @@ export default function CaseStudyModal({ open, onClose, study }: CaseStudyModalP
                 <p className="text-sm leading-relaxed text-ink/70 sm:text-base">{study.situation}</p>
                 <p className="text-sm leading-relaxed text-ink/70 sm:text-base">{study.approach}</p>
                 <p className="text-sm leading-relaxed text-ink/70 sm:text-base">{study.outcome}</p>
+                <a href="#contact" onClick={onClose} className="outline-pill mt-2 h-10 w-fit !px-3 !py-1.5 hover:!bg-transparent hover:!text-deepblue">
+                  Start Conversation <ArrowRight className="h-4 w-4" />
+                </a>
                 </motion.div>
               </div>
             </div>

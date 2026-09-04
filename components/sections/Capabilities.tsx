@@ -46,6 +46,20 @@ export default function Capabilities() {
   const ActiveIcon = ICONS[current.icon];
   const points = CARD_POINTS[current.title] ?? current.impactAreas.slice(0, 3);
 
+  React.useEffect(() => {
+    const selectFromUrl = () => {
+      const match = new URLSearchParams(window.location.search).get("capability");
+      if (!match) return;
+
+      const index = capabilities.findIndex((capability) => capability.n === match.padStart(2, "0"));
+      if (index >= 0) setActive(index);
+    };
+
+    selectFromUrl();
+    window.addEventListener("capabilitychange", selectFromUrl);
+    return () => window.removeEventListener("capabilitychange", selectFromUrl);
+  }, []);
+
   const go = (direction: 1 | -1) => {
     setActive((index) => (index + direction + capabilities.length) % capabilities.length);
   };
