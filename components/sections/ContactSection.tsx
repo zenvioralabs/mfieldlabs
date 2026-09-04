@@ -18,7 +18,7 @@ export default function ContactSection() {
             <div className="my-8 h-px max-w-[570px] bg-deepblue/60" />
             <p className="max-w-[600px] text-[14px] leading-5 text-ink/80">Mfieldlabs is a Trusted Intelligence and Digital Evolution Partner. We help organizations transform fragmented operations into connected, data-driven, and AI-enabled ecosystems. By turning complexity into clarity and information into foresight, we build future-ready capabilities through decision intelligence, automation, and AI-powered innovation.</p>
           </div>
-          <div className="relative top-[120px] rounded-2xl bg-[#f1f5fb] p-7">
+          <div className="relative rounded-2xl bg-[#f1f5fb] p-7 lg:top-[120px]">
             <p className="eyebrow mb-4 !text-[18px]">NEW PROJECT INQUIRY</p>
             <p className="mb-5 text-[14px] leading-5 text-ink/80">Email directly. When reaching out, please include industry, team size, the problem to solve, and a rough timeline.</p>
             <a href={`mailto:${contact.email}?subject=New project inquiry`} className="blue-pill w-full justify-between">Email Mfieldlabs <ArrowRight className="h-4 w-4" /></a>
