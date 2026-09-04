@@ -50,7 +50,7 @@ export default function Capabilities() {
   };
 
   return (
-    <section id="services" className="bg-white px-5 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">
+    <section id="services" className="relative bg-white px-5 py-20 pb-32 sm:px-8 md:px-12 lg:px-16 lg:py-28 lg:pb-40">
       <div className="mx-auto max-w-[1160px]">
         <div className="mb-9">
           <p className="eyebrow mb-4">OUR CAPABILITIES</p>
@@ -132,6 +132,11 @@ export default function Capabilities() {
           </div>
         </div>
       </div>
+
+      <motion.a href="#engagement-models" aria-label="Continue to Start Small, Prove Value, Scale What Works" animate={reduced ? undefined : { y: [0, 8, 0] }} transition={reduced ? undefined : { duration: 1.6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-52 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-deepblue">
+        <span className="text-[10px] font-bold uppercase tracking-[.14em]">Next</span>
+        <ArrowRight className="h-5 w-5 rotate-90" />
+      </motion.a>
 
       <CapabilityModal
         open={open}

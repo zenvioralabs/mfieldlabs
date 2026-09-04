@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 const bullets = [
   "Our data is everywhere, and nobody fully trusts the numbers.",
@@ -14,6 +15,7 @@ const bullets = [
 ];
 
 export default function About() {
+  const reduced = useReducedMotion();
   return (
     <section id="about" className="bg-white px-5 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">
       <div className="mx-auto max-w-[1160px]">
@@ -28,12 +30,12 @@ export default function About() {
             </div>
             <div className="blue-callout mt-9 min-h-[80px] w-full text-base italic leading-5 lg:-mr-10 lg:w-[calc(100%+2.5rem)]">
               <span>If you're a growing business,our model was actually built<br />with you in mind.</span>
-              <span className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></span>
+              <a href="#contact" aria-label="Go to contact" className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></a>
             </div>
           </div>
 
           <div className="pt-2 lg:pt-8">
-            <h3 className="blue-subheading text-center">A Different Model, By Design</h3>
+            <h3 className="blue-subheading text-center text-[13px]">A Different Model, By Design</h3>
             <p className="mt-2 text-center text-[13px] leading-5 text-ink/70">We're not a smaller version of a big consulting firm, and we're not a cheaper alternative to one either. We were built for a different customer, with a different model.</p>
 
             <div className="comparison mt-7">
@@ -54,7 +56,14 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mt-40 grid items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
+        <div className="flex justify-center py-12">
+          <motion.a href="#more-than-access" aria-label="Continue to More Than Access To Talent" animate={reduced ? undefined : { y: [0, 8, 0] }} transition={reduced ? undefined : { duration: 1.6, repeat: Infinity, ease: "easeInOut" }} className="relative -top-8 flex flex-col items-center gap-1 text-deepblue">
+            <span className="text-[10px] font-bold uppercase tracking-[.14em]">Next</span>
+            <ArrowRight className="h-5 w-5 rotate-90" />
+          </motion.a>
+        </div>
+
+        <div id="more-than-access" className="scroll-mt-40 mt-28 grid items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <div className="max-w-[650px]">
             <h2 className="blue-subheading mb-7">More Than Access To Talent</h2>
             <div className="prose-mfield text-ink/80">
@@ -67,7 +76,7 @@ export default function About() {
           <div>
             <div className="blue-callout">
               <span><strong className="text-lg">Sounds Familiar?</strong><br /><small className="text-sm">If any of these sound familiar, that's exactly what we work on.</small></span>
-              <span className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></span>
+              <a href="#contact" aria-label="Go to contact" className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></a>
             </div>
             <div className="familiar-box">
               <ul>{bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>

@@ -16,7 +16,7 @@ const boxes = [
 export default function Differentiators() {
   const [active, setActive] = React.useState(1);
   return (
-    <section id="why-choose-us" className="bg-white px-5 py-16 sm:px-8 md:px-12 lg:px-16 lg:py-20">
+    <section id="why-choose-us" className="bg-white px-5 pt-28 pb-16 sm:px-8 md:px-12 lg:px-16 lg:pt-32 lg:pb-20">
       <div className="mx-auto max-w-[1160px]">
         <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
           <div>
@@ -27,11 +27,11 @@ export default function Differentiators() {
                   {box}
                 </button>
               ))}
-              <a href="#contact" className="differentiator-box touch-box">Get In<br />Touch <ArrowRight className="h-7 w-7" /></a>
+              <a href="/#contact" className="differentiator-box touch-box">Get In<br />Touch <ArrowRight className="h-7 w-7" /></a>
             </div>
           </div>
 
-          <div className="how-work-box">
+          <div id="how-we-work-together" className="how-work-box">
             <h2 className="blue-subheading mb-7">How We Work Together</h2>
             <div className="work-list">
               {engagementModels.map((model, index) => (
