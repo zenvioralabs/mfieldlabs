@@ -133,7 +133,7 @@ export default function Capabilities() {
         </div>
       </div>
 
-      <motion.a href="#engagement-models" aria-label="Continue to Start Small, Prove Value, Scale What Works" animate={reduced ? undefined : { y: [0, 8, 0] }} transition={reduced ? undefined : { duration: 1.6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-52 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-deepblue">
+      <motion.a href="#engagement-models" aria-label="Continue to Start Small, Prove Value, Scale What Works" animate={reduced ? undefined : { y: [0, 8, 0] }} transition={reduced ? undefined : { duration: 1.6, repeat: Infinity, ease: "easeInOut" }} className="capability-next-link absolute bottom-52 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-deepblue">
         <span className="text-[10px] font-bold uppercase tracking-[.14em]">Next</span>
         <ArrowRight className="h-5 w-5 rotate-90" />
       </motion.a>
