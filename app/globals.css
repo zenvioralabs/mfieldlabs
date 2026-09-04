@@ -51,6 +51,34 @@ body { background: #fff; color: #111827; }
 @media(max-width:700px){.capability-stage{grid-template-columns:1fr}.capability-image-wrap{order:2;height:350px;top:0}.capability-card-column{order:1;top:0}.capability-outcomes{order:3;grid-column:auto;margin:0}.comparison-head{font-size:.68rem}.work-list>button{grid-template-columns:30px 1fr}.work-body{grid-column:2}.familiar-box{margin:0}.hero-note{display:none}}
 .capability-next-link{z-index:2}
 @media(max-width:700px){.capability-next-link{position:relative;bottom:auto;left:auto;transform:none;margin:2rem auto 0}}
+@media(min-width:701px){.capability-next-over-image{display:grid}}
+@media(max-width:700px){.capability-next-over-image{display:grid;top:140px;right:0;left:auto;z-index:5}}
 .capability-carousel-card{min-height:312px;height:auto}
 .capability-next-arrow{width:64px;height:64px;object-fit:contain}
 .touch-box{align-self:center;justify-self:center}
+
+.capability-carousel-card .capability-explore{margin-top:1.5rem}
+.capability-carousel-card .capability-points li{font-size:14px}
+.comparison-head,.comparison-card p{font-size:14px}
+.differentiator-box{font-size:14px}
+.work-body{font-size:12px}
+.how-work-box h2{font-size:16px}
+.how-work-box .work-body{font-size:14px}
+.differentiator-box.touch-box{width:100%;min-height:80px;padding:1.2rem;justify-self:stretch;align-self:stretch}
+
+@media(min-width:1024px){
+  .capability-stage{position:sticky;top:7rem;z-index:2}
+}
+
+
+
+
+@media(min-width:1024px){
+  .capability-image-wrap{transform:translateX(-28px) scale(1.62);z-index:3}
+  .capability-card-column{z-index:1}
+  .capability-next-over-image{top:34%;right:auto;left:34%;z-index:5}
+  .capability-outcomes{position:relative;z-index:4;margin-left:-40px}
+  .capability-outcomes h3{font-size:1.5rem}
+  .capability-outcomes li{font-size:.95rem;line-height:1.45}
+  .capability-outcomes .capability-quote{position:relative;z-index:5;left:-40px;width:80%;margin-top:1.5rem;font-size:14px}
+}

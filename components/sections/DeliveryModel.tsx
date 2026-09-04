@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 
 export default function DeliveryModel() {
   return (
@@ -17,10 +16,6 @@ export default function DeliveryModel() {
           <Image src="/images/WHO-WE-ARE-IMAGE.png" alt="MField Labs leadership" fill sizes="50vw" className="object-contain object-center" />
         </div>
       </div>
-      <a href="#why-choose-us" aria-label="Continue to Why choose MField Labs" className="absolute bottom-12 left-1/2 flex -translate-x-1/2 animate-bounce flex-col items-center gap-1 text-deepblue">
-        <span className="text-[10px] font-bold uppercase tracking-[.14em]">Next</span>
-        <ArrowRight className="h-5 w-5 rotate-90" />
-      </a>
     </section>
   );
 }

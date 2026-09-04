@@ -16,7 +16,7 @@ const boxes = [
 export default function Differentiators() {
   const [active, setActive] = React.useState(1);
   return (
-    <section id="why-choose-us" className="bg-white px-5 pt-28 pb-16 sm:px-8 md:px-12 lg:px-16 lg:pt-32 lg:pb-20">
+    <section id="why-choose-us" className="relative -top-[80px] bg-white px-5 pt-8 pb-16 sm:px-8 md:px-12 lg:px-16 lg:pt-12 lg:pb-20">
       <div className="mx-auto max-w-[1160px]">
         <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
           <div>

@@ -17,7 +17,7 @@ export default function EngagementModels() {
   const lastDotRef = React.useRef<HTMLSpanElement>(null);
   const [lineBounds, setLineBounds] = React.useState({ top: 0, bottom: 0 });
   const { scrollYProgress } = useScroll({ target: pinRef, offset: ["start start", "end end"] });
-  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const lineScale = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   React.useLayoutEffect(() => {
     const measure = () => {
@@ -40,12 +40,12 @@ export default function EngagementModels() {
 
   return (
     <section id="engagement-models" ref={pinRef} className="relative bg-white" style={{ height: "220vh" }}>
-      <div className="sticky top-0 flex min-h-screen items-center px-5 sm:px-8 md:px-12 lg:px-16">
-        <div className="mx-auto w-full max-w-[1160px] rounded-[26px] bg-[#f1f5fb] p-7 sm:p-10 lg:p-12">
+      <div className="sticky top-72 flex min-h-screen items-center px-5 sm:px-8 md:px-12 lg:px-16">
+        <div className="mx-auto w-full max-w-[1160px] rounded-[26px] bg-[#f1f5fb] p-7 sm:p-10 lg:-translate-y-[280px] lg:p-12">
           <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
             <div>
-              <h2 className="blue-subheading mb-6">Start Small. Prove Value.<br />Scale What Works.</h2>
-              <p className="max-w-[430px] text-[13px] leading-5 text-ink/80">Committing to a big engagement with a new firm is a real leap. So don't. Start with a Velocity Sprint, a tightly scoped project that solves one important problem in four to six weeks and shows results before you commit to anything larger.</p>
+              <h2 className="blue-subheading mb-6 !text-[1.5rem]">Start Small. Prove Value.<br />Scale What Works.</h2>
+              <p className="max-w-[430px] text-[14px] leading-5 text-ink/80">Committing to a big engagement with a new firm is a real leap. So don't. Start with a Velocity Sprint, a tightly scoped project that solves one important problem in four to six weeks and shows results before you commit to anything larger.</p>
               <div className="mt-8 max-w-[360px] rounded-xl bg-deepblue px-7 py-5 text-sm italic leading-5 text-white">Each one produces something real.<br />You see the value before you decide what comes next.</div>
             </div>
             <div ref={lineRef} className="relative pl-8">
@@ -55,7 +55,7 @@ export default function EngagementModels() {
                 {sprints.map((m, i) => (
                   <motion.button key={m.title} onClick={() => setActive(i)} whileHover={{ x: 3 }} className={`relative flex w-full items-center gap-5 rounded-xl border bg-white p-5 text-left shadow-[0_7px_18px_rgba(10,102,255,.12)] ${active === i ? "border-deepblue" : "border-transparent"}`}>
                     <span ref={i === 0 ? firstDotRef : i === 2 ? lastDotRef : undefined} className="absolute -left-[26px] h-4 w-4 rounded-full border-2 border-white bg-deepblue" />
-                    <span><strong className="block text-base font-bold">{m.title}</strong><small className="mt-1.5 block text-xs leading-5 text-ink/70">{m.body}</small></span>
+                    <span><strong className="block text-base font-bold">{m.title}</strong><small className="mt-1.5 block text-[14px] leading-5 text-ink/70">{m.body}</small></span>
                   </motion.button>
                 ))}
               </div>

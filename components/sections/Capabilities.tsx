@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Database, Workflow, LayoutPanelLeft, Sparkles } from "lucide-react";
 import { capabilities, type CapabilityIcon } from "@/content/capabilities";
 import CapabilityModal from "@/components/ui/CapabilityModal";
+import EngagementModels from "@/components/sections/EngagementModels";
 
 const ICONS: Record<CapabilityIcon, typeof Database> = {
   database: Database,
@@ -50,6 +51,7 @@ export default function Capabilities() {
   };
 
   return (
+    <>
     <section id="services" className="relative bg-white px-5 py-20 pb-32 sm:px-8 md:px-12 lg:px-16 lg:py-28 lg:pb-40">
       <div className="mx-auto max-w-[1160px]">
         <div className="mb-9">
@@ -91,10 +93,6 @@ export default function Capabilities() {
               </AnimatePresence>
             </div>
 
-            <button className="cap-arrow cap-arrow-right" onClick={() => go(1)} aria-label="Next capability">
-              <ArrowRight className="h-5 w-5" />
-            </button>
-
             <div className="capability-dots" aria-label="Capability selector">
               {capabilities.map((capability, index) => (
                 <button
@@ -118,6 +116,10 @@ export default function Capabilities() {
             />
           </div>
 
+          <button className="cap-arrow cap-arrow-right capability-next-over-image" onClick={() => go(1)} aria-label="Next capability">
+            <ArrowRight className="h-5 w-5" />
+          </button>
+
           <div className="capability-outcomes">
             <h3>What Would It Mean If...</h3>
             <ul>
@@ -133,11 +135,6 @@ export default function Capabilities() {
         </div>
       </div>
 
-      <motion.a href="#engagement-models" aria-label="Continue to Start Small, Prove Value, Scale What Works" animate={reduced ? undefined : { y: [0, 8, 0] }} transition={reduced ? undefined : { duration: 1.6, repeat: Infinity, ease: "easeInOut" }} className="capability-next-link absolute bottom-52 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-deepblue">
-        <span className="text-[10px] font-bold uppercase tracking-[.14em]">Next</span>
-        <ArrowRight className="h-5 w-5 rotate-90" />
-      </motion.a>
-
       <CapabilityModal
         open={open}
         onClose={() => setOpen(false)}
@@ -149,6 +146,8 @@ export default function Capabilities() {
         outcomes={current.outcomes}
         image={current.image}
       />
+      <EngagementModels />
     </section>
+    </>
   );
 }

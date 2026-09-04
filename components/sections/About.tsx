@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 
 const bullets = [
   "Our data is everywhere, and nobody fully trusts the numbers.",
@@ -15,7 +14,6 @@ const bullets = [
 ];
 
 export default function About() {
-  const reduced = useReducedMotion();
   return (
     <section id="about" className="bg-white px-5 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">
       <div className="mx-auto max-w-[1160px]">
@@ -35,8 +33,8 @@ export default function About() {
           </div>
 
           <div className="pt-2 lg:pt-8">
-            <h3 className="blue-subheading text-center text-[13px]">A Different Model, By Design</h3>
-            <p className="mt-2 text-center text-[13px] leading-5 text-ink/70">We're not a smaller version of a big consulting firm, and we're not a cheaper alternative to one either. We were built for a different customer, with a different model.</p>
+            <h3 className="blue-subheading text-center !text-[20px]">A Different Model, By Design</h3>
+            <p className="mt-2 text-center text-[.92rem] leading-5 text-ink/70">We're not a smaller version of a big consulting firm, and we're not a cheaper alternative to one either. We were built for a different customer, with a different model.</p>
 
             <div className="comparison mt-7">
               <div className="comparison-head">
@@ -47,25 +45,18 @@ export default function About() {
             </div>
             <div className="comparison-cards">
               <div className="comparison-card">
-                <p>Large teams</p><p>High overhead</p><p>Long, broad engagements</p><p>Transformation programs that touch everything</p>
+                <p className="!text-[.92rem]">Large teams</p><p className="!text-[.92rem]">High overhead</p><p className="!text-[.92rem]">Long, broad engagements</p><p className="!text-[.92rem]">Transformation programs that touch everything</p>
               </div>
               <div className="comparison-card">
-                <p>Focused team, senior-led</p><p>Efficient global delivery</p><p>Start with a sprint, prove value fast</p><p>Solve the highest-value problem first</p>
+                <p className="!text-[.92rem]">Focused team, senior-led</p><p className="!text-[.92rem]">Efficient global delivery</p><p className="!text-[.92rem]">Start with a sprint, prove value fast</p><p className="!text-[.92rem]">Solve the highest-value problem first</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex justify-center py-12">
-          <motion.a href="#more-than-access" aria-label="Continue to More Than Access To Talent" animate={reduced ? undefined : { y: [0, 8, 0] }} transition={reduced ? undefined : { duration: 1.6, repeat: Infinity, ease: "easeInOut" }} className="relative -top-8 flex flex-col items-center gap-1 text-deepblue">
-            <span className="text-[10px] font-bold uppercase tracking-[.14em]">Next</span>
-            <ArrowRight className="h-5 w-5 rotate-90" />
-          </motion.a>
-        </div>
-
         <div id="more-than-access" className="scroll-mt-40 mt-28 grid items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <div className="max-w-[650px]">
-            <h2 className="blue-subheading mb-7">More Than Access To Talent</h2>
+            <h2 className="blue-subheading mb-7 !text-[20px]">More Than Access To Talent</h2>
             <div className="prose-mfield text-ink/80">
               <p>You can already hire an AI developer, a Power BI analyst, or an automation specialist online. Good talent isn't hard to find anymore.</p>
               <p>What's harder to find is judgment: knowing which problem to solve first, how the pieces fit together, and who's accountable when they don't. Hire five independent specialists and you become the project manager, the quality reviewer, and the person who owns the outcome if something doesn't work.</p>
@@ -74,12 +65,12 @@ export default function About() {
           </div>
 
           <div>
-            <div className="blue-callout">
+            <div className="blue-callout relative -top-20">
               <span><strong className="text-lg">Sounds Familiar?</strong><br /><small className="text-sm">If any of these sound familiar, that's exactly what we work on.</small></span>
               <a href="#contact" aria-label="Go to contact" className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></a>
             </div>
-            <div className="familiar-box">
-              <ul>{bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+            <div className="familiar-box relative -top-20">
+              <ul>{bullets.map((bullet) => <li className="!text-[.92rem]" key={bullet}>{bullet}</li>)}</ul>
             </div>
           </div>
         </div>
