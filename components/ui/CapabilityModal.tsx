@@ -30,7 +30,6 @@ export default function CapabilityModal({
   icon: Icon,
   title,
   tagline,
-  body,
   impactAreas,
   outcomes,
   image,
