@@ -7,6 +7,6 @@ export interface PositioningContent {
 export const positioning: PositioningContent = {
   eyebrow: "Our Position",
   statement:
-    "Mfieldlabs is a Trusted Intelligence and Digital Evolution Partner. We help organizations transform fragmented operations into connected, data-driven, and AI-enabled ecosystems. By turning complexity into clarity and information into foresight, we build future-ready capabilities through decision intelligence, automation, and AI-powered innovation.",
+    "MField Labs is a Trusted Intelligence and Digital Evolution Partner. We help organizations transform fragmented operations into connected, data-driven, and AI-enabled ecosystems. By turning complexity into clarity and information into foresight, we build future-ready capabilities through decision intelligence, automation, and AI-powered innovation.",
   closingLine: "Trust what matters. See what others miss. Create impact that lasts.",
 };

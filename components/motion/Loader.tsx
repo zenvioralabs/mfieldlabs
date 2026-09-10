@@ -54,7 +54,7 @@ export default function Loader() {
             src="/logo/field-logo-png.png"
             alt=""
             fill
-            sizes="160px"
+            sizes="190px"
             className="object-contain"
             priority
           />

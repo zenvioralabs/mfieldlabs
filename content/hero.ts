@@ -7,8 +7,9 @@ export interface HeroContent {
 
 export const hero: HeroContent = {
   taglineOptions: ["Where Ideas Gain Momentum"],
-  headlineLines: ["Enterprise Capability.", "Built for Growing", "Businesses."],
+  headlineLines: ["Trust Your Data", "Envision What's Next ", "Amplify Your Impact"],
   subheading:
-    "The data, people, and systems your business needs are probably already there, just not talking to each other. MField Labs connects them, bringing the technology and data expertise historically reserved for large enterprises to businesses like yours.",
-  supportingStatement: "",
+    "MField Labs helps organizations turn fragmented operations into connected, data-driven, and AI-enabled systems. We turn complexity into clarity, so businesses can make confident decisions and build the capabilities that support growth.",
+  supportingStatement:
+   "",
 };

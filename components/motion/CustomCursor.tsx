@@ -22,16 +22,20 @@ export default function CustomCursor() {
   React.useEffect(() => {
     if (!active) return;
 
+    const ring = ringRef.current;
+    const dot = dotRef.current;
+    if (!ring || !dot) return;
+
     document.body.classList.add("has-custom-cursor");
 
-    gsap.set([ringRef.current, dotRef.current], {
+    gsap.set([ring, dot], {
       autoAlpha: 0,
       xPercent: -50,
       yPercent: -50,
     });
 
     const onMove = (e: PointerEvent) => {
-      gsap.set([ringRef.current, dotRef.current], {
+      gsap.set([ring, dot], {
         autoAlpha: 1,
         x: e.clientX,
         y: e.clientY,
@@ -59,7 +63,7 @@ export default function CustomCursor() {
 
     return () => {
       document.body.classList.remove("has-custom-cursor", "cursor-hover");
-      gsap.killTweensOf([ringRef.current, dotRef.current]);
+      gsap.killTweensOf([ring, dot]);
       window.removeEventListener("pointermove", onMove);
       document.removeEventListener("pointerover", onOver);
       document.removeEventListener("pointerout", onOut);
