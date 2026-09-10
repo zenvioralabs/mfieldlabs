@@ -116,27 +116,27 @@ export default function CapabilityModal({
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-6 md:text-lg"
               >
                 <div className="flex flex-col gap-2.5">
                   <h3 id={titleId} className="font-display text-3xl font-bold tracking-normal text-ink sm:text-4xl">
                     {title}
                   </h3>
-                  <p className="text-base font-medium leading-relaxed text-deepblue">{tagline}</p>
+                  <p className="text-lg font-medium leading-relaxed text-deepblue">
+                    {tagline}
+                  </p>
                 </div>
-
-                <p className="text-sm leading-relaxed text-ink/65 sm:text-base">{body}</p>
 
                 {impactAreas.length > 0 ? (
                   <div className="flex flex-col gap-3">
-                    <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/45">
+                    <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-ink/45">
                       Impact Areas
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {impactAreas.map((area) => (
                         <span
                           key={area}
-                          className="rounded-full border border-ink/15 bg-lightgray px-3 py-1.5 text-xs font-medium text-ink/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-sky/60 hover:text-ink"
+                          className="rounded-full border border-ink/15 bg-lightgray px-3 py-1.5 text-sm font-medium text-ink/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-sky/60 hover:text-ink"
                         >
                           {area}
                         </span>
@@ -147,12 +147,12 @@ export default function CapabilityModal({
 
                 {outcomes.length > 0 ? (
                   <div className="flex flex-col gap-3">
-                  <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/45">
-                    Business Outcomes
+                  <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-ink/45">
+                    Common Signs It&apos;s time:
                   </h4>
                   <ul className="flex flex-col gap-2.5">
                     {outcomes.map((outcome) => (
-                      <li key={outcome} className="flex items-start gap-2.5 text-sm leading-relaxed text-ink/80">
+                      <li key={outcome} className="flex items-start gap-2.5 text-base leading-relaxed text-ink/80">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal" aria-hidden="true" />
                         {outcome}
                       </li>

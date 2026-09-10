@@ -148,7 +148,12 @@ export default function Hero() {
         </motion.div>
         </div>
 
-        <div className="flex w-full items-center justify-center pt-10 md:pt-20">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="flex w-full items-center justify-center pt-10 md:pt-20"
+        >
           <Image
             src="/logo/Logo+field-png.png"
             alt="MField Labs"
@@ -156,7 +161,7 @@ export default function Hero() {
             height={265}
             className="h-auto w-full max-w-[320px] object-contain md:max-w-[620px]"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

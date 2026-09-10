@@ -60,7 +60,7 @@ export default function Capabilities() {
                 <div className="mt-5 border-t border-ink/10 pt-5">
                   <ul className="space-y-3">
                     {c.impactAreas.map((area) => (
-                      <li key={area} className="flex items-start gap-2 text-sm leading-snug text-ink/70">
+                      <li key={area} className="flex items-start gap-2 text-base leading-snug text-ink/70">
                         <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-sky" aria-hidden="true" />
                         {area}
                       </li>

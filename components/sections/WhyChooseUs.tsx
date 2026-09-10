@@ -23,17 +23,17 @@ export default function WhyChooseUs() {
             Why MField Labs Exists
           </h2>
 
-          <div className="space-y-4 text-sm text-gray-600 leading-relaxed md:text-base">
-            <p>
+          <div className="space-y-4 text-gray-600 leading-relaxed">
+            <p className="!text-lg md:!text-xl">
               Growing businesses face many of the same challenges as large enterprises. You need reliable data. You need 
               less manual work. You need AI that actually helps instead of just sounding good in a meeting. You need systems 
               that talk to each other.
             </p>
-            <p>
+            <p className="!text-lg md:!text-xl">
               But the traditional consulting model was built around large enterprise budgets and large enterprise timelines, 
               not yours. So most growing businesses either go without, or cobble together freelancers and hope it works.
             </p>
-            <p>
+            <p className="!text-lg md:!text-xl">
               MField Labs was built differently. The intelligence your business needs, in your data, your people, your systems, 
               your institutional knowledge, is probably already there. Our job is to connect it into something coherent, using 
               senior judgment and an efficient delivery model, so you get enterprise-caliber thinking without enterprise-level 
@@ -134,7 +134,7 @@ export default function WhyChooseUs() {
               <div className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-3">
                 
               </div>
-              <div className="space-y-2.5 text-xl text-gray-600 leading-relaxed"><br></br>
+              <div className="space-y-2.5 text-2xl text-gray-600 leading-relaxed"><br></br>
                 <p>
                   You can already hire an AI developer, a Power BI analyst, or an automation specialist online. Good talent 
                   isn&apos;t hard to find anymore.
