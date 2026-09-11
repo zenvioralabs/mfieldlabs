@@ -26,7 +26,7 @@ export default function Capabilities() {
     >
       <div className="container">
         <div className="mb-10 max-w-2xl xl:mb-6">
-          <p className="eyebrow mb-5">{capabilitiesSection.eyebrow}</p>
+          <p className="eyebrow -mt-4 mb-5">{capabilitiesSection.eyebrow}</p>
           <h2 className="mb-4 font-display text-4xl font-bold leading-[1.05] text-ink md:text-5xl">
             <WordReveal text={capabilitiesSection.heading} />
           </h2>

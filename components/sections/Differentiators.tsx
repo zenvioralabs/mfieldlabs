@@ -29,7 +29,7 @@ export default function Differentiators() {
                 <p className="max-w-2xl text-base leading-relaxed text-ink/55 md:text-base">{item.body}</p>
                 <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]">
                   <div className="overflow-hidden">
-                    <p className="mt-3 w-full max-w-none text-base leading-relaxed text-ink/70">{item.narrative}</p>
+                    <p className="mt-3 w-full max-w-none text-lg leading-relaxed text-ink/70">{item.narrative}</p>
                   </div>
                 </div>
               </div>

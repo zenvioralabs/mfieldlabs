@@ -51,15 +51,15 @@ export default function Hero() {
     <section
       id="top"
       ref={heroRef}
-      className="relative flex flex-col justify-center overflow-hidden bg-white px-6 pb-40 pt-40 md:px-16 md:pb-48"
+      className="relative flex flex-col justify-center overflow-hidden bg-white px-6 pb-16 pt-32 md:px-16 md:pb-48 md:pt-40"
     >
-      <div className="container relative grid gap-12 md:grid-cols-[1.15fr_0.85fr] md:items-start md:gap-16">
+      <div className="container relative grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-start md:gap-16">
         <div>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.6 }}
-          className="eyebrow mb-6 flex flex-wrap items-center gap-3"
+          className="eyebrow mb-4 flex flex-wrap items-center gap-2 md:mb-6 md:gap-3"
         >
           
           <span className="hidden text-ink/20 sm:inline"></span>
@@ -68,7 +68,7 @@ export default function Hero() {
 
         <motion.h1
           style={{ y: titleY, opacity: titleOpacity, scale: titleScale }}
-          className="max-w-4xl font-display text-5xl font-extrabold leading-[1.05] text-ink"
+          className="max-w-4xl font-display text-5xl font-extrabold leading-[1.05] text-ink sm:text-6xl md:text-7xl"
         >
           <WordReveal
             text={hero.headlineLines[0]}
@@ -86,7 +86,7 @@ export default function Hero() {
             delay={0.4}
           />
           <br />
-          <span className="relative mt-2 inline-block max-w-full text-4xl text-deepblue sm:text-5xl md:whitespace-nowrap md:text-7xl">
+          <span className="relative mt-1 inline-block max-w-full text-5xl text-deepblue sm:text-6xl md:mt-2 md:whitespace-nowrap md:text-7xl">
             <WordReveal
               text={hero.headlineLines[2]}
               className="inline max-w-full"
@@ -105,7 +105,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.6, delay: 1.1 }}
-          className="mt-10 max-w-xl font-body text-lg text-ink/60 leading-relaxed"
+          className="mt-6 max-w-xl font-body text-lg text-ink/60 leading-relaxed md:mt-10 md:text-xl"
         >
           {hero.subheading}
         </motion.p>
@@ -114,7 +114,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="mt-6 max-w-xl font-body text-base text-ink/45 leading-relaxed"
+          className="mt-4 max-w-xl font-body text-sm text-ink/45 leading-relaxed md:mt-6 md:text-base"
         >
           {hero.supportingStatement}
         </motion.p>
@@ -123,7 +123,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.6, delay: 1.35 }}
-          className="mt-12 flex flex-wrap gap-4">
+          className="mt-8 flex flex-wrap gap-3 md:mt-12 md:gap-4">
         
           <Button
             asChild
@@ -152,14 +152,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="flex w-full items-center justify-center pt-10 md:pt-20"
+          className="flex w-full items-center justify-center pt-2 md:pt-20"
         >
           <Image
             src="/logo/Logo+field-png.png"
             alt="MField Labs"
             width={620}
             height={265}
-            className="h-auto w-full max-w-[320px] object-contain md:max-w-[620px]"
+            className="h-auto w-full max-w-[220px] object-contain md:max-w-[620px]"
           />
         </motion.div>
       </div>
