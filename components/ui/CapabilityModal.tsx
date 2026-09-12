@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle2, type LucideIcon } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, X, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface CapabilityModalProps {
@@ -78,6 +78,15 @@ export default function CapabilityModal({
             <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white to-transparent" />
             <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent" />
           </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close capability details"
+            className="fixed right-5 top-5 z-20 flex h-11 w-11 items-center justify-center rounded-xl border border-ink/15 bg-white/90 text-ink backdrop-blur transition-colors hover:border-deepblue hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky sm:right-8 sm:top-8"
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+          </button>
 
           <div className="relative mx-auto flex min-h-full w-full max-w-6xl items-center px-6 py-20 sm:px-10 sm:py-24">
             <div className="grid w-full items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-12 lg:gap-16">
