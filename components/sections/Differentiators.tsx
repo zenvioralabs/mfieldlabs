@@ -25,8 +25,8 @@ export default function Differentiators() {
               className="differentiator-row group flex flex-col gap-4 py-6 pl-4 transition-colors hover:bg-lightgray/60 sm:flex-row sm:items-center sm:gap-6 md:pl-6"
             >
               <div className="min-w-0 flex-1">
-                <h3 className="mb-1 font-display text-lg font-semibold text-ink md:text-xl">{item.title}</h3>
-                <p className="max-w-2xl text-base leading-relaxed text-ink/55 md:text-base">{item.body}</p>
+                <h3 className="mb-1 font-display text-xl font-semibold text-ink md:text-2xl">{item.title}</h3>
+                <p className="max-w-2xl text-[1.25rem] leading-relaxed text-ink/55">{item.body}</p>
                 <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]">
                   <div className="overflow-hidden">
                     <p className="mt-3 w-full max-w-none text-lg leading-relaxed text-ink/70">{item.narrative}</p>

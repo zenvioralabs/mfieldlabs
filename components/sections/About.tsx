@@ -20,6 +20,10 @@ export default function About() {
           {about.eyebrow}
         </motion.p>
 
+        <h1 className="mb-4 font-display text-4xl font-bold leading-[1.05] text-ink md:text-5xl">
+          MField Labs — Technology and Data Partner for Growing Businesses
+        </h1>
+
         <div className="grid gap-10">
           <div>
             <motion.div
@@ -38,14 +42,25 @@ export default function About() {
               >
                 {about.problem}
               </motion.p>
-              <motion.p
+              <motion.ul
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="whitespace-pre-line text-sm leading-[1.65] text-ink/70 sm:text-base md:text-lg"
+                className="list-disc space-y-1 pl-5 text-sm leading-[1.5] text-ink/70 marker:text-deepblue sm:text-base md:text-lg"
               >
-                {about.solution}
+                {about.solution.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </motion.ul>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-sm leading-[1.5] text-ink/70 sm:text-base md:text-lg"
+              >
+                {about.aboutNote}
               </motion.p>
             </motion.div>
           </div>

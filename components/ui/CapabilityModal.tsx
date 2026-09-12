@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, X, type LucideIcon } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface CapabilityModalProps {
@@ -79,16 +79,6 @@ export default function CapabilityModal({
             <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent" />
           </div>
 
-          <button
-            ref={closeRef}
-            type="button"
-            onClick={onClose}
-            aria-label="Close capability details"
-            className="fixed right-5 top-5 z-20 flex h-11 w-11 items-center justify-center rounded-xl border border-ink/15 bg-white/80 text-ink backdrop-blur transition-colors hover:bg-lightgray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky sm:right-8 sm:top-8"
-          >
-            <X className="h-5 w-5" aria-hidden="true" />
-          </button>
-
           <div className="relative mx-auto flex min-h-full w-full max-w-6xl items-center px-6 py-20 sm:px-10 sm:py-24">
             <div className="grid w-full items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-12 lg:gap-16">
               <motion.div
@@ -160,12 +150,24 @@ export default function CapabilityModal({
                   </div>
                 ) : null}
 
-                <Button asChild size="lg" className="mt-2 w-fit">
-                  <a href="#contact" onClick={onClose}>
-                    Start a Conversation
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                </Button>
+                <div className="mt-2 flex flex-wrap items-center gap-3">
+                  <button
+                    ref={closeRef}
+                    type="button"
+                    onClick={onClose}
+                    aria-label="Back to main page"
+                    className="inline-flex h-14 min-w-[7.5rem] items-center justify-center gap-2 rounded-full border border-deepblue bg-white/90 px-6 text-lg font-bold text-deepblue backdrop-blur transition-colors hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky"
+                  >
+                    <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+                    Back
+                  </button>
+                  <Button asChild size="lg" className="w-fit">
+                    <a href="#contact" onClick={onClose}>
+                      Start a Conversation
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </Button>
+                </div>
               </motion.div>
             </div>
           </div>

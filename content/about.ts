@@ -2,17 +2,22 @@ export interface AboutContent {
   eyebrow: string;
   title: string;
   problem: string;
-  solution: string;
+  solution: string[];
+  aboutNote: string;
 }
 
 export const about: AboutContent = {
   eyebrow: "About MField Labs",
   title: "What We Actually Do",
   problem:
-    "Most organizations struggle with fragmented information, manual processes, delayed reporting, and underutilized technology. These bottlenecks make it difficult to scale operations and gain clear visibility into performance. Founders and leaders often have big visions and care deeply about the impact they make, yet they struggle to bring that vision to life and maintain momentum.",
-  solution:
-    `The idea behind MField Labs is simple: growing businesses deserve the caliber of consulting that large enterprises get, without the overhead or the price tag that usually comes with it. That perspective comes from years spent inside spreadsheets that didn't add up, processes held together by workarounds, and hours lost to manual work that technology should have handled long ago. 
-
-    That experience shapes how we work: practical recommendations over hype, technology that actually gets used, and time freed up for the creative and meaningful work that only people can do best.
-`,
+    "MField Labs helps growing businesses modernize reporting, automate operations, build modern software, and adopt AI responsibly, so they can run more efficiently and make confident decisions.",
+  solution: [
+    "We start with the business, not the technology. Before recommending anything, we take the time to understand the business challenges, the goals, the reporting needs, and what our clients, and their customers, expect.",
+    "We are technology agnostic and do not sell specific tools or licenses. We use whatever is best in the market to set our clients up for success.",
+    "We partner with clients throughout delivery, teaching along the way, so they're able to manage the technology on their own once the project ends.",
+    "Human-centered design guides our work: technology should serve people, not the other way around.",
+    "New tools and technologies require real change from the people using them, so we build change management into how we work. Technology is only useful when people actually want to use it.",
+  ],
+  aboutNote:
+    "MField Labs is women-owned and led by an experienced professional with 20+ years in consulting and business operations, including time at a Big Four firm and other technology firms.",
 };

@@ -68,7 +68,7 @@ export default function Hero() {
 
         <motion.h1
           style={{ y: titleY, opacity: titleOpacity, scale: titleScale }}
-          className="max-w-4xl font-display text-5xl font-extrabold leading-[1.05] text-ink sm:text-6xl md:text-7xl"
+          className="max-w-4xl font-display text-6xl font-extrabold leading-[1.05] text-ink sm:text-5xl md:text-[5rem]"
         >
           <WordReveal
             text={hero.headlineLines[0]}
@@ -77,15 +77,15 @@ export default function Hero() {
             active={ready}
             delay={0.1}
           />
-          <br />
+          <span aria-hidden="true" className="block h-3" />
           <WordReveal
             text={hero.headlineLines[1]}
-            className="inline max-w-full"
+            className="inline max-w-full md:whitespace-nowrap"
             mode="mount"
             active={ready}
             delay={0.4}
           />
-          <br />
+          <span aria-hidden="true" className="block h-3" />
           <span className="relative mt-1 inline-block max-w-full text-5xl text-deepblue sm:text-6xl md:mt-2 md:whitespace-nowrap md:text-7xl">
             <WordReveal
               text={hero.headlineLines[2]}
@@ -159,7 +159,7 @@ export default function Hero() {
             alt="MField Labs"
             width={620}
             height={265}
-            className="h-auto w-full max-w-[220px] object-contain md:max-w-[620px]"
+            className="h-auto w-full max-w-[220px] object-contain md:max-w-[560px]"
           />
         </motion.div>
       </div>
