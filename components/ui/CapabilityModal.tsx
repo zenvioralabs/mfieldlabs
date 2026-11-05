@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, X, type LucideIcon } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, X, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface CapabilityModalProps {
@@ -30,7 +30,6 @@ export default function CapabilityModal({
   icon: Icon,
   title,
   tagline,
-  body,
   impactAreas,
   outcomes,
   image,
@@ -81,11 +80,10 @@ export default function CapabilityModal({
           </div>
 
           <button
-            ref={closeRef}
             type="button"
             onClick={onClose}
             aria-label="Close capability details"
-            className="fixed right-5 top-5 z-20 flex h-11 w-11 items-center justify-center rounded-xl border border-ink/15 bg-white/80 text-ink backdrop-blur transition-colors hover:bg-lightgray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky sm:right-8 sm:top-8"
+            className="fixed right-5 top-5 z-20 flex h-11 w-11 items-center justify-center rounded-xl border border-ink/15 bg-white/90 text-ink backdrop-blur transition-colors hover:border-deepblue hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky sm:right-8 sm:top-8"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -116,27 +114,27 @@ export default function CapabilityModal({
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-6 md:text-lg"
               >
                 <div className="flex flex-col gap-2.5">
                   <h3 id={titleId} className="font-display text-3xl font-bold tracking-normal text-ink sm:text-4xl">
                     {title}
                   </h3>
-                  <p className="text-base font-medium leading-relaxed text-deepblue">{tagline}</p>
+                  <p className="text-lg font-medium leading-relaxed text-deepblue">
+                    {tagline}
+                  </p>
                 </div>
-
-                <p className="text-sm leading-relaxed text-ink/65 sm:text-base">{body}</p>
 
                 {impactAreas.length > 0 ? (
                   <div className="flex flex-col gap-3">
-                    <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/45">
+                    <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-ink/45">
                       Impact Areas
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {impactAreas.map((area) => (
                         <span
                           key={area}
-                          className="rounded-full border border-ink/15 bg-lightgray px-3 py-1.5 text-xs font-medium text-ink/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-sky/60 hover:text-ink"
+                          className="rounded-full border border-ink/15 bg-lightgray px-3 py-1.5 text-sm font-medium text-ink/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-sky/60 hover:text-ink"
                         >
                           {area}
                         </span>
@@ -147,12 +145,12 @@ export default function CapabilityModal({
 
                 {outcomes.length > 0 ? (
                   <div className="flex flex-col gap-3">
-                  <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/45">
-                    Business Outcomes
+                  <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-ink/45">
+                    Common Signs It&apos;s time:
                   </h4>
                   <ul className="flex flex-col gap-2.5">
                     {outcomes.map((outcome) => (
-                      <li key={outcome} className="flex items-start gap-2.5 text-sm leading-relaxed text-ink/80">
+                      <li key={outcome} className="flex items-start gap-2.5 text-base leading-relaxed text-ink/80">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal" aria-hidden="true" />
                         {outcome}
                       </li>
@@ -161,12 +159,24 @@ export default function CapabilityModal({
                   </div>
                 ) : null}
 
-                <Button asChild size="lg" className="mt-2 w-fit">
-                  <a href="#contact" onClick={onClose}>
-                    Start a Conversation
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                </Button>
+                <div className="mt-2 flex flex-wrap items-center gap-3">
+                  <button
+                    ref={closeRef}
+                    type="button"
+                    onClick={onClose}
+                    aria-label="Back to main page"
+                    className="inline-flex h-14 min-w-[7.5rem] items-center justify-center gap-2 rounded-full border border-deepblue bg-white/90 px-6 text-lg font-bold text-deepblue backdrop-blur transition-colors hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky"
+                  >
+                    <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+                    Back
+                  </button>
+                  <Button asChild size="lg" className="w-fit">
+                    <a href="#contact" onClick={onClose}>
+                      Start a Conversation
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </Button>
+                </div>
               </motion.div>
             </div>
           </div>

@@ -12,7 +12,7 @@ export interface VisionContent {
 }
 
 export const mission: MissionContent = {
-  eyebrow: "Mission",
+  eyebrow: "Our Mission",
   heading: "Turning Complexity into Clarity",
   intro: "Our mission is to help organizations:",
   points: [

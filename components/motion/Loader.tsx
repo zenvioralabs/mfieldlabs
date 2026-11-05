@@ -51,10 +51,10 @@ export default function Loader() {
       <div className="text-center">
         <div className="relative mx-auto mb-7 h-9 w-40">
           <Image
-            src="/logo/mfield-logo-white-text.png"
+            src="/logo/field-logo-png.png"
             alt=""
             fill
-            sizes="160px"
+            sizes="190px"
             className="object-contain"
             priority
           />

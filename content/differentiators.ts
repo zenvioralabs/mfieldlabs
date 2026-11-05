@@ -7,19 +7,24 @@ export interface Differentiator {
 }
 
 export const differentiatorsSection = {
-  eyebrow: "Why Mfieldlabs",
+  eyebrow: "Why MField Labs",
   title: "Engineering the Future of Business.",
   description:
-    "Five commitments define every Mfieldlabs engagement — and every one is measured by the business outcome it delivers.",
+    "Five commitments define every MField Labs engagement — and every one is measured by the business outcome it delivers.",
 };
 
 export const differentiators: Differentiator[] = [
   {
     n: "01",
     title: "Experienced Leadership",
-    body: "The idea behind Mfieldlabs is simple:",
+    body: "The idea behind MField Labs is simple:",
     narrative:
-      "Growing businesses deserve the caliber of consulting that large enterprises get, without the overhead or the price tag that usually comes with it. That perspective comes from years spent inside spreadsheets that didn't add up, processes held together by workarounds, and hours lost to manual work that technology should have handled long ago. That experience shapes how we work: practical recommendations over hype, technology that actually gets used, and time freed up for the creative and meaningful work that only people can do best.",
+      `Growing businesses deserve the caliber of consulting that large
+enterprises get, without the overhead or the price tag that usually comes with it. That conviction comes from
+years spent across industries, watching organizations of every size grow by putting technology and data to
+work well. MField Labs exists to bring that same access to smaller, growing businesses.
+That experience shapes how we work: practical recommendations over hype, technology that actually gets
+used, and time freed up for the creative and meaningful work that only people can do best.`,
     image: "/logo/professional-tech-team-collaborating-on-software-d-2026-07-08-22-09-10-utc.JPG",
   },
   {
@@ -32,10 +37,20 @@ export const differentiators: Differentiator[] = [
   },
   {
     n: "03",
-    title: "Efficient Delivery",
-    body: "Mfieldlabs operates on a hybrid delivery model.",
+    title: "More Than Access to Talent",
+    body: "We are accountable for delivering results.",
     narrative:
-      "Clients work directly with US-based (East Coast) leadership on strategy, scope, and every decision along the way, while an experienced team outside the US handles the day-to-day build. This keeps costs lower without cutting corners on quality.",
+      `Businesses can already hire freelance AI developer, a Power BI analyst, or an automation
+specialist. Good talent isn't hard to find anymore.
+
+What's harder to find is judgment: knowing which problem to solve first, how the pieces fit together,
+and who's accountable when they don't. Hire five independent specialists and you become the
+project manager, the quality reviewer, and the person who owns the outcome if something doesn't
+work.
+
+MField Labs is one accountable team. We diagnose the problem, decide what to tackle first, bring
+together the right expertise, make sure the pieces fit together, and stand behind the result.
+Business owners don't have to assemble and manage the team. We do that.`,
     image: "/logo/business-engineer-hand-works-industry-diagram-on-v-2026-04-14-00-23-25-utc.jpg",
   },
   {

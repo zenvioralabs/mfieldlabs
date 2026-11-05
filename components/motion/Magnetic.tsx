@@ -4,7 +4,7 @@ import * as React from "react";
 import { gsap } from "@/lib/gsap";
 
 interface MagneticProps {
-  children: React.ReactElement;
+  children: React.ReactElement<{ ref?: React.Ref<HTMLElement> }>;
   strength?: number;
 }
 
@@ -42,5 +42,5 @@ export default function Magnetic({ children, strength = 0.16 }: MagneticProps) {
     };
   }, [strength]);
 
-  return React.cloneElement(children, { ref } as any);
+  return React.cloneElement(children, { ref });
 }

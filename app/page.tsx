@@ -1,10 +1,8 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
-import Capabilities from "@/components/sections/Capabilities";
 import EngagementModels from "@/components/sections/EngagementModels";
-import CaseStudies from "@/components/sections/CaseStudies";
-import DeliveryModel from "@/components/sections/DeliveryModel";
+import Capabilities from "@/components/sections/Capabilities";
 import Differentiators from "@/components/sections/Differentiators";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/Footer";
@@ -16,11 +14,9 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <About />
         <Capabilities />
         <EngagementModels />
-        <CaseStudies />
-        <DeliveryModel />
+        <About />
         <Differentiators />
         <ContactSection />
       </main>

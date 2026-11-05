@@ -1,73 +1,98 @@
 "use client";
 
-import * as React from "react";
-import { ArrowRight } from "lucide-react";
-
-const bullets = [
-  "Our data is everywhere, and nobody fully trusts the numbers.",
-  "Our finance team spends days assembling reports by hand.",
-  "Our people spend hundreds of hours a month on work that should be automated.",
-  "Our systems don't talk to each other.",
-  "Everyone's talking about AI, but we don't know where it would actually make or save us money.",
-  "We've grown fast, and our technology hasn't kept up.",
-  "We know we need to modernize, but a massive consulting engagement doesn't make sense for us.",
-];
+import { motion } from "framer-motion";
+import { Check } from "lucide-react";
+import { about } from "@/content/about";
+import { mission } from "@/content/mission";
+import { philosophy } from "@/content/philosophy";
+import WordReveal from "@/components/motion/WordReveal";
 
 export default function About() {
   return (
-    <section id="about" className="bg-white px-5 py-20 sm:px-8 md:px-12 lg:px-16 lg:py-28">
-      <div className="mx-auto max-w-[1160px]">
-        <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-16">
+    <section id="about" className="scroll-mt-20 border-t border-ink/10 bg-white px-6 pb-40 pt-16 md:px-16 md:pt-20">
+      <div className="container">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="eyebrow mb-8"
+        >
+          {about.eyebrow}
+        </motion.p>
+
+        <h1 className="mb-4 font-display text-4xl font-bold leading-[1.05] text-ink md:text-5xl">
+          MField Labs — Technology and Data Partner for Growing Businesses
+        </h1>
+
+        <div className="grid gap-10">
           <div>
-            <p className="eyebrow mb-4">WHY MFIELDLABS</p>
-            <h2 className="section-heading-with-rule mb-7">Why MField Labs Exists</h2>
-            <div className="prose-mfield text-ink/80">
-              <p>Growing businesses face many of the same challenges as large enterprises. You need reliable data. You need less manual work. You need a team that actually helps instead of just sounding good in a meeting. You need systems that talk to each other.</p>
-              <p>But the traditional consulting model was built around large enterprise budgets and large enterprise timelines, not yours. So most growing businesses either go without, or cobble together freelancers and hope it works.</p>
-              <p>MField Labs was built differently. The intelligence your business needs, in your data, your people, your systems, your institutional knowledge, is probably already there. Our job is to connect it into something coherent, using senior judgment and an efficient delivery model, so you get enterprise-caliber thinking without enterprise-level cost or commitment.</p>
-            </div>
-            <div className="blue-callout mt-9 min-h-[80px] text-base italic leading-5">
-              <span>If you're a growing business,<br />our model was actually built<br />with you in mind.</span>
-              <span className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="flex w-full flex-col items-start gap-6 border-y border-ink/10 py-6 md:gap-8 md:py-8"
+            >
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="whitespace-pre-line text-sm leading-[1.65] text-ink/70 sm:text-base md:text-lg"
+              >
+                {about.problem}
+              </motion.p>
+              <motion.ul
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="list-disc space-y-1 pl-5 text-sm leading-[1.5] text-ink/70 marker:text-deepblue sm:text-base md:text-lg"
+              >
+                {about.solution.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </motion.ul>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-sm leading-[1.5] text-ink/70 sm:text-base md:text-lg"
+              >
+                {about.aboutNote}
+              </motion.p>
+            </motion.div>
           </div>
 
-          <div className="pt-2 lg:pt-8">
-            <h3 className="blue-subheading text-right">A Different Model, By Design</h3>
-            <p className="mt-2 text-right text-[13px] leading-5 text-ink/70">We're not a smaller version of a big consulting firm, and we're not a cheaper alternative to one either. We were built for a different customer, with a different model.</p>
-
-            <div className="comparison mt-7">
-              <div className="comparison-head">
-                <span>Traditional big-firm consulting</span>
-                <b>VS</b>
-                <span>MField Labs</span>
+          <div className="grid items-stretch gap-6 md:gap-8 lg:grid-cols-2">
+            <div>
+              <p className="eyebrow mb-5">{mission.eyebrow}</p>
+              <div className="rounded-2xl border border-ink/10 bg-white p-5 shadow-[0_18px_50px_rgba(17,24,39,0.08)] sm:p-7 md:p-10 lg:h-full">
+                <h2 className="mb-4 font-display text-2xl font-bold leading-[1.1] text-ink sm:text-3xl md:mb-6 md:text-4xl">
+                  <WordReveal text={mission.heading} />
+                </h2>
+                <p className="mb-4 text-sm leading-relaxed text-ink/60 sm:text-base md:mb-6">{mission.intro}</p>
+                <ul className="space-y-2.5 text-sm sm:space-y-3 sm:text-base md:space-y-4">
+                  {mission.points.map((point) => (
+                    <li key={point} className="flex gap-3 leading-relaxed text-ink/65">
+                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-teal" aria-hidden="true" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="comparison-body">
-                <div>
-                  <p>Large teams</p><p>High overhead</p><p>Long, broad engagements</p><p>Transformation programs that touch everything</p>
-                </div>
-                <div>
-                  <p>Focused team, senior-led</p><p>Efficient global delivery</p><p>Start with a sprint, prove value fast</p><p>Solve the highest-value problem first</p>
-                </div>
+            </div>
+
+            <div>
+              <p className="eyebrow mb-5">{philosophy.eyebrow}</p>
+              <div className="flex flex-col items-center justify-center rounded-2xl border border-ink/10 bg-white p-5 text-center text-ink shadow-[0_18px_50px_rgba(17,24,39,0.08)] sm:p-7 md:p-10 lg:h-full">
+                <h2 className="mb-4 max-w-xl font-display text-2xl font-bold leading-[1.15] text-ink sm:text-3xl md:mb-6 md:text-4xl">
+                  <WordReveal text={philosophy.heading} />
+                </h2>
+                <p className="max-w-xl text-sm leading-relaxed text-ink/60 sm:text-base">{philosophy.body}</p>
               </div>
             </div>
-
-            <div className="blue-callout mt-7">
-              <span><strong className="text-lg">Sounds Familiar?</strong><br /><small className="text-sm">If any of these sound familiar, that's exactly what we work on.</small></span>
-              <span className="circle-arrow h-10 w-10"><ArrowRight className="h-5 w-5" /></span>
-            </div>
-            <div className="familiar-box">
-              <ul>{bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-24 max-w-[650px]">
-          <h2 className="blue-subheading mb-7">More Than Access To Talent</h2>
-          <div className="prose-mfield text-ink/80">
-            <p>You can already hire an AI developer, a Power BI analyst, or an automation specialist online. Good talent isn't hard to find anymore.</p>
-            <p>What's harder to find is judgment: knowing which problem to solve first, how the pieces fit together, and who's accountable when they don't. Hire five independent specialists and you become the project manager, the quality reviewer, and the person who owns the outcome if something doesn't work.</p>
-            <p>MField Labs is one accountable team. We diagnose the problem, decide what to tackle first, bring together the right expertise, make sure the pieces fit together, and stand behind the result. You don't have to assemble and manage the team. We do that.</p>
           </div>
         </div>
       </div>
