@@ -5,6 +5,7 @@ export const navLinks: NavLink[] = [
   { href: "#services", label: "Our Capabilities" },
   { href: "#case-studies", label: "Case Studies" },
   { href: "#who-we-are", label: "Who We Are" },
+  { href: "/blogs", label: "Blogs" },
 ];
 
 export const footerCompanyLinks: NavLink[] = [

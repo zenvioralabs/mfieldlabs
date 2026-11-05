@@ -49,3 +49,37 @@ body { background: #fff; color: #111827; overflow-x: hidden; }
 .differentiator-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.differentiator-box{min-height:80px;border-radius:12px;background:#f1f5fb;padding:1.2rem;text-align:left;font-size:.66rem;line-height:1.4;color:#242933;transition:.2s}.differentiator-box.active{background:#0A66FF;color:#fff}.touch-box{display:flex;align-items:center;justify-content:space-between;color:#111827}.how-work-box{background:#f1f5fb;border-radius:28px;padding:2rem 2.6rem}.work-list>button{display:grid;grid-template-columns:38px 125px 1fr;gap:12px;width:100%;align-items:center;text-align:left;padding:1rem 0;border-bottom:1px solid rgba(17,24,39,.18)}.work-list>button:last-child{border-bottom:0}.work-number{font-size:1.6rem;font-weight:700;color:#8b9099}.work-title{font-family:var(--font-manrope);font-size:.82rem;font-weight:800}.work-body{font-size:.61rem;line-height:1.45;color:#777f8d}.work-list>button.active .work-number{color:#111}.work-list>button.active .work-title{color:#111}
 @media(max-width:1023px){.capability-stage{grid-template-columns:1fr 1fr}.capability-image-wrap{order:2;height:390px}.capability-outcomes{order:3;grid-column:1/-1}.capability-card-column{order:1}.how-work-box{padding:1.5rem}}
 @media(max-width:700px){.capability-stage{grid-template-columns:1fr}.capability-image-wrap{order:2;height:350px}.capability-card-column{order:1}.capability-outcomes{order:3;grid-column:auto}.comparison-head{font-size:.68rem}.work-list>button{grid-template-columns:30px 1fr}.work-body{grid-column:2}.familiar-box{margin:0}.hero-note{display:none}}
+
+/* ---------- Blog ---------- */
+.blog-scroll{scrollbar-width:thin;scrollbar-color:#DADADA #F1F1F1}
+.blog-scroll::-webkit-scrollbar{width:22px}
+.blog-scroll::-webkit-scrollbar-track{background:#F1F1F1}
+.blog-scroll::-webkit-scrollbar-thumb{background:#DADADA;border-radius:999px;border:5px solid #F1F1F1}
+/* Article typography mirrors the site: h2 = .section-heading-with-rule, h3 = .blue-subheading, body = .prose-mfield */
+.blog-article{color:rgba(17,24,39,.8);font-size:.92rem;line-height:1.85}
+.blog-article>*+*{margin-top:1rem}
+.blog-article h2{margin-top:3.25rem;border-left:2px solid #0A66FF;padding-left:10px;font-family:var(--font-manrope),sans-serif;font-size:clamp(1.35rem,2vw,1.65rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;color:#111827;scroll-margin-top:7.5rem}
+.blog-article h3{margin-top:2.25rem;font-family:var(--font-manrope),sans-serif;font-size:1rem;font-weight:800;line-height:1.25;color:#0A66FF;scroll-margin-top:7.5rem}
+.blog-article h4{margin-top:1.75rem;font-family:var(--font-manrope),sans-serif;font-size:.92rem;font-weight:800;color:#111827}
+.blog-article>h2:first-child,.blog-article>h3:first-child{margin-top:0}
+.blog-article h2+*{margin-top:1.75rem}
+.blog-article h3+*{margin-top:.75rem}
+.blog-article h2:focus,.blog-article h3:focus{outline:none}
+.blog-article ul,.blog-article ol{display:grid;gap:.4rem;padding-left:1.25rem}
+.blog-article li ul,.blog-article li ol{margin-top:.4rem}
+.blog-article li::marker{color:#0A66FF}
+.blog-article a{color:#0A66FF;text-decoration:underline;text-underline-offset:3px}
+.blog-article a:hover{text-decoration-thickness:2px}
+.blog-article strong{font-weight:600;color:#111827}
+.blog-article code{border-radius:6px;background:rgba(17,24,39,.06);padding:.1rem .35rem;font-size:.9em}
+.blog-article blockquote{border-left:2px solid rgba(10,102,255,.35);padding:.25rem 0 .25rem 1rem;font-style:italic;color:rgba(17,24,39,.65)}
+.blog-article figure{margin-top:2rem;margin-bottom:2rem}
+.blog-article figcaption{margin-top:.6rem;font-size:.7rem;color:rgba(17,24,39,.55)}
+.blog-article .blog-callout{border-radius:18px;background:#0A66FF;padding:1rem 1.25rem;color:#fff;font-size:.82rem;line-height:1.6;box-shadow:0 12px 28px rgba(10,102,255,.14)}
+.blog-article .blog-callout a,.blog-article .blog-callout strong{color:#fff}
+.blog-article--compact{font-size:inherit;line-height:inherit}
+.blog-article--compact>*+*{margin-top:.6rem}
+@media(max-width:1023px){.blog-scroll::-webkit-scrollbar{width:8px}.blog-scroll::-webkit-scrollbar-thumb{border-width:1px}}
+/* `overflow-x:hidden` on both html and body turns body into a scroll container, which breaks
+   position:sticky (blog TOC). `clip` clips identically without that side effect — scoped to blog pages. */
+html:has(.blog-page),html:has(.blog-page) body{overflow-x:clip}
