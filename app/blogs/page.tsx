@@ -16,7 +16,7 @@ export default async function BlogsPage() {
 
   return (
     <>
-      <main className="blog-page bg-white px-5 pb-20 pt-28 sm:px-8 sm:pt-32 md:px-12 lg:px-16 lg:pb-28 lg:pt-40">
+      <main className="blog-page bg-white px-5 pb-20 pt-28 sm:px-8 sm:pt-32 md:px-12 lg:px-16 lg:pb-28 lg:pt-32">
         <h1 className="sr-only">Mfieldlabs Blogs</h1>
         <div className="mx-auto max-w-[1440px]">
           <BlogListing featured={featured} recent={recent} all={all} />

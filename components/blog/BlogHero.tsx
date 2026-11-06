@@ -20,17 +20,13 @@ export default function BlogHero({ post }: { post: PostDetail }) {
         </Link>
       </div>
 
-      <div className="mt-10 grid gap-10 lg:mt-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)] lg:gap-14">
-        <div className="order-2 flex flex-col justify-between gap-10 lg:order-1 lg:py-12">
-          {post.excerpt ? (
-            <p className="max-w-xl whitespace-pre-line text-[15px] leading-7 text-ink/65 md:text-base">{post.excerpt}</p>
-          ) : (
-            <span />
-          )}
+      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)] lg:gap-14">
+        <div className="order-2 flex flex-col justify-start gap-7 lg:order-1">
+          {post.excerpt && <p className="max-w-xl whitespace-pre-line text-[15px] leading-7 text-ink/65 md:text-base">{post.excerpt}</p>}
           <BlogAuthorInfo author={post.author} publishedAt={post.publishedAt} />
         </div>
 
-        <div className="relative order-1 aspect-[16/9] overflow-hidden rounded-[28px] bg-navy sm:rounded-[40px] lg:order-2 lg:aspect-[1.8/1]">
+        <div className="relative order-1 aspect-[16/9] overflow-hidden rounded-[24px] bg-navy sm:rounded-[32px] lg:order-2 lg:aspect-[1.8/1]">
           <BlogCoverImage image={post.coverImage} fallbackAlt={post.title} sizes="(min-width: 1024px) 50vw, 100vw" priority />
         </div>
       </div>

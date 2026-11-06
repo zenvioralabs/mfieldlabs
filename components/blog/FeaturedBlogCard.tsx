@@ -6,7 +6,8 @@ export default function FeaturedBlogCard({ post }: { post: PostListItem }) {
   return (
     <article>
       <Link href={`/blogs/${post.slug}`} className="group block rounded-[32px] focus-visible:outline-offset-4">
-        <div className="relative aspect-[16/9] overflow-hidden rounded-[28px] bg-navy sm:rounded-[36px] lg:rounded-[44px]">
+        {/* Height is capped on desktop so the title and excerpt stay visible on first load. */}
+        <div className="blog-featured-media relative aspect-[16/9] w-full overflow-hidden rounded-[24px] bg-navy sm:rounded-[32px]">
           <BlogCoverImage
             image={post.coverImage}
             fallbackAlt={post.title}
@@ -16,7 +17,7 @@ export default function FeaturedBlogCard({ post }: { post: PostListItem }) {
           />
         </div>
 
-        <span className="soft-pill mt-8 inline-flex font-semibold !text-ink/70 sm:mt-10">Featured</span>
+        <span className="soft-pill mt-6 inline-flex font-semibold !text-ink/70">Featured</span>
 
         <h2 className="mt-4 font-display text-[1.5rem] font-extrabold leading-[1.1] tracking-[-0.025em] text-ink transition-colors group-hover:text-deepblue lg:text-[1.85rem]">
           {post.title}

@@ -79,6 +79,8 @@ body.is-loading {
 .outline-pill:hover{background:#0A66FF;color:#fff}
 .soft-pill{border:1px solid rgba(17,24,39,.08);background:#F1F4F8;border-radius:999px;padding:.45rem .75rem;font-size:.7rem;color:rgba(17,24,39,.6)}
 .section-title{font-family:var(--font-manrope),sans-serif;font-size:clamp(2rem,4vw,3.15rem);font-weight:800;line-height:1.02;letter-spacing:-.04em;color:#111827}
+/* Featured image keeps 16:9 but is height-capped on desktop so the title + excerpt stay above the fold */
+@media(min-width:1024px){.blog-featured-media{max-height:clamp(260px,42vh,420px)}}
 .blog-scroll{scrollbar-width:thin;scrollbar-color:#DADADA #F1F1F1}
 .blog-scroll::-webkit-scrollbar{width:22px}
 .blog-scroll::-webkit-scrollbar-track{background:#F1F1F1}

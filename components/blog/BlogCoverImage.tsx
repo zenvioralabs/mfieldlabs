@@ -13,11 +13,22 @@ interface BlogCoverImageProps {
   className?: string;
 }
 
-/** Fills its (relatively positioned, sized) parent. Shows a neutral brand panel when no image is set. */
+/** Sanity hotspot (0–1 coordinates) → CSS object-position, so cropping keeps the chosen focal point. */
+function focalPoint(image: SanityImage): string {
+  const h = image.hotspot as { x?: number; y?: number } | undefined;
+  if (typeof h?.x === "number" && typeof h?.y === "number") return `${h.x * 100}% ${h.y * 100}%`;
+  return "50% 50%";
+}
+
+/**
+ * Fills its (relatively positioned, sized) parent edge to edge (`object-cover`),
+ * centred on the image's Sanity hotspot when one is set. Shows a neutral brand panel
+ * when no image is set.
+ */
 export default function BlogCoverImage({ image, fallbackAlt, sizes, width = 1600, priority, className }: BlogCoverImageProps) {
   if (!hasImageAsset(image)) {
     return (
-      <div className={cn("absolute inset-0 grid place-items-center bg-navy", className)} aria-hidden="true">
+      <div className="absolute inset-0 grid place-items-center bg-navy" aria-hidden="true">
         <div className="relative h-10 w-10 opacity-40">
           <Image src="/logo/mfield-white.png" alt="" fill sizes="40px" className="object-contain" />
         </div>
@@ -32,6 +43,7 @@ export default function BlogCoverImage({ image, fallbackAlt, sizes, width = 1600
       fill
       sizes={sizes}
       priority={priority}
+      style={{ objectPosition: focalPoint(image) }}
       className={cn("object-cover", className)}
     />
   );
