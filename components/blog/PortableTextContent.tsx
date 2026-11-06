@@ -14,8 +14,8 @@ import type {
 
 /**
  * Lightweight Portable Text renderer (server component).
- * Kept in-house because the installed @portabletext/react requires React 19,
- * and so heading ids can be shared with the table of contents.
+ * Kept in-house (no extra dependency) so heading ids can be shared with the
+ * table of contents.
  */
 
 interface Props {
