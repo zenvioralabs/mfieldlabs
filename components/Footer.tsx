@@ -15,7 +15,7 @@ const ICONS: Record<CapabilityIcon, typeof Database> = {
   sparkles: Sparkles,
 };
 
-export default function Footer() {
+export default function Footer({ hrefBase = "" }: { hrefBase?: string }) {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
   const active = openIndex !== null ? capabilities[openIndex] : null;
   const ActiveIcon = active ? ICONS[active.icon] : null;
@@ -44,7 +44,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-white">
             {footerCompanyLinks.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="transition-colors hover:text-white">
+                <a href={l.href.startsWith("#") ? `${hrefBase}${l.href}` : l.href} className="transition-colors hover:text-white">
                   {l.label}
                 </a>
               </li>

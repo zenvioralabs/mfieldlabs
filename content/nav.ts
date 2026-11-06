@@ -8,14 +8,14 @@ export const navLinks: NavLink[] = [
   { href: "#engagement-models", label: "Engagement Models" },
   { href: "#about", label: "About" },
   { href: "#why-choose-us", label: "Why MField Labs " },
+  { href: "/blogs", label: "Blogs" },
 ];
 
 export const footerCompanyLinks: NavLink[] = [
-  
+
   { href: "#services", label: "What We Do" },
   { href: "#engagement-models", label: "Engagement Models" },
   { href: "#about", label: "About" },
   { href: "#why-choose-us", label: "Why MField Labs " },
   { href: "#contact", label: "Contact Us" },
 ];
-

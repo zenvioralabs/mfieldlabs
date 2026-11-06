@@ -10,7 +10,9 @@ import { useAppReady } from "@/lib/appReady";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/content/nav";
 
-export default function Nav() {
+/** `hrefBase` prefixes section anchors (e.g. "/" on /blogs) so they return to the home page sections. */
+export default function Nav({ hrefBase = "" }: { hrefBase?: string }) {
+  const resolveHref = (href: string) => (href.startsWith("#") ? `${hrefBase}${href}` : href);
   const ready = useAppReady();
   const reduceMotion = useReducedMotion();
   const [scrolled, setScrolled] = React.useState(false);
@@ -55,7 +57,7 @@ export default function Nav() {
           )}
         >
           <a
-            href="#top"
+            href={resolveHref("#top")}
             onClick={(event) => handleAnchorClick(event, "#top")}
             className="relative ml-0 h-16 w-36 shrink-0 md:ml-5 md:h-14 md:w-48"
           >
@@ -72,7 +74,7 @@ export default function Nav() {
             {navLinks.map((l) => (
               <a
                 key={l.href}
-                href={l.href}
+                href={resolveHref(l.href)}
                 onClick={(event) => handleAnchorClick(event, l.href)}
                 className="transition-colors hover:text-deepblue"
               >
@@ -88,7 +90,7 @@ export default function Nav() {
                   asChild
                   className="border border-deepblue bg-white text-deepblue hover:bg-deepblue hover:text-white active:bg-deepblue active:text-white"
                 >
-                  <a href="#contact" onClick={(event) => handleAnchorClick(event, "#contact")}>
+                  <a href={resolveHref("#contact")} onClick={(event) => handleAnchorClick(event, "#contact")}>
                     Contact Us
                   </a>
                 </Button>
@@ -118,7 +120,7 @@ export default function Nav() {
               {navLinks.map((l) => (
                 <a
                   key={l.href}
-                  href={l.href}
+                  href={resolveHref(l.href)}
                   onClick={(event) => handleAnchorClick(event, l.href)}
                   className="rounded-xl px-4 py-3 text-sm font-medium text-ink/80 transition-colors hover:bg-lightgray hover:text-deepblue"
                 >
@@ -126,7 +128,7 @@ export default function Nav() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href={resolveHref("#contact")}
                 onClick={(event) => handleAnchorClick(event, "#contact")}
                 className="rounded-xl px-4 py-3 text-sm font-semibold text-deepblue transition-colors hover:bg-lightgray"
               >

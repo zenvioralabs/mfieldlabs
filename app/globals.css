@@ -69,3 +69,47 @@ body.is-loading {
   background: rgba(255, 255, 255, 0.22);
   border-radius: 9999px;
 }
+
+/* ---------- Blog ---------- */
+/* Pill / title utilities used by the blog pages (removed from the shared styles on main) */
+.blue-pill,.outline-pill{display:inline-flex;align-items:center;gap:.55rem;border-radius:999px;padding:.72rem 1.15rem;font-size:.75rem;font-weight:700;transition:.25s ease}
+.blue-pill{background:#0A66FF;color:#fff;box-shadow:0 8px 22px rgba(10,102,255,.16)}
+.blue-pill:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(10,102,255,.22)}
+.outline-pill{border:1px solid rgba(10,102,255,.3);color:#0A66FF;background:#fff}
+.outline-pill:hover{background:#0A66FF;color:#fff}
+.soft-pill{border:1px solid rgba(17,24,39,.08);background:#F1F4F8;border-radius:999px;padding:.45rem .75rem;font-size:.7rem;color:rgba(17,24,39,.6)}
+.section-title{font-family:var(--font-manrope),sans-serif;font-size:clamp(2rem,4vw,3.15rem);font-weight:800;line-height:1.02;letter-spacing:-.04em;color:#111827}
+/* Featured image keeps 16:9 but is height-capped on desktop so the title + excerpt stay above the fold */
+@media(min-width:1024px){.blog-featured-media{max-height:clamp(260px,42vh,420px)}}
+.blog-scroll{scrollbar-width:thin;scrollbar-color:#DADADA #F1F1F1}
+.blog-scroll::-webkit-scrollbar{width:22px}
+.blog-scroll::-webkit-scrollbar-track{background:#F1F1F1}
+.blog-scroll::-webkit-scrollbar-thumb{background:#DADADA;border-radius:999px;border:5px solid #F1F1F1}
+/* Article typography mirrors the site: h2 = .section-heading-with-rule, h3 = .blue-subheading, body = .prose-mfield */
+.blog-article{color:rgba(17,24,39,.8);font-size:.92rem;line-height:1.85}
+.blog-article>*+*{margin-top:1rem}
+.blog-article h2{margin-top:3.25rem;border-left:2px solid #0A66FF;padding-left:10px;font-family:var(--font-manrope),sans-serif;font-size:clamp(1.35rem,2vw,1.65rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;color:#111827;scroll-margin-top:7.5rem}
+.blog-article h3{margin-top:2.25rem;font-family:var(--font-manrope),sans-serif;font-size:1rem;font-weight:800;line-height:1.25;color:#0A66FF;scroll-margin-top:7.5rem}
+.blog-article h4{margin-top:1.75rem;font-family:var(--font-manrope),sans-serif;font-size:.92rem;font-weight:800;color:#111827}
+.blog-article>h2:first-child,.blog-article>h3:first-child{margin-top:0}
+.blog-article h2+*{margin-top:1.75rem}
+.blog-article h3+*{margin-top:.75rem}
+.blog-article h2:focus,.blog-article h3:focus{outline:none}
+.blog-article ul,.blog-article ol{display:grid;gap:.4rem;padding-left:1.25rem}
+.blog-article li ul,.blog-article li ol{margin-top:.4rem}
+.blog-article li::marker{color:#0A66FF}
+.blog-article a{color:#0A66FF;text-decoration:underline;text-underline-offset:3px}
+.blog-article a:hover{text-decoration-thickness:2px}
+.blog-article strong{font-weight:600;color:#111827}
+.blog-article code{border-radius:6px;background:rgba(17,24,39,.06);padding:.1rem .35rem;font-size:.9em}
+.blog-article blockquote{border-left:2px solid rgba(10,102,255,.35);padding:.25rem 0 .25rem 1rem;font-style:italic;color:rgba(17,24,39,.65)}
+.blog-article figure{margin-top:2rem;margin-bottom:2rem}
+.blog-article figcaption{margin-top:.6rem;font-size:.7rem;color:rgba(17,24,39,.55)}
+.blog-article .blog-callout{border-radius:18px;background:#0A66FF;padding:1rem 1.25rem;color:#fff;font-size:.82rem;line-height:1.6;box-shadow:0 12px 28px rgba(10,102,255,.14)}
+.blog-article .blog-callout a,.blog-article .blog-callout strong{color:#fff}
+.blog-article--compact{font-size:inherit;line-height:inherit}
+.blog-article--compact>*+*{margin-top:.6rem}
+@media(max-width:1023px){.blog-scroll::-webkit-scrollbar{width:8px}.blog-scroll::-webkit-scrollbar-thumb{border-width:1px}}
+/* `overflow-x:hidden` on both html and body turns body into a scroll container, which breaks
+   position:sticky (blog TOC). `clip` clips identically without that side effect — scoped to blog pages. */
+html:has(.blog-page),html:has(.blog-page) body{overflow-x:clip}
